@@ -63,5 +63,12 @@
         "map": "cpp",
         "xtree": "cpp",
         "span": "cpp"
+    },
+
+    "files.exclude": {
+        "**/Debug": true,
+        "**/*.vcxproj": true,
+        "**/*.vcxproj.filters": true,
+        "**/*.vcxproj.user": true
     }
 }
