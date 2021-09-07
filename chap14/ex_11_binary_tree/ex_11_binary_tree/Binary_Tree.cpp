@@ -95,7 +95,7 @@ namespace Graph_lib {
 
 			for (int j = 0; j < level.size(); j++)
 				std::cout << "\t[" << j << "] Parent: " <<
-				level[j].parent_id << "\tPoint: " << level[j].pt;
+				level[j].parent_id << "\tPoint: " << level[j].pt << "\n";
 		}
 	}
 
@@ -116,8 +116,8 @@ namespace Graph_lib {
 				
 				Graph_lib::Polygon triangle{{
 					{ node.pt.x, node.pt.y - rad},
-					{ node.pt.x + rad * cos(M_PI/6), node.pt.y + rad*sin(M_PI/6)}, 
-					{ node.pt.x - rad * cos(M_PI / 6), node.pt.y + rad * sin(M_PI / 6)} 
+					{ int(node.pt.x + rad * cos(M_PI/6)), int(node.pt.y + rad*sin(M_PI/6))},
+					{ int(node.pt.x - rad * cos(M_PI / 6)), int(node.pt.y + rad * sin(M_PI / 6))}
 				}};
 				
 				triangle.draw();

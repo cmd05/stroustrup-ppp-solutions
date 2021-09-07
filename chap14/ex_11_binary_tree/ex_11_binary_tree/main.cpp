@@ -10,11 +10,11 @@ int main() {
 	Graph_lib::Point tl{ 100, 100 }; // top left corner. Window position on screen
 	Simple_window win{ tl, 1024, 720, "Canvas" };
 
-	B_Tri_Tree btree{ {620, 30}, 6, 1200, 370};
+	B_Tri_Tree btree{ {620, 30}, 8, 1200, 370};
 	btree.print();
 	win.attach(btree);
 
-	Point pt = btree.node_pos("lrlrl");
+	Point pt = btree.node_pos("rrrlrll");
 	Mark m{ pt, '*' };
 	m.set_color(Color::red);
 	
