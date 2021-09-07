@@ -4,8 +4,6 @@
 #include "Simple_window.h"
 #include "Graph.h"
 
-const std::string IMG_DIR = "../../../includes/graphics/images/";
-
 int main() {
 	using namespace  Graph_lib;
 

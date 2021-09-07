@@ -5,8 +5,6 @@
 #include "Graph.h"
 #include <cmath>
 
-const std::string IMG_DIR = "../../../includes/graphics/images/";
-
 int main() {
     // draw a series of regular Graph_lib::Polygons from inside out: equilateral triangle,
 // square, pentagon, etc.

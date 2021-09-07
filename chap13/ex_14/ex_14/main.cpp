@@ -5,8 +5,6 @@
 #include "Graph.h"
 #include <cmath>
 
-const std::string IMG_DIR = "../../../includes/graphics/images/";
-
 struct Right_triangle : Graph_lib::Polygon {
 	Right_triangle(Point a, int w, int h) {
 		const Point c{ a.x + w, a.y };
