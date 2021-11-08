@@ -1,6 +1,8 @@
 # Principles-and-Practice-CPP-Solutions
 
 My solutions to Programming Principles and Practice by Bjarne Stroustrup.
-Have included ``Snippets``, ``Drills``, ``Exercises``, ``Try-it's``, ``Review`` and ``Projects``
+The repository includes ``Snippets``, ``Drills``, ``Exercises``, ``Try-it's``, ``Review`` and ``Projects``
 
-![Pepe](https://cdn.discordapp.com/emojis/657829257380364308.gif?v=1 "Pepe :)")
+## Projects
+
+<img src="https://user-images.githubusercontent.com/63466463/140736124-acd7ce11-ea24-4c78-b43d-f85f05a3dec4.jpg" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736130-070a69c4-441c-4a0e-a6c7-fcaa3d4cfb9d.gif" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736137-003758f7-2033-4b35-8299-57cde62283c6.jpg" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736141-2b106c3a-ea33-4ffc-bd98-4b6031306ce3.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736142-6ace2f38-9a0d-4a6d-95d3-95e18b775928.jpg" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736146-28d61480-b92b-460d-8d73-e256d56ff9c6.gif" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736151-bb822912-32f4-4db8-b4ad-81b99d31c8b6.jpg" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736156-6ced8573-f57c-4052-86df-43d7398c8a6f.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736159-7ac2e6b3-f642-49d3-b978-5851e20ac304.png" width="30%"></img> 
