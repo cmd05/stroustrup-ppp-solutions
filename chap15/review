@@ -1,0 +1,57 @@
+1. What is a function of one argument?
+
+2. When would you use a (continuous) line to represent data? When do
+you use (discrete) points?
+    Continuous line can be used to represent data which behaves as a function or show 
+    the trend of a given quantity 
+
+    Discrete points can be used when the points do not follow a particular behaviour or simply represent
+    value of one quantity at a given instance
+
+3. What function (mathematical formula) defines a slope? 
+    tan(θ) = dy/dx
+
+4. What is a parabola?
+    A plane curve which is mirror-symmetrical and U shaped.
+
+5. How do you make an x axis? A y axis?
+    Using Axis object
+
+6. What is a default argument and when would you use one?
+    An optional paramater for a function with a default value
+    It can be used to keep a default value for a quantity in case the value isn't specified
+    Eg: int replace_substr(std::string str, std::string search, std::string replace int start_index = 0)
+        std::vector<string> split(std::string str, char sep = ' ')
+
+7. How do you add functions together?
+    Use lambda functions or use one in the other
+
+8. How do you color and label a graphed function?
+    fct.set_color()
+    Use text labels
+
+9. What do we mean when we say that a series approximates a function?
+    Approximates the value of a function as an expansion series
+    Each additional term betters the approximation
+
+10. Why would you sketch out the layout of a graph before writing the
+code to draw it?
+    Easier to visualize and prevent errors
+
+11. How would you scale your graph so that the input will fit?
+    scale = axis_length / range_of_input
+    
+12. How would you scale the input without trial and error?
+    scale = axis_length / range_of_input
+
+13. Why would you format your input rather than just having the file
+contain “the numbers”?
+    Easier to modify, debug, understand and maintain
+
+14. How do you plan the general layout of a graph? How do you reflect
+that layout in your code?
+    - Position axis using offsets
+    - Scale axis length and range
+    - Use a scale object for the same
+    - Label axis
+    - Use colors and labels

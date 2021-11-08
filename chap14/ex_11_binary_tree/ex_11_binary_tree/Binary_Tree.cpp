@@ -11,10 +11,9 @@ namespace Graph_lib {
 	//------------------------------------------------------------------------------
 
 	B_Tree::B_Tree(Point root, int levels, int max_width, int max_height) :
-	    root{ root }, levels{ levels },
-		max_width{ max_width }, max_height{ max_height },
+	    root{ root }, levels{ levels }, max_width{ max_width }, max_height{ max_height },
 		tree_sw {
-			root.x - (max_width / 2),
+			root.x - (max_width / 2), 
 			root.y + max_height,
 		} { gen_tree(); }
 
@@ -33,16 +32,16 @@ namespace Graph_lib {
 
 		for(int i = levels - 1; i >= 0; i--) {
 			int nodes = pow(2, i);
+
+			// Node {point, parent_id}
 			std::vector<Node> level_nodes;
 
 			for (int j = 0; j < nodes; j++) {
 				int node_x = indent_gap + tree_sw.x + j*interval;
 				int node_y = tree_sw.y - level_height*(levels - i);
 				
-				double parent_id = j / 2.0;
-				if (j % 2 != 0) parent_id -= 0.5;
-
-				level_nodes.push_back({Point{node_x, node_y}, int(parent_id)});
+				// For odd index,  j / 2 floors n.5 to n
+				level_nodes.push_back({Point{node_x, node_y}, j / 2});
 			}
 
 			b_tree.push_back(level_nodes);
@@ -89,7 +88,7 @@ namespace Graph_lib {
 	//------------------------------------------------------------------------------
 
 	void B_Tree::print() const {
-		for (int i = 0; i < b_tree.size(); i++) {
+		for (int i = levels - 1; i >= 0; i--) {
 			std::cout << "Level " << levels - i << "\n";
 			std::vector<Node> level = b_tree[i];
 

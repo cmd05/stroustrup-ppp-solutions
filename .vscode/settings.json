@@ -62,7 +62,9 @@
         "xutility": "cpp",
         "map": "cpp",
         "xtree": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "deque": "cpp",
+        "functional": "cpp"
     },
 
     "files.exclude": {
