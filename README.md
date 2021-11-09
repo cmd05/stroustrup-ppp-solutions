@@ -4,5 +4,13 @@ My solutions to Programming Principles and Practice by Bjarne Stroustrup.
 The repository includes ``Snippets``, ``Drills``, ``Exercises``, ``Try-it's``, ``Review`` and ``Projects``
 
 ## Projects
+<img src="https://user-images.githubusercontent.com/63466463/140851293-522cfd05-6ffc-4100-8228-717feada37f4.jpg" width="30%" title="binary_tree"  alt="binary_tree"></img>
+<img src="https://user-images.githubusercontent.com/63466463/140851292-8db82f1b-c39b-46cd-89c5-7ea341ad9a33.png" width="30%" title="bell_curve"  alt="bell_curve"></img>
+<img src="https://user-images.githubusercontent.com/63466463/140851283-99101684-09e0-423f-89d2-fc5c0c5e6f71.png" width="30%" title="io_weather_plot"  alt="io_weather_plot"></img>
+<img src="https://user-images.githubusercontent.com/63466463/140851285-4b4ee54a-d308-49d7-ac63-eeb202308489.jpg" width="30%" title="pi_estimation"  alt="pi_estimation"></img>
+<img src="https://user-images.githubusercontent.com/63466463/140851286-bdce1850-25be-4f40-bea5-ca5b2e139b44.gif" width="30%" title="star_gif"  alt="star_gif"></img>
+<img src="https://user-images.githubusercontent.com/63466463/140851280-294cd318-0f31-45dd-9a66-6bd326f9dec3.jpg" width="30%" title="ellipse"  alt="ellipse"></img>
+<img src="https://user-images.githubusercontent.com/63466463/140851288-41c04dd1-c67d-4514-a419-b7f5e1eca3d8.jpg" width="30%" title="weather_project"  alt="weather_project"></img>
+<img src="https://user-images.githubusercontent.com/63466463/140851296-829f7a32-6aed-4537-8710-287e8c743521.gif" width="30%" title="checkers"  alt="checkers"></img>
+<img src="https://user-images.githubusercontent.com/63466463/140851290-2d27cc3a-7252-4eab-ac9f-2e359feb5a11.png" width="30%" title="arrow_shape"  alt="arrow_shape"></img>
 
-<img src="https://user-images.githubusercontent.com/63466463/140736124-acd7ce11-ea24-4c78-b43d-f85f05a3dec4.jpg" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736130-070a69c4-441c-4a0e-a6c7-fcaa3d4cfb9d.gif" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736137-003758f7-2033-4b35-8299-57cde62283c6.jpg" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736141-2b106c3a-ea33-4ffc-bd98-4b6031306ce3.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736142-6ace2f38-9a0d-4a6d-95d3-95e18b775928.jpg" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736146-28d61480-b92b-460d-8d73-e256d56ff9c6.gif" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736151-bb822912-32f4-4db8-b4ad-81b99d31c8b6.jpg" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736156-6ced8573-f57c-4052-86df-43d7398c8a6f.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/63466463/140736159-7ac2e6b3-f642-49d3-b978-5851e20ac304.png" width="30%"></img> 
