@@ -1,0 +1,74 @@
+1. Why would you want a graphical user interface?
+    To allow user interaction i.e input & output
+
+2. When would you want a non-graphical user interface?
+    technical work, short text input, console based programming
+
+3. What is a software layer?
+    Layer of code at a specific level providing some functionality 
+
+4. Why would you want to layer software?
+    - Allow interaction by multiple languages to low level softwares
+    - Easy to build up
+    - Debugging
+    - Abstracting layers to avoid repetition
+
+5. What is the fundamental problem when communicating with an
+operating system from C++?
+    We have to use addresses and cannot use references
+
+6. What is a callback?
+    A function provided to the system which invokes a call to the function at some instant
+
+7. What is a widget?
+    Displayable control item to define interaction through GUI
+
+8. What is another name for widget?
+    control
+
+9. What does the acronym FLTK mean?
+    Fast Light Toolkit - A GUI library
+
+10. How do you pronounce FLTK?
+    fulltick :D
+
+11. What other GUI toolkits have you heard of?
+    Qt, GTK
+
+12. Which systems use the term widget and which prefer control?
+    widget - GUI
+    control - technical
+
+13. What are examples of widgets?
+    Button, In_box, Out_box, Menu
+
+14. When would you use an inbox?
+    input from user
+
+15. What is the type of the value stored in an inbox?
+    osstringstream
+
+16. When would you use a button?
+    provide some functionality on click
+
+17. When would you use a menu?
+    group buttons for similiar functionality
+
+18. What is control inversion?
+    inverting the flow of a traditional program 
+
+    application -> input func -> user
+    control inversion: user -> system -> application
+
+19. What is the basic strategy for debugging a GUI program?
+    using well tried libraries, classes etc
+    simplifying code and growing after careful testing
+    checking linker settings
+    comparing code to working programs
+    talking to a friend
+    using a debugger
+
+20. Why is debugging a GUI program harder than debugging an
+“ordinary program using streams for I/O”?
+    multi-threading - many programs interact with the screen
+    exceptions thrown may not reach the handler
