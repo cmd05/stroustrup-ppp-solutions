@@ -16,6 +16,6 @@ void print_until_ss(const vector<string>& v, const string& quit)
 }
 
 int main() {
-    vector<string> v = {"str", "salil", "hello", "str", "str"};
+    vector<string> v = {"str", "cmd05", "hello", "str", "str"};
     print_until_ss(v, "str");
 }

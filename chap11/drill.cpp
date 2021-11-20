@@ -24,7 +24,7 @@ int main() {
     std::cout << std::setw(10) << "cmd" << "|"
               << std::setw(10) << "3BOT" << "|"
               << std::setw(10) << "1231231230" << "|"
-              << std::setw(30) << "luminosity.app@sendmail.in" << "|\n";
+              << std::setw(30) << "cmd05@mail.in" << "|\n";
               
     std::cout << std::setw(10) << "mohammed" << "|"
             << std::setw(10) << "iftaar" << "|"
