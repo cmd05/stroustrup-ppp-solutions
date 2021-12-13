@@ -1,0 +1,96 @@
+1. Why do we need data structures with varying numbers of elements?
+    Allows to store a set of data together rather than individually
+    Varying size allows us to manipulate the data .i.e insert and delete elements
+
+2. What four kinds of storage do we have for a typical program?
+    code
+    static data
+    free store 
+    stack
+
+3. What is the free store? What other name is commonly used for it?
+What operators support it?
+    Memory available for program other than code, static data and stack
+    Heap storage
+    new and delete
+
+4. What is a dereference operator and why do we need one?
+    operator to get / set data of pointee
+
+5. What is an address? How are memory addresses manipulated in C++?
+    Number that indicates a location in memory
+    Manipulated using pointers
+
+6. What information about a pointed-to object does a pointer have? What
+useful information does it lack?
+    The object's address
+    The data of the object
+
+7. What can a pointer point to?
+    Any location in memory
+
+8. What is a leak?
+    Not de-allocating memory which is not of use anymore
+
+9. What is a resource?
+    something that is acquired and must later be released
+    eg: file, a lock, objects, memory
+
+10. How can we initialize a pointer?
+    <type>* ptr = new <type>;
+    <type>* ptr = some_other_ptr;
+    <type>* ptr = &var;
+
+11. What is a null pointer? When do we need to use one?
+    Value to initialize a pointer when no other pointer is available, it points to nothing
+    we use it when a pointer points to some object and sometimes it does not
+
+12. When do we need a pointer (instead of a reference or a named
+object)?
+    A pointer can be used when it may point to a different object at some time
+    or we are using heap allocation
+
+13. What is a destructor? When do we want one?
+    A function called to clean up the object when it is no longer of use / goes out of scope
+    It should be used to free resources automatically
+    When we are allocating memory but must also free it when it is no longer being used
+
+14. When do we want a virtual destructor?
+    "If expression evaluates to a pointer to the base class subobject of the object that was allocated with new,
+    the destructor of the base class must be virtual, otherwise the behavior is undefined."
+    Important when derived class is instantiated as a base (polymorphism)
+    
+    """
+    Non virtual: A() B() ~A()
+
+    Virtual: A_v()   B_v()   ~B_v()  ~A_v()
+    """
+    see v_destructor.cpp
+
+15. How are destructors for members called?
+    They maybe implicitly called from derived class destructor or be user-defined (delete)
+    However, dynamically allocated members must have their own destructors or should be manually deallocated
+
+16. What is a cast? When do we need to use one?
+    operation to convert between different data-types
+    Note: pointers should not be implicitly converted as pointer arithmetic requires data-type size for [] operator
+
+    Eg: setting certain part of memory as a "Register"
+
+    
+    Register* in = reinterpret_cast<Register*>(0xff);
+    void f(const Buffer* p)
+    {
+        Buffer* b = const_cast<Buffer*>(p);
+        // . . .
+    }
+
+17. How do we access a member of a class through a pointer?
+    ptr->member or (*ptr).member
+
+18. What is a doubly-linked list?
+    Each item specifies its predecessor and successor
+
+19. What is this and when do we need to use it?
+    Identifier which points to object for which the member function was called
+

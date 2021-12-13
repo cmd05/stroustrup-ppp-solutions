@@ -4,5 +4,5 @@
 #include <string>
 
 int main() {
-    
+    std::cout << sizeof(long double);
 }
