@@ -5,6 +5,9 @@
 # Book PDF
 Book.pdf
 
+# Test file
+test.cpp
+
 #FLTK Library
 /includes/graphics/FLTK/*
 !includes/graphics/FLTK/.gitkeep
