@@ -18,11 +18,11 @@ int main() {
 		Graph_lib::Point tl{ 100, 100 }; // top left corner. Window position on screen
 		Simple_window win{ tl, 600, 400, "Canvas" };
 
-		int a = 300;
-		int b = 200;
+		int a = 200;
+		int b = 150;
 		double n = 0.5;
 
-		int N = 14; // no of points
+		int N = 6; // no of points
 		//const int base_set = 100;
 
 		int start_x = 300;
