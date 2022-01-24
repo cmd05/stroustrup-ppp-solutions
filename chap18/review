@@ -1,0 +1,83 @@
+1. What does “Caveat emptor!” mean?
+    "let the buyer beware"
+    It is to avoid disputes due to lack of information to buyer which is known to the seller
+    <use vectors over arrays>
+
+2. What is the default meaning of copying for class objects?
+    Shallow copying 
+
+3. When is the default meaning of copying of class objects appropriate?
+    When is it inappropriate?
+    Appropriate when class objects do not contain pointers
+    inappropriate when class objects contain pointers
+
+4. What is a copy constructor?
+    Constructor for class from another class object
+    X a = b
+
+5. What is a copy assignment?
+    Modify class object when assigned another class object
+    X a{2};
+    X b{3};
+    a = b;
+
+6. What is the difference between copy assignment and copy
+initialization?
+    Copy assignment is overloading of operator=. It modifies its members according to assigned class object
+    
+    Copy initialization or constructor is a variant of regular constructor when a class object is passed 
+    by reference as an argument
+
+7. What is shallow copy? What is deep copy?
+    Shallow copy copies address of pointers to the other
+    Deep copy creates a copy of the pointed to object in memory and stores its address
+
+    Therefore, working on a duplicate class object using shallow copy
+    modifies the original class object
+
+8. How does the copy of a vector compare to its source?
+    Same size
+    Elements have the same value but are stored in different locations
+
+9. What are the five “essential operations” for a class?
+    Constructor with arguments
+    Default Constructor
+    Copy Constructor / assignment
+    Move constructor / assignment
+    Destructor
+
+10. What is an explicit constructor? Where would you prefer one over
+the (default) alternative?
+    explicit constructor avoids the implicit conversion from one type to another 
+    when the constructor takes one argument
+    
+    Eg: fn(vector& v) {}
+        
+        // implicit int to vector
+        vector v = 10; // makes vector with 10 doubles
+        fn(10) // call vector with 10 doubles
+
+11. What operations may be invoked implicitly for a class object?
+    
+12. What is an array?
+    An array is a homogenous sequence of objects allocated in contiguous memory
+
+13. How do you copy an array?
+    Arrays cannot be assigned to only initialized
+
+    Use: memcpy(), std::copy, using for loop
+
+14. How do you initialize an array?
+    <type> <name>[<size>] = {<el1>, <el2> ... };
+
+15. When should you prefer a pointer argument over a reference
+argument? Why?
+    Pointer argument allows it to point to different locations at different times
+    Pointer to arrays allows iteration
+    When nullptr is a valid argument (and check for it)
+
+16. What is a C-style string?
+    An array of characters which is null(0) terminated
+
+17. What is a palindrome?
+    Text which is read same forwards and backwards
