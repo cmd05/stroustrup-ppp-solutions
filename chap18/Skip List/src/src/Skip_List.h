@@ -17,7 +17,7 @@ struct List_Bounds {
 class Skip_List {
 public:
 	Skip_List(std::vector<double> v = {});
-	
+
 	Node* insert(double value);
 	Node* search(double value) const;
 	Node* remove(double value);
@@ -29,7 +29,8 @@ public:
 	void add_level();
 	bool toss() const;
 
-	std::string get_representation() const;
+	std::string get_representation(int size = 15) const; // set default number length
+	std::string print_levels() const;
 private:
 	// store pointers to head and sentinel
 	std::vector<List_Bounds> levels;

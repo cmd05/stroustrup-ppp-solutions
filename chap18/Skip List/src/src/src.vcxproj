@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{526a85a1-b6db-4690-b36b-c29879d0dc4d}</ProjectGuid>
-    <RootNamespace>SkipList</RootNamespace>
+    <ProjectGuid>{0d109a34-3ee7-4211-b116-6869d247eca3}</ProjectGuid>
+    <RootNamespace>src</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

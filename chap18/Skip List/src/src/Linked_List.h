@@ -5,7 +5,7 @@ public:
 	Node(double value, Node* prev = nullptr, Node* succ = nullptr,
 		Node* ceil = nullptr, Node* floor = nullptr) :
 		value(value), prev(prev), succ(succ), above(above), below(below) {}
-	
+
 	Node* next() const { return succ; }
 	Node* previous() const { return prev; }
 	Node* floor() const { return below; }
@@ -20,7 +20,7 @@ public:
 	Node* add_v(double a); // grows up
 	Node* add_v(Node* n); // grows up
 
-	void set(double v) { value = v;  }
+	void set(double v) { value = v; }
 	double get() const { return value; }
 private:
 	double value;

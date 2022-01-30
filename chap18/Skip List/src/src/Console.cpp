@@ -9,7 +9,9 @@ void Console::run() {
     std::cout << "Commands: \n"
         << "\tinsert <value>\n"
         << "\tsearch <value>\n"
-        << "\tremove <value>\n\n";
+        << "\tremove <value>\n"
+        << "\twrite 1\n\n";
+
     std::cout << skip_list.get_representation();
 
     std::cout << "\n" << "> ";
@@ -38,14 +40,19 @@ void Console::run() {
             }
             else std::cout << "Error deleting value!\n";
         }
+        else if (cmd == "write" && arg == 1) {
+            if (file == "") std::cout << "File not specified\n";
+            else if (write_to_file(file)) std::cout << "Written to file successfully!\n";
+            else std::cout << "Could not write to file\n";
+        }
         else std::cout << "Command not recognized\n";
 
         std::cout << "\n" << "> ";
     }
 }
 
-void Console::write_to_file(std::string file) const {
-    std::ofstream ost{ file };
+bool Console::write_to_file(std::string f) const {
+    std::ofstream ost{f};
     std::string content = skip_list.get_representation();
-    ost << content;
+    return bool(ost << content);
 }

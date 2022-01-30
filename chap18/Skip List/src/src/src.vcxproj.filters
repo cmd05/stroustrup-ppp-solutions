@@ -18,10 +18,10 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Linked_List.cpp">
+    <ClCompile Include="Skip_List.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Skip_List.cpp">
+    <ClCompile Include="Linked_List.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Console.cpp">
@@ -32,10 +32,10 @@
     <ClInclude Include="Linked_List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Skip_List.h">
+    <ClInclude Include="Console.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Console.h">
+    <ClInclude Include="Skip_List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
