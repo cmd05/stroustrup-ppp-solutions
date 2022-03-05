@@ -192,7 +192,7 @@ Node* Skip_List::insert(double value) {
 	while (toss() == 1) {
 		Node* prev = nullptr;
 
-		if (level >= levels_count()) {
+		if (level == levels_count()) {
 			// add level if toss exceeds top of list
 			add_level();
 			prev = top_head();
