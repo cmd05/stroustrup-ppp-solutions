@@ -24,7 +24,7 @@ public:
 		delete[] elem;
 		elem = p;
 		sz = arg.sz;
-		return *this;
+		return *this; // for chaining
 	}
 
 	// move constructor
