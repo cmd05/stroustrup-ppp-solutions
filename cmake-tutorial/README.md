@@ -1,19 +1,27 @@
-# CMake Tutorial
+## How to Run
+```
+## Conventional Run
+~/package $ mkdir build
+~/package $ cd build
+~/package/build $ cmake ..
+~/package/build $ make
+
+## Single Line CMake build
+~/package/ $ cmake -S project -B build -G "MinGW Makefiles"
+~/package/ $ make -C build
+~/package/ $ build\MyExample
+```
+
+Once cmake build has been called, we can edit files and directly run them using
+```
+~/package/ $ make -C build && build\MyExample
+```
+
+## Tutorial
 
 
 ```cmake
 ##### ------------------- BASICS ------------------- #####
-
-## Conventional Run
-# ~/package $ mkdir build
-# ~/package $ cd build
-# ~/package/build $ cmake ..
-# ~/package/build $ make
-
-## Single Line CMake build
-# cmake -S project -B build -G "MinGW Makefiles"
-# make -C build
-# build\MyExample
 
 cmake_minimum_required(VERSION 3.12)
 
@@ -163,4 +171,107 @@ file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
 if(EXISTS "${LOC_PATH}")
     message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")
 endif()
+```
+
+## Root Directory Project
+
+Example [implementation](https://github.com/cmd05/Practice-and-Principles-CPP-Solutions/tree/master/cmake-tutorial/simple-root-project)
+
+```
+Project:
+    CMakeLists.txt                                            
+    simple_example.cpp                                                
+    simple_lib.cpp                                               
+    simple_lib.hpp 
+```
+
+## Single-Library Project
+
+Example implementation of [single library project](https://github.com/cmd05/Practice-and-Principles-CPP-Solutions/tree/master/cmake-tutorial/single-lib-project)
+
+```
+C: simple-lib-project
+
+│   .gitignore                                            
+│   CMakeLists.txt                                                  
+│   main.cpp                                                             
+│                            
+├───include                                                
+│   └───MyMath                                                   
+│           lib.h                                                                                             
+└───src
+        CMakeLists.txt                                                              
+        lib.cpp
+```
+
+## Sample Project with External Dependencies
+Example [implementation](https://github.com/cmd05/Practice-and-Principles-CPP-Solutions/tree/master/cmake-tutorial/complete-project)
+
+```
+C: complete-project
+│   .gitignore
+│   CMakeLists.txt                                                
+│   README.md 
+│             
+├───apps      
+│       app.cpp                                            
+│       CMakeLists.txt                                               
+│             
+├───cmake     
+│       add_FetchContent_MakeAvailable.cmake                                        
+│       FindBoost.cmake                  
+│       FindDoxygen.cmake                                       
+│             
+├───docs      
+│       CMakeLists.txt                                     
+│             
+├───include   
+│   └───modern
+│           lib.hpp                                        
+│             
+├───src       
+│       CMakeLists.txt                                           
+│       lib.cpp                                        
+│             
+└───tests     
+        CMakeLists.txt                                                       
+        testlib.cpp
+```
+
+## Multi-Library Project
+
+Example of multi-library [cmake-project](https://github.com/Jamagas/CMake)
+
+```
+Foo
+ ├── include
+ │   └── Foo
+ │       ├── Foo.h
+ │       └── ...
+ ├── src
+ │   ├── Foo.cpp
+ │   └── ...
+ ├── test
+ │   └── ...
+ └── libs
+     ├── A
+     │   ├── include
+     │   │   └── A
+     │   │       ├── A.h
+     │   │       └── ...
+     │   ├── src
+     │   │   ├── A.cpp
+     │   │   └── ...
+     │   └── test
+     │       └── ...
+     └── B
+         ├── include
+         │   └── B
+         │       ├── B.h
+         │       └── ...
+         ├── src
+         │   ├── B.cpp
+         │   └── ...
+         └── test
+             └── ...
 ```
