@@ -72,5 +72,6 @@
         "**/*.vcxproj": true,
         "**/*.vcxproj.filters": true,
         "**/*.vcxproj.user": true
-    }
+    },
+    "discord.enabled": true
 }
