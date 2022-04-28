@@ -7,7 +7,17 @@
 # ~/package/build $ make
 
 ## Single Line CMake build
-# cmake -S project -B build -G "MinGW Makefiles"
+# cmake -S . -B build -G "MinGW Makefiles"
+# make -C build
+# build\MyExample
+
+## Without Generator Argument
+# Create a PreLoad.cmake in the root of the project and 
+# add the following code:
+# ```set (CMAKE_GENERATOR "MinGW Makefiles" CACHE INTERNAL "" FORCE)```
+# 
+# Commands: 
+# cmake -S . -B build
 # make -C build
 # build\MyExample
 
@@ -69,8 +79,8 @@ endif()
 # Functions and Macros
 
 function(SIMPLE REQUIRED_ARG)
-	message(STATUS "Simple arguments: ${REQUIRED_ARG}, followed by ${ARGN}")
-	set(${REQUIRED_ARG} "from SIMPLE" PARENT_SCOPE)
+  message(STATUS "Simple arguments: ${REQUIRED_ARG}, followed by ${ARGN}")
+  set(${REQUIRED_ARG} "from SIMPLE" PARENT_SCOPE)
 endfunction()
 # CMake does not have return values by setting variables
 
@@ -81,13 +91,13 @@ message("Output: ${This}")
 # Output: From SIMPLE
 
 function(COMPLEX)
-	cmake_parse_arguments(
-		COMPLEX_PREFIX
-		"SINGLE;ANOTHER"
-		"ONE_VALUE;ALSO_ONE_VALUE"
-		"MULTI_VALUES"
-		${ARGN}
-	)
+  cmake_parse_arguments(
+    COMPLEX_PREFIX
+    "SINGLE;ANOTHER"
+    "ONE_VALUE;ALSO_ONE_VALUE"
+    "MULTI_VALUES"
+    ${ARGN}
+  )
 endfunction()
 
 complex(SINGLE ONE_VALUE value MULTI_VALUES some other values)
