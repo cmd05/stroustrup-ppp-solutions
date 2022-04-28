@@ -30,14 +30,14 @@ make -C build
 build\apps\app
 ```
 
-### Run Tests
+## Run Tests
 To test (--target can be written as -t in CMake 3.15+):
 
 ```
 cmake --build build --target test
 ```
 
-### Build Docs
+## Build Docs
 
 To build docs (requires Doxygen, output in build/docs/html):
 
@@ -45,7 +45,7 @@ To build docs (requires Doxygen, output in build/docs/html):
 cmake --build build --target docs
 ```
 
-### Open in IDE
+## Open in IDE
 
 To use an IDE, such as Xcode:
 ```
