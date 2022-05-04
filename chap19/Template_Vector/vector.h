@@ -1,36 +1,55 @@
-template<typename T>
-class vector {
+#pragma once
+#include <memory>
+#include <string>
+#include "Vector_Base.h"
+
+struct out_of_range {
+	out_of_range(std::string e): err{e} {}
+	std::string what() { return err; }
+
+	std::string err;
+};
+
+struct Range_Error : out_of_range {
+	int index;
+	Range_Error(int i): out_of_range("Range error"), index(i) {}
+};
+
+template<typename T, typename A = std::allocator<T>>
+class vector : private Vector_Base<T,A> {
 	int sz;
 	T* elem;
 	int space;
+	A alloc;
 public:
-	vector(): sz{0}, elem{nullptr}, space{0} {}
+	vector();
 
-	explicit vector(int s): sz{s}, elem{new T[s]}, space{s} {
-		for(int i = 0; i < s; i++) elem[i] = 0;
-	}
+	explicit vector(int s);
+
 	vector(std::initializer_list<T> lst);
 	
-	// copy constructor - deep copy
-	vector(const vector& arg);
-
-	//copy assignment 
-	vector& operator=(const vector& arg);
-	// move constructor
-	vector(vector&& a);
-	// move assignment
-	vector& operator=(vector&& a);
+	vector(const vector& arg); // copy constructor
+	vector& operator=(const vector& arg); // copy assignment
+	vector(vector&& a); // move constructor
+	vector& operator=(vector&& a); // move assignment
+	
+	int size() const;
+	int capacity() const;
+	
+	T& at(int n);
+	T at(int n) const;
 
 	void set(int index, T v);
 	const T get(int i) const;
-	int size() const;
-	
-	T& operator[] (int n);
-	const T& operator[] (int n) const;
+	T& operator[](int n);
+	T operator[](int n) const;
 
 	void reserve(int new_alloc);
-	int capacity() const;
-	void push_back(const T& d);
+	void resize(int new_size, T val = T());
+	void push_back(T val);
 	
+	void swap_v_vb(vector* v, Vector_Base<T,A>* vb);
+	void delete_elem();
+
 	~vector();
-}
+};
