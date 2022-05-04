@@ -1,3 +1,28 @@
+Notes:
+
+Using `delete` without `new`?
+
+You must not delete an object that was not allocated with new. If the object was allocated on the stack, your compiler has 
+already generated a call to its destructor at the end of its scope. This means you will call the destructor twice, with 
+potentially very bad effects.
+
+Besides calling the destructor twice, you will also attempt to deallocate a memory block that was never allocated. The new 
+operator presumably puts the objects on the heap; delete expects to find the object in the same region the new operator 
+puts them. However, your object that was not allocated with new lives on the stack. This will very probably crash your 
+program (if it does not already crash after calling the destructor a second time).
+
+
+You'll also get in deep trouble if your Object on the heap lives longer than your Object on the stack: you'll get a 
+dangling reference to somewhere on the stack, and you'll get incorrect results/crash the next time you access it.
+
+The general rule I see is that stuff that live on the stack can reference stuff that lives on the heap, but stuff on the 
+heap should not reference stuff on the stack because of the very high chances that they'll outlive stack objects. And 
+pointers to both should not be mixed together.
+
+Source: https://stackoverflow.com/a/4355485/14988173
+
+Review:
+
 1. Why do we need data structures with varying numbers of elements?
     Allows to store a set of data together rather than individually
     Varying size allows us to manipulate the data .i.e insert and delete elements
