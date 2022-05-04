@@ -14,16 +14,30 @@ vector::vector(const vector& arg): sz{arg.sz}, elem{new double[sz]} {
 	for(int i = 0; i < sz; i++) elem[i] = arg.elem[i];
 }
 
-// copy assignment 
-vector& vector::operator=(const vector& arg) {
-	// we create a copy of a before deleting to account for self-assignment
-	double* p = new double[arg.sz];
-	sz = arg.sz;
-	for(int i = 0; i < arg.sz; i++) p[i] = arg.elem[i];
+/**
+ * Allocate memory for copy
+ * Copy the elements
+ * Delete the old allocation
+ * Set the sz, elem and space to the new values
+ */
+
+vector& vector::operator=(const vector& a) {
+	if(this == &a) return *this;
+
+	if(a.sz <= space) {
+		for(int i = 0; i < a.sz; i++) elem[i] = a.elem[i];
+		sz = a.sz;
+		return *this;
+	}
+
+	double* p = new double[a.sz];
+	for(int i = 0; i < a.sz; i++) p[i] = a.elem[i];
 	delete[] elem;
 	elem = p;
-	return *this; // for chaining
+	space = sz = a.sz;
+	return *this;
 }
+
 
 // move constructor
 vector::vector(vector&& a): sz{a.sz}, elem{a.elem} {
@@ -75,32 +89,8 @@ void vector::push_back(double d) {
 	if(space == 0)
 		reserve(8);
 	else if(sz == space) 
-		reserve(2*space)
+		reserve(2*space);
 
 	elem[sz] = d;
 	++sz;
-}
-
-/**
- * Allocate memory for copy
- * Copy the elements
- * Delete the old allocation
- * Set the sz, elem and space to the new values
- */
-
-vector& vector::operator=(const vector& a) {
-	if(this == &a) return *this;
-
-	if(a.sz <= space) {
-		for(int i = 0; i < a.sz; i++) elem[i] = a.elem[i];
-		sz = a.sz;
-		return *this;
-	}
-
-	double* p = new double[a.sz];
-	for(int i = 0; i < a.sz; i++) p[i] = a.elem[i];
-	delete[] elem;
-	elem = p;
-	space = sz = a.sz;
-	return *this;
 }

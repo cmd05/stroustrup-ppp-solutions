@@ -27,6 +27,7 @@ public:
 	double operator[] (int n) const;
 
 	void reserve(int new_alloc);
+	void resize(int new_size);
 	int capacity() const;
 	void push_back(double d);
 	
