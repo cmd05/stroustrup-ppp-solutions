@@ -33,10 +33,10 @@ struct Book {
 };
 
 void Book::add_from_record(std::string filename) {
-    std::ifstream ist {filename};
+	std::ifstream ist {filename};
 
 	int i = 1;
-    for(std::string t; std::getline(ist, t);) {
+	for(std::string t; std::getline(ist, t);) {
 		add_chap({t, i});
 		i++;
 	}

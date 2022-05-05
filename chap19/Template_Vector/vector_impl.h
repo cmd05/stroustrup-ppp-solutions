@@ -77,7 +77,7 @@ vector<T,A>& vector<T,A>::operator=(vector<T,A>&& a) {
 
 template<typename T, typename A>
 void vector<T,A>::swap_v_vb(Vector_Base<T,A>* vb) {
-    std::swap(elem, vb->elem);
+	std::swap(elem, vb->elem);
 	std::swap(sz, vb->sz);
 	std::swap(space, vb->space);
 	std::swap(alloc, vb->alloc);
