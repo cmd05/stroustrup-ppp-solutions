@@ -1,24 +1,26 @@
 #include <iostream>
-#include "Vector_Base.h"
+#include <string>
 #include "vector.h"
 #include "vector_impl.h"
+#include "Book.h"
+#include "Debug.h"
 
 int main() {
-	vector<int> vc{1,2,3,4};
-	vc[0] = 55;
+	vector<int> v{1,2,3};
+	vector<int> v2;
 
-	for (int i = 0; i < 10; ++i)
-	{
-		vc.push_back(i*i);
-	}
+	v2 = v;
+	v2.push_back(8);
+	v2.resize(10);
 
-	for (int i = 0; i < vc.size(); ++i)
-	{
-		std::cout << vc[i] << "\n";
-	}
+	print_vc(v2);
+	print_vc(v);
 
-	vector<int> vc2 = vc;
-	vc2[0] = -55;
+	print('\t');
 
-	std::cout << vc[0] << " " << vc2[0];
+	Book b {"The War of the Worlds", 0};
+	b.add_from_record("chapters.txt");
+	//	b.chapters.resize(100); // will give an error
+
+	std::cout << b;
 }

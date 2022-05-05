@@ -4,9 +4,13 @@ project(Template_Vector VERSION 1.0 LANGUAGES CXX)
 
 add_library(vector_lib vector_impl.h vector.h)
 add_library(vector_base Vector_Base.h)
+add_library(book Book.h)
+add_library(debug Debug.h)
+
 set_target_properties(vector_base PROPERTIES LINKER_LANGUAGE CXX)
 set_target_properties(vector_lib PROPERTIES LINKER_LANGUAGE CXX)
-
+set_target_properties(book PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(debug PROPERTIES LINKER_LANGUAGE CXX)
 
 add_executable(out main.cpp)
 

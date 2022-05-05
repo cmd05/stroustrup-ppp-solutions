@@ -16,7 +16,7 @@ struct Range_Error : out_of_range {
 };
 
 template<typename T, typename A = std::allocator<T>>
-class vector : private Vector_Base<T,A> {
+class vector {
 	int sz;
 	T* elem;
 	int space;
@@ -24,8 +24,7 @@ class vector : private Vector_Base<T,A> {
 public:
 	vector();
 
-	explicit vector(int s);
-
+	explicit vector(int s, T val = T());
 	vector(std::initializer_list<T> lst);
 	
 	vector(const vector& arg); // copy constructor
@@ -35,21 +34,22 @@ public:
 	
 	int size() const;
 	int capacity() const;
-	
+
+	void swap_v_vb(Vector_Base<T,A>* vb);
+	void delete_elem();
+
 	T& at(int n);
 	T at(int n) const;
 
 	void set(int index, T v);
 	const T get(int i) const;
+
 	T& operator[](int n);
 	T operator[](int n) const;
 
 	void reserve(int new_alloc);
 	void resize(int new_size, T val = T());
 	void push_back(T val);
-	
-	void swap_v_vb(vector* v, Vector_Base<T,A>* vb);
-	void delete_elem();
 
 	~vector();
 };

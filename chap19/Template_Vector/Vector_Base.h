@@ -8,13 +8,13 @@ struct Vector_Base {
 	int sz;
 	int space;
 
-	Vector_Base() {}
+	Vector_Base(): sz{0}, space{0}, elem{nullptr} {}
 	Vector_Base(const A& a, int n):
 		alloc{a}, elem{alloc.allocate(n)}, sz{n}, space{n} {}
 	~Vector_Base() {
 		for(int i = 0; i < sz; i++) 
 			alloc.destroy(&this->elem[i]); // call destructor of elem[i] of type T
 
-		alloc.deallocate(elem, space); 
+		alloc.deallocate(elem, space);
 	}
 };
