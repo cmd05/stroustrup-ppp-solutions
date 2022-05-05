@@ -30,9 +30,13 @@ test.cpp
 x64/
 x86/
 build/
+build[123]/
 bld/
 [Bb]in/
 [Oo]bj/
+
+# CLion
+.idea/
 
 # Roslyn cache directories
 *.ide/
