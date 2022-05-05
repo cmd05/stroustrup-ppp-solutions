@@ -64,7 +64,10 @@
         "xtree": "cpp",
         "span": "cpp",
         "deque": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "set": "cpp"
     },
 
     "files.exclude": {
