@@ -1,0 +1,86 @@
+1. Why would we want to change the size of a vector?
+	To add or remove items
+
+2. Why would we want to have different element types for different
+vectors?
+	We want to store different types of data such as integers, doubles,
+	text, custom objects etc.
+
+3. Why don’t we just always define a vector with a large enough size for
+all eventualities?
+	We cannot reliably allocate enough space without
+	allocating grossly too much space
+
+4. How much spare space do we allocate for a new vector?
+	empty initializiation: 0
+	after push_back: 8
+
+5. When must we copy vector elements to a new location?
+	- If we are making copy of a vector
+	- using reserve()
+
+6. Which vector operations can change the size of a vector after
+construction?
+	- resize, reserve, push_back, copy assignment, move assignment
+
+7. What is the value of a vector after a copy?
+	Value of copied argument
+
+8. Which two operations define copy for vector?
+	operator=(const vector<T,A>& v) // copy assignment
+	operator=(vector<T,A>&& v) // move assignment
+
+9. What is the default meaning of copy for class objects?
+	shallow copying: copies only properties
+					 pointers copy only addresses
+
+10. What is a template?
+	It is a feature/blueprint to create a class or function for generic types
+
+11. What are the two most useful types of template arguments?
+	element-type and size of container
+
+12. What is generic programming?
+	Writing code that works with a variety of types
+	presented as arguments, as long as those argument types meet specific
+	syntactic and semantic requirements
+
+13. How does generic programming differ from object-oriented
+programming?
+	Generic programming uses blueprints for classes and functions for argument types
+	OOP uses class hierarchies and virtual functions
+
+	Functions to be invocated are determined at compile time for templates,
+	and runtime for OOP classes
+
+14. How does array differ from vector?
+	arrays are built-in
+	vectors are a template class
+
+	array is fixed size
+	vector has mutable size
+
+15. How does array differ from the built-in array?
+	It is a template class
+	Allows pass by value
+	Use iterator-based algorithms
+
+16. How does resize() differ from reserve()?
+	Sets default value to uninitialized elements
+	Free extra elements if new_size < sz
+
+17. What is a resource? Define and give examples.
+	Anything which is acquired and must be released.
+	Eg: File Handles, memory, sockets, thread handles, input streams
+
+18. What is a resource leak?
+	When an acquired resource not in use is not released.
+
+19. What is RAII? What problem does it address?
+	RAII stands for "Resource Acquisition is Initialization". The resource
+	is acquired in the constructor and released in corresponding destructor
+
+20. What is unique_ptr good for?
+	A unique_ptr is an object that holds a pointer. It can be used in the same
+	way as a pointer and releases the memory automatically (RAII), so we do
+	not have to explicitly delete.
