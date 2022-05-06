@@ -89,6 +89,6 @@ int main() {
 	std::cout << "double: ";
 	std::cin >> n2;
 
-	std::cout << n1 * n2; // error
+	std::cout << n1 * n2;
 	// std::cout << n1 % n2; // error
 }
