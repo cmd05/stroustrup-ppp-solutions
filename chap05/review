@@ -61,7 +61,7 @@ produce acceptable software.
 have to answer such questions?
     Estimating using common sense or calculating plausible results on a sheet of paper
 
-12. Compare and contrast having the caller of a function handle a runtime error vs. the called function’s handling the run-time error.
+12. Compare and contrast having the caller of a function handle a runtime error vs. the called function's handling the run-time error.
     Caller: 
         int area(int l, int w);
 

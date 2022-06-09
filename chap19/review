@@ -6,7 +6,7 @@ vectors?
 	We want to store different types of data such as integers, doubles,
 	text, custom objects etc.
 
-3. Why don’t we just always define a vector with a large enough size for
+3. Why don't we just always define a vector with a large enough size for
 all eventualities?
 	We cannot reliably allocate enough space without
 	allocating grossly too much space

@@ -33,7 +33,7 @@ library?
 8. What is the minimal window?
     Window with no extra facilities built in and utilises the default OS window
 
-9. What’s a window label?
+9. What's a window label?
     Title to label the window
 
 10. How do you label a window?
@@ -70,7 +70,7 @@ What are some possible reasons for that?
     Did not use wait_for_button to display to screen
     Did not create window obj properly
 
-18. You have made a shape, but it doesn’t appear in the window. What are
+18. You have made a shape, but it doesn't appear in the window. What are
 some possible reasons for that?
     Did not attach
         OR 

@@ -1,4 +1,4 @@
-1. Why don’t we “just” use a commercial or open-source graphics library
+1. Why don't we “just” use a commercial or open-source graphics library
 directly?
     Reduce complexity of GUI library
     Make interfaces portable with other libraries
@@ -22,7 +22,7 @@ need to do simple graphics output?
     Circle
     Ellipse
 
-5. Why don’t we just use Line for every shape?
+5. Why don't we just use Line for every shape?
     Provide simple implementation by specifying only vertices
 
 6. What do the arguments to Point indicate?
@@ -55,7 +55,7 @@ two lines?
 have?
     6
 
-13. What do you see if you define a Shape but don’t attach it to a
+13. What do you see if you define a Shape but don't attach it to a
 Window?
     Nothing
 
@@ -68,10 +68,10 @@ Window?
 15. How does a Polygon differ from a Closed_polyline?
     Polygon does not allow lines to cross
 
-16. What’s on top: fill or outline?
+16. What's on top: fill or outline?
     outline
 
-17. Why didn’t we bother defining a Triangle class (after all, we did
+17. Why didn't we bother defining a Triangle class (after all, we did
 define Rectangle)?
     Rectangles are more common on screens and coordinate systems
 
@@ -95,7 +95,7 @@ define Rectangle)?
     Ellipse has major and minor axis
 
 24. What happens if you try to display an Image given a file name that
-doesn’t refer to a file containing an image?
+doesn't refer to a file containing an image?
     It shows a bad image
 
 25. How do you display part of an image?

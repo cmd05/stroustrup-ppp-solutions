@@ -13,7 +13,7 @@ fixed. The sections below about ideals for program structure address
 this ideal.
 
 • Performance: Performance (“efficiency”) is a relative term.
-Performance has to be adequate for the program’s purpose. It is often
+Performance has to be adequate for the program's purpose. It is often
 claimed that efficient code is necessarily low-level and that concerns
 with a good, high-level structure of the code cause inefficiency. On the
 contrary, we find that acceptable performance is often achieved

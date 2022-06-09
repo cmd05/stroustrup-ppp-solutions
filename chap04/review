@@ -113,7 +113,7 @@ List reasons.
 26. Describe what push_back() does to a vector.
   Adds element to end of vector
 
-27. What do vector’s member functions begin(), end(), and size() do?
+27. What do vector's member functions begin(), end(), and size() do?
   begin(): Return pointer pointing to first el of vector
   end(): Return pointer pointing to last el of vector
   size(): Return no. of elements in vector

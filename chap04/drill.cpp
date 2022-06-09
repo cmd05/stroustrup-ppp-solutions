@@ -14,7 +14,7 @@
     6. Now change the body of the loop so that it reads just one double
     each time around. Define two variables to keep track of which is the
     smallest and which is the largest value you have seen so far. Each time
-    through the loop write out the value entered. If it’s the smallest so far,
+    through the loop write out the value entered. If it's the smallest so far,
     write the smallest so far after the number. If it is the largest so far,
     write the largest so far after the number.
     7. Add a unit to each double entered; that is, enter values such as
@@ -32,7 +32,7 @@
     for that sum; use meters.
     10. Keep all the values entered (converted into meters) in a vector. At the
     end, write out those values.
-    11. Before writing out the values from the vector, sort them (that’ll make
+    11. Before writing out the values from the vector, sort them (that'll make
     them come out in increasing order).
 */
 #include <iostream>

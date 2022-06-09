@@ -2,7 +2,7 @@
 of the form
 ax2 + bx + c = 0
 
-If you don’t know the quadratic formula for solving such an
+If you don't know the quadratic formula for solving such an
 expression, do some research. Remember, researching how to solve a
 problem is often necessary before a programmer can teach the
 computer how to solve it. 

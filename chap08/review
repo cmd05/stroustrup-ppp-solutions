@@ -13,7 +13,7 @@ and a variable definition?
     Dec: int x;
     Def: int x = 99;
 
-4. Why can’t you use the functions in the calculator program from
+4. Why can't you use the functions in the calculator program from
 Chapter 6 without declaring them first?
     The functions were not introduced in the scope and compiler was not aware of
     the functions referred to by the caller.
