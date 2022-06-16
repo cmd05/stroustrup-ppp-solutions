@@ -45,7 +45,7 @@ code to draw it?
     scale = axis_length / range_of_input
 
 13. Why would you format your input rather than just having the file
-contain “the numbers”?
+contain "the numbers"?
     Easier to modify, debug, understand and maintain
 
 14. How do you plan the general layout of a graph? How do you reflect

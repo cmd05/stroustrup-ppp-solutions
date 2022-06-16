@@ -1,4 +1,4 @@
-/* Modify the “mini calculator” from exercise 5 to accept (just) 
+/* Modify the "mini calculator" from exercise 5 to accept (just) 
    singledigit numbers written as either digits or spelled out.
 */
 

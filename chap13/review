@@ -1,4 +1,4 @@
-1. Why don't we “just” use a commercial or open-source graphics library
+1. Why don't we "just" use a commercial or open-source graphics library
 directly?
     Reduce complexity of GUI library
     Make interfaces portable with other libraries

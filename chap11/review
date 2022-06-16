@@ -43,7 +43,7 @@ integer output
 10. What is the purpose of file open modes?
     Specify the method of interacting with file. i.e read/write/append/binary/seek to end
 
-11. Which of the following manipulators does not “stick”: hex,
+11. Which of the following manipulators does not "stick": hex,
 scientific, setprecision(), showbase, setw?
     setw()
 

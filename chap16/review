@@ -69,6 +69,6 @@ operating system from C++?
     using a debugger
 
 20. Why is debugging a GUI program harder than debugging an
-“ordinary program using streams for I/O”?
+"ordinary program using streams for I/O"?
     multi-threading - many programs interact with the screen
     exceptions thrown may not reach the handler
