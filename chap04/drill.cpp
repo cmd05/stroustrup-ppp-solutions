@@ -23,7 +23,7 @@
     12in. Read the unit indicator into a string. You may consider 12 m
     (with a space between the number and the unit) equivalent to 12m
     (without a space).
-    8. Reject values without units or with “illegal” representations of units,
+    8. Reject values without units or with "illegal" representations of units,
     such as y, yard, meter, km, and gallons.
     9. Keep track of the sum of values entered (as well as the smallest and
     the largest) and the number of values entered. When the loop ends,

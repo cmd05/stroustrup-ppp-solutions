@@ -2,7 +2,7 @@
 Typically, we want
 
 • Correctness: Yes, it can be difficult to define what we mean by
-“correct,” but doing so is an important part of the complete job. Often,
+"correct," but doing so is an important part of the complete job. Often,
 others define for us what is correct for a given project, but then we
 have to interpret what they say.
 
@@ -12,7 +12,7 @@ extended with new facilities, and new bugs will be found that must be
 fixed. The sections below about ideals for program structure address
 this ideal.
 
-• Performance: Performance (“efficiency”) is a relative term.
+• Performance: Performance ("efficiency") is a relative term.
 Performance has to be adequate for the program's purpose. It is often
 claimed that efficient code is necessarily low-level and that concerns
 with a good, high-level structure of the code cause inefficiency. On the
@@ -25,7 +25,7 @@ low-level details as it can from disdain for such details.
 • On-time delivery: Delivering the perfect program a year late is usually
 not good enough. Obviously, people expect the impossible, but we
 need to deliver quality software in a reasonable time. There is a myth
-that “completed on time” implies shoddiness. On the contrary, we find
+that "completed on time" implies shoddiness. On the contrary, we find
 that emphasis on good structure (e.g., resource management,
 invariants, and interface design), design for testability, and use of
 appropriate libraries (often designed for a specific application or

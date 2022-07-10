@@ -1,5 +1,5 @@
 /* Our hexagon was regular with 2cm sides. Did we get that
-answer right? Just do the “back of the envelope” calculation.
+answer right? Just do the "back of the envelope" calculation.
 Take a piece a paper and scribble on it. Don't feel that's
 beneath you. Many famous scientists have been greatly
 admired for their ability to come up with an approximate

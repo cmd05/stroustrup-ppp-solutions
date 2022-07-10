@@ -84,8 +84,8 @@ have to answer such questions?
             cout << area(x, y);
         }
 
-13. Why is using exceptions a better idea than returning an “error
-value”?
+13. Why is using exceptions a better idea than returning an "error
+value"?
     We dont always have an erroneous value such as -1 to return as an "error" value
 
 14. How do you test if an input operation succeeded?

@@ -1,5 +1,5 @@
 /* Get this program to run. Check that our input really does
-produce that output. Try to “break” the program (i.e., get it to
+produce that output. Try to "break" the program (i.e., get it to
 give wrong results) by giving it other input sets. What is the
 least amount of input you can give it to get it to fail? */
 

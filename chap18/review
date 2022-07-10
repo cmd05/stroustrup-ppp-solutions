@@ -1,4 +1,4 @@
-1. What does “Caveat emptor!” mean?
+1. What does "Caveat emptor!" mean?
     "let the buyer beware"
     It is to avoid disputes due to lack of information to buyer which is known to the seller
     <use vectors over arrays>
@@ -39,7 +39,7 @@ initialization?
     Same size
     Elements have the same value but are stored in different locations
 
-9. What are the five “essential operations” for a class?
+9. What are the five "essential operations" for a class?
     Constructor with arguments
     Default Constructor
     Copy Constructor / assignment

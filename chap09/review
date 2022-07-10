@@ -41,5 +41,5 @@ of operators that you might want to overload (each with a reason)
 9. What does adding const to a member function do?
     Allow member function to be called for const object
 
-10. Why are “helper functions” best placed outside the class definition?
+10. Why are "helper functions" best placed outside the class definition?
     They are design concepts - different from programming logic

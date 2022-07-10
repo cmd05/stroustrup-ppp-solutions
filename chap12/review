@@ -47,7 +47,7 @@ Mathematical coordinates?
     y => Starts with 0 [Topmost pixel] => Increases downwards
     Mathematic coordinates start at bottom y=0
 
-12. What are examples of simple “shapes” that we can display?
+12. What are examples of simple "shapes" that we can display?
     line lines polygon axis rectangle text image
 
 13. What command attaches a shape to a window?
