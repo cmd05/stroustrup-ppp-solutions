@@ -145,8 +145,9 @@ void vector<T,A>::reserve(int new_alloc) {
 
 template<typename T, typename A>
 void vector<T,A>::resize(int new_size, T val) {
-	reserve(new_size);
+	if(sz < 0) throw Length_Error{};
 
+	reserve(new_size);
 	for(int i = sz; i < new_size; i++) alloc.construct(&elem[i], val);
 
 	// if new_size < sz

@@ -15,6 +15,8 @@ struct Range_Error : out_of_range {
 	Range_Error(int i): out_of_range("Range error"), index(i) {}
 };
 
+struct Length_Error {};
+
 template<typename T, typename A = std::allocator<T>>
 class vector {
 	int sz;
