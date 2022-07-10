@@ -1,5 +1,7 @@
 #include <algorithm>
 
+struct Length_Error {};
+
 class vector {
 	int sz;
 	double* elem;

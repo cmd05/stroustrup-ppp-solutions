@@ -3,14 +3,14 @@
 
 vector::vector(): sz{0}, elem{0}, space{0} {}
 
-vector::vector(int s): sz{s}, elem{new double[s]} { for(int i = 0; i < s; i++) elem[i] = 0; }
+vector::vector(int s): sz{s}, space{s}, elem{new double[s]} { for(int i = 0; i < s; i++) elem[i] = 0; }
 
-vector::vector(std::initializer_list<double> lst): sz{lst.size()}, elem{new double[sz]} {
+vector::vector(std::initializer_list<double> lst): sz{lst.size()}, space{lst.size()}, elem{new double[sz]} {
 	std::copy(lst.begin(), lst.end(), elem);
 }
 
 // copy constructor
-vector::vector(const vector& arg): sz{arg.sz}, elem{new double[sz]} {
+vector::vector(const vector& arg): sz{arg.sz}, space{arg.sz}, elem{new double[sz]} {
 	for(int i = 0; i < sz; i++) elem[i] = arg.elem[i];
 }
 
@@ -32,16 +32,18 @@ vector& vector::operator=(const vector& a) {
 
 	double* p = new double[a.sz];
 	for(int i = 0; i < a.sz; i++) p[i] = a.elem[i];
+	
 	delete[] elem;
 	elem = p;
 	space = sz = a.sz;
+	
 	return *this;
 }
 
 
 // move constructor
-vector::vector(vector&& a): sz{a.sz}, elem{a.elem} {
-	a.sz = 0;
+vector::vector(vector&& a): sz{a.sz}, space{a.space}, elem{a.elem} {
+	a.space = a.sz = 0;
 	a.elem = nullptr;
 }
 
@@ -50,8 +52,10 @@ vector& vector::operator=(vector&& a) {
 	delete[] elem;
 	elem = a.elem;
 	sz = a.sz;
+	space = a.space;
+
 	a.elem = nullptr;
-	a.sz = 0;
+	a.space = a.sz = 0;
 	return *this; // chaining
 }
 
@@ -80,8 +84,11 @@ void vector::reserve(int new_alloc) {
 int vector::capacity() const { return space; }
 
 void vector::resize(int new_size) {
+	if(sz < 0) throw Length_Error{};
+	
 	reserve(new_size);
 	for(int i = sz; i < new_size; i++) elem[i] = 0;
+
 	sz = new_size;
 }
 
