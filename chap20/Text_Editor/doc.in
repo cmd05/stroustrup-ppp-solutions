@@ -1,39 +1,11 @@
-1 The Imitation Game
+Carbon provides a modern generics system with checked definitions, while still supporting opt-in templates for seamless C++ interop. Checked generics provide several advantages compared to C++ templates:
 
-I propose to consider the question, “Can machines think?” This should begin
-with definitions of the meaning of the terms “machine” and “think.” The defi-
-nitions might be framed so as to reflect so far as possible the normal use of the
-words, but this attitude is dangerous, If the meaning of the words “machine” and
-“think” are to be found by examining how they are commonly used it is difficult
-to escape the conclusion that the meaning and the answer to the question, “Can
-machines think?” is to be sought in a statistical survey such as a Gallup poll.
-But this is absurd. Instead of attempting such a definition I shall replace the
-question by another, which is closely related to it and is expressed in relatively
-unambiguous words
+    Generic definitions are fully type-checked, removing the need to instantiate to check for errors and giving greater confidence in code.
+        Avoids the compile-time cost of re-checking the definition for every instantiation.
+        When using a definition-checked generic, usage error messages are clearer, directly showing which requirements are not met.
+    Enables automatic, opt-in type erasure and dynamic dispatch without a separate implementation. This can reduce the binary size and enables constructs like heterogeneous containers.
+    Strong, checked interfaces mean fewer accidental dependencies on implementation details and a clearer contract for consumers.
 
-...
+Without sacrificing these advantages, Carbon generics support specialization, ensuring it can fully address performance-critical use cases of C++ templates. For more details about Carbon's generics, see their design.
 
-As well as asking, “What is the answer to this new form of the question,” one
-may ask, “Is this new question a worthy one to investigate?” This latter question
-we investigate without further ado, thereby cutting short an infinite regress
-
-	The new problem has the advantage of drawing a fairly sharp line between
-the physical and the intellectual capacities of a man. No engineer or chemist
-claims to be able to produce a material which is indistinguishable from the
-human skin. It is possible that at some time this might be done, but even sup-
-posing this invention available we should feel there was little point in trying to
-make a “thinking machine” more human by dressing it up in such artificial flesh.
-The form in which we have set the problem reflects this fact in the condition
-which prevents the interrogator from seeing or touching the other competitors,
-or hearing -their voices. Some other advantages of the proposed criterion may
-be shown up by specimen questions and answers. Thus:
-
-	Q: Please write me a sonnet on the subject of the Forth Bridge.
-	A: Count me out on this one. I never could write poetry.
-	Q: Add 34957 to 70764.
-	A: (Pause about 30 seconds and then give as answer) 105621.
-	Q: Do you play chess?
-	A: Yes.
-	Q: I have K at my K1, and no other pieces. You have only K at K6 and R
-	at R1. It is your move. What do you play?
-	A: (After a pause of 15 seconds) R-R8 mate
+In addition to easy and powerful interop with C++, Carbon templates can be constrained and incrementally migrated to checked generics at a fine granularity and with a smooth evolutionary path.
