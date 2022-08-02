@@ -3,7 +3,6 @@
 
 template<typename T, typename A>
 struct Vector_Base {
-	// aliases
 	using size_type = unsigned long;
 	using value_type = T;
 	using iterator = T*;
