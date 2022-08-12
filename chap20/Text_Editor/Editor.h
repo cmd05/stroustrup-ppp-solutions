@@ -183,13 +183,13 @@ bool match(Text_iterator first, Text_iterator last, std::string s) {
 	
 	for(
 		auto ti = first;
-		 ti != last && 
-		 *ti == *si &&
-		 si != s.end(); ++si, ++ti
-	   );
+		ti != last && 
+		*ti == *si &&
+		si != s.end(); ++si, ++ti
+	);
 
 	return si == s.end();
-}	
+}
 
 Text_iterator Document::find(Text_iterator first, Text_iterator last, const std::string& s) const {
 	if(s.size() == 0) return last;
@@ -197,7 +197,7 @@ Text_iterator Document::find(Text_iterator first, Text_iterator last, const std:
 	while(true) {
 		auto p = std::find(first, last, s[0]);
 		if(p == last || match(p, last, s)) return p;
-		first = p+1;
+		first = p + 1;
 	}
 }
 
@@ -263,24 +263,14 @@ void Document::erase_line(int n) {
 Text_iterator Document::replace(Text_iterator first, Text_iterator last,
 	const std::string& search, const std::string& rep, int n) {
 	bool replace_all = (n == -1);
-
-	// invalid value of n
-	if(n <= 0 && !replace_all) return last;
-
-	Text_iterator match = find(first, last, search);
-	// if no first match is found return
-	if(match == last) return last;
+	
+	if(n <= 0 && !replace_all) return last; // invalid value of n
 
 	// iterate over [first, last) using p
 	Text_iterator p = first;
-	// count replacements
-	int count = 0;
 
-	// exit if no match is found or 
-	// replace has occurred n times
-	while(match != last && (replace_all || count != n)) {
-		p = match;
-
+	// exit if no match is found OR replace has occurred n times
+	while( (p = find(p, last, search)) != last && (replace_all || n--) ) {
 		// check if replace string is larger than search string
 		bool rep_larger = (search.size() <= rep.size());
 		int lim = (rep_larger) ? search.size() : rep.size();
@@ -290,25 +280,16 @@ Text_iterator Document::replace(Text_iterator first, Text_iterator last,
 		for(; i < lim; i++, ++p) replace_at(p, rep[i]);
 
 		if(rep_larger) {
-			// point to last replaced character
-			--p;
+			--p; // point to last replaced character
 
 			// add remaining characters in replace string to document
-			for (int j = i; j < rep.size(); ++j, ++p) {
-				Line& v = *(p.get_line());
+			for (int j = i; j < rep.size(); ++j, ++p)
 				add_char(p, rep[j]);
-			}
 		} else {
 			// remove excess characters in search string
 			for (int j = i; j < search.size(); ++j)
 				p = erase(p);
 		}
-
-		// increment count only if n is specified
-		if(!replace_all) count++;
-
-		// find next occurrence
-		match = find(p, last, search);
 	}
 
 	// return iterator to end of last replaced string
