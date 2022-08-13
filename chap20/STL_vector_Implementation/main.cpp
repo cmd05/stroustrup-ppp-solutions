@@ -11,8 +11,9 @@ int main() {
 	vector<int> v{1,2,3};
 	vector<int> v2;
 
-	VectorIO<int> vio {&v};
+	VectorIO vio {&v}; // compile with c++20 for CTAD (-std=c++2a)
 	std::cout << vio;
+
 // 	v2 = v;
 // 	v2.push_back(8);
 //     v2.push_back(4);
