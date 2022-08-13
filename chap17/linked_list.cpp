@@ -110,7 +110,7 @@ int main() {
     greek_gods = greek_gods->insert(new Link{"Mars"});
     greek_gods = greek_gods->insert(new Link{"Poseidon"});
 
-    //  wait zeus is a greek god not norse
+    // wait zeus is a greek god not norse
     // wait greek god of war is ares not mars
 
     Link* p = greek_gods->find("Mars");
