@@ -39,7 +39,7 @@ int main() {
 	auto p = mydoc.find(mydoc.begin(), mydoc.end(), "with");
 
 	std::cout << mydoc.char_count();
-	mydoc.replace(mydoc.begin(), mydoc.end(), "to", "txxx", 9);
+	mydoc.replace(mydoc.begin(), mydoc.end(), "Carbon", "<Carbon>", 3);
 
 	write_doc(mydoc);
 }
