@@ -49,8 +49,8 @@ public:
 	size_type size() const;
 	size_type capacity() const;
 
-	void swap_v_vb(Vector_Base<T,A>* vb);
-	void delete_elem();
+	T& back() { return elem[sz-1]; }
+	T& front() { return elem[0]; }
 
 	T& at(size_type n);
 	T at(size_type n) const;
