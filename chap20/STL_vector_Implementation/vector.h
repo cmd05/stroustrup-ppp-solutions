@@ -6,6 +6,7 @@
 
 #include "Vector_Base.h"
 
+/* Error Exceptions */
 struct out_of_range {
 	out_of_range(std::string e): err{e} {}
 	std::string what() { return err; }
@@ -20,24 +21,16 @@ struct Range_Error : out_of_range {
 
 struct Length_Error {};
 
+/* Vector Class */
 template<typename T, typename A = std::allocator<T>>
 class vector {
 public:
-	// aliases
 	using size_type = unsigned long;
 	using value_type = T;
 	using iterator = T*;
 	using const_iterator = const T*;
 
-	iterator begin() { return elem; }
-	const_iterator begin() const { return elem; }
-	iterator end() { return &elem[sz]; }
-	const_iterator end() const { return &elem[sz]; }
-	
-	iterator back() { return &elem[sz-1]; }
-
 	vector();
-
 	explicit vector(size_type s, T val = T());
 	vector(std::initializer_list<T> lst);
 	
@@ -45,40 +38,41 @@ public:
 	vector& operator=(const vector& arg); // copy assignment
 	vector(vector&& a); // move constructor
 	vector& operator=(vector&& a); // move assignment
-	
-	size_type size() const;
-	size_type capacity() const;
+	~vector(); // destructor
 
+	iterator begin() { return elem; }
+	const_iterator begin() const { return elem; }
+	iterator end() { return &elem[sz]; }
+	const_iterator end() const { return &elem[sz]; }
+	
 	T& back() { return elem[sz-1]; }
 	T& front() { return elem[0]; }
 
+	size_type size() const;
+	size_type capacity() const;
 	T& at(size_type n);
 	T at(size_type n) const;
-
 	void set(size_type index, T v);
-	const T get(size_type i) const;
 
+	const T get(size_type i) const;
 	T& operator[](size_type n);
 	T operator[](size_type n) const;
 
 	void reserve(size_type new_alloc);
 	void resize(size_type new_size, T val = T());
 	void push_back(T val);
-
 	iterator insert(iterator p, const T& val);
 	iterator erase(iterator p);
 
-	~vector();
+    /* Internal Functionalities */
+	void swap_v_vb(Vector_Base<T,A>* vb);
+	void delete_elem();
 private:
 	size_type sz;
 	T* elem;
 	size_type space;
 	A alloc;
 };
-
-////--------------------------------------------------------------------------------------------------------
-
-// -------- CONSTRUCTORS AND DESTRUCTOR -----------------
 
 template<typename T, typename A>
 vector<T,A>::vector(): sz{0}, elem{nullptr}, space{0} {}
@@ -95,8 +89,6 @@ vector<T,A>::vector(std::initializer_list<T> lst): sz(lst.size()), space{sz}, el
 
 template<typename T, typename A>
 vector<T,A>::~vector() { delete[] elem; }
-
-// --------- COPY OPERATIONS --------------------------
 
 template<typename T, typename A>
 vector<T,A>::vector(const vector<T,A>& arg): sz{arg.sz}, space{sz}, elem{alloc.allocate(sz)} {
@@ -121,8 +113,6 @@ vector<T,A>& vector<T,A>::operator=(const vector<T,A>& a) {
 	return *this;
 }
 
-// ----------- MOVE OPERATIONS ------------------------
-
 template<typename T, typename A>
 vector<T,A>::vector(vector<T,A>&& a): sz{a.sz}, space{sz}, elem{a.elem} {
 	// Prevent destructor from freeing memory multiple times
@@ -144,8 +134,6 @@ vector<T,A>& vector<T,A>::operator=(vector<T,A>&& a) {
 	return *this;
 }
 
-// ------------------- FUNCTIONALITIES ------------------------------
-
 template<typename T, typename A>
 void vector<T,A>::swap_v_vb(Vector_Base<T,A>* vb) {
 	std::swap(elem, vb->elem);
@@ -162,26 +150,17 @@ void vector<T,A>::delete_elem() {
 	alloc.deallocate(elem, space); 
 }
 
-// ----------------- GET CONTAINER DETAILS -------------------------------
-
 template<typename T, typename A>
 typename vector<T,A>::size_type vector<T,A>::size() const { return sz; }
 
 template<typename T, typename A>
 typename vector<T,A>::size_type vector<T,A>::capacity() const { return space; }
 
-// ----------------- READ AND WRITE OPERATIONS ---------------------------
-
-// -----------------------------
-
 template<typename T, typename A>
 void vector<T,A>::set(size_type index, T v) { elem[index] = v; }
 
 template<typename T, typename A>
 const T vector<T,A>::get(size_type i) const { return elem[i]; }
-
-
-// -----------------------------
 
 template<typename T, typename A>
 T& vector<T,A>::at(size_type n) {
@@ -195,15 +174,11 @@ T vector<T,A>::at(size_type n) const {
 	return elem[n];
 }
 
-// -----------------------------
-
 template<typename T, typename A>
 T& vector<T,A>::operator[] (size_type n) { return elem[n]; }
 
 template<typename T, typename A>
 T vector<T,A>::operator[] (size_type n) const { return elem[n]; }
-
-// -------------- SIZE OPERATIONS ------------------------
 
 template<typename T, typename A>
 void vector<T,A>::reserve(size_type new_alloc) {
