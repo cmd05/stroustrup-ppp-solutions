@@ -88,7 +88,7 @@ vector<T,A>::vector(std::initializer_list<T> lst): sz(lst.size()), space{sz}, el
 }
 
 template<typename T, typename A>
-vector<T,A>::~vector() { delete[] elem; }
+vector<T,A>::~vector() { delete_elem(); }
 
 template<typename T, typename A>
 vector<T,A>::vector(const vector<T,A>& arg): sz{arg.sz}, space{sz}, elem{alloc.allocate(sz)} {
@@ -147,7 +147,7 @@ void vector<T,A>::delete_elem() {
 	for(size_type i = 0; i < sz; i++)
 		alloc.destroy(&elem[i]);
 
-	alloc.deallocate(elem, space); 
+	alloc.deallocate(elem, space);
 }
 
 template<typename T, typename A>
