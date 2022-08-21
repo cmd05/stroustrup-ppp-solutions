@@ -1,7 +1,11 @@
 #include <memory>
 #include <iterator>
 #include <limits>
+#include <iostream>
 
+/**
+ * A custom implementation of the standard library list
+ */ 
 template<typename T, typename A = std::allocator<T>>
 class list {
 private:
@@ -55,10 +59,12 @@ public:
 	void pop_front();
 	void resize(size_type count);
 	void resize(size_type count, T val = T());
-
 	void swap(list& other);
 
 	/// Operations
+	template<class Compare>
+	void sort(Compare comp = std::less<T>());
+		
 	void merge(list& other);
 	void reverse();
 private:
@@ -300,7 +306,7 @@ typename list<T,A>::iterator list<T,A>::insert(iterator pos, list_node* new_node
 	if(pos == end()) _tail = new_node;
 
 	++_size;
-	return new_node->_next;
+	return nullptr;
 }
 
 template<typename T, typename A>
@@ -309,6 +315,11 @@ void list<T,A>::push_back(list_node* node) {
 }
 
 /// Public Modifiers
+template<typename T, typename A>
+typename list<T,A>::iterator list<T,A>::insert(iterator pos, const T& val) {
+	return insert(pos, get_node(val));
+}
+
 template<typename T, typename A>
 void list<T,A>::clear() {
 	while(begin() != end()) {
@@ -354,16 +365,16 @@ template<typename T, typename A>
 void list<T,A>::resize(size_type count) {
 	size_type diff = count - _size;
 
-	for(diff > 0; diff--) push_back(get_node());
-	for(diff < 0; diff++) pop_back();
+	for(; diff > 0; diff--) push_back(get_node());
+	for(; diff < 0; diff++) pop_back();
 }
 
 template<typename T, typename A>
 void list<T,A>::resize(size_type count, T val) {
 	size_type diff = count - _size;
 
-	for(diff > 0; diff--) push_back(get_node(val));
-	for(diff < 0; diff++) pop_back();
+	for(; diff > 0; diff--) push_back(get_node(val));
+	for(; diff < 0; diff++) pop_back();
 }
 
 template<typename T, typename A>
@@ -371,7 +382,7 @@ void list<T,A>::swap(list<T,A>& other) {
 	std::swap(other._head, _head);
 	std::swap(other._tail, _tail);
 	std::swap(other._size, _size);
-	std::swap(other._alloc, _alloc);
+	std::swap(other.alloc, alloc);
 }
 
 /// Non Member Functions
@@ -379,9 +390,9 @@ template<typename T, typename A>
 bool operator==(const list<T,A>& first, const list<T,A>& second) {
 	if(first.size() != second.size()) return false;
 
-	list<T,A>::iterator p1 = first.begin();
-	list<T,A>::iterator p2 = second.begin();
-	for(; p != first.end(); p1++, p2++)
+	typename list<T,A>::iterator p1 = first.begin();
+	typename list<T,A>::iterator p2 = second.begin();
+	for(; p1 != first.end(); p1++, p2++)
 		if(*p1 != *p2) return false;
 	
 	return true;
@@ -394,17 +405,25 @@ bool operator!=(const list<T,A>& first, const list<T,A>& second) {
 
 /// Operations
 template<typename T, typename A>
+template<class Compare>
+void list<T,A>::sort(Compare comp) {
+	// TODO
+}
+
+template<typename T, typename A>
 void list<T,A>::merge(list<T,A>& other) {
 	if(this == &other) return;
 
+	// concatenate other to current list
 	_tail->_next = other._head;
 	other._head->_prev = _tail;
 	_tail = other._tail;
 	_size += other._size;
 
-	// use a custom sort (not implementing that rn)
+	// sort combined list
+	sort();	
 
-
+	// invalidate other list
 	other._size = 0;
 	other._head = nullptr;
 	other._tail = nullptr;
@@ -414,7 +433,7 @@ template<typename T, typename A>
 void list<T,A>::reverse() {
 	iterator p1 = begin();
 	iterator p2 = tail();
-	size_type mid = std::ceil(_size / 2);
+	size_type mid = int(_size / 2) + 1;
 
 	for(size_type i = 0; i != mid; i++, p1++, p2--)
 		*p1 = *p2;
