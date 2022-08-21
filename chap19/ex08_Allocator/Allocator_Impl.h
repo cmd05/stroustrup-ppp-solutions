@@ -10,7 +10,7 @@ T* Allocator<T>::allocate(int n) const {
 template<typename T>
 void Allocator<T>::construct(T* p, const T& val) const {
 	// placement new
-	// new (address) (type) initializer
+	// new (<address>) <type>(<initializer>)
 	new(p) T(val);
 }
 
