@@ -1,0 +1,111 @@
+1. Why does code written by different people look different? Give
+examples.
+	Different flavours, idealogies, philosophies, thought process, learnt techniques
+
+2. What are simple questions we ask of data?
+	- Does a particular value exist, or how many times it exists
+	- Which values satisfy a given condition
+	- How "big" is the data
+	- Find "largest" and "smallest" value
+
+3. What are a few different ways of storing data?
+	- List, Dictionary, Stacks, Queues, Hash Tables, Trees 
+	AST, Control Flow Graphs etc. Too many!
+
+4. What basic operations can we do to a collection of data items?
+	- sort
+	- find min, max
+	- find most common occurence
+
+5. What are some ideals for the way we store our data?
+	- Uniform access to data
+		- Independently of how it is stored
+		- Independently of its type
+	- Type-safe access to data
+	- Easy traversal of data
+	- Compact storage of data
+	- Fast
+		- Retrieval of data
+		- Addition of data
+		- Deletion of data
+	- Standard versions of the most common algorithms
+		- Such as copy, find, search, sort, sum,
+
+6. What is an STL sequence?
+	Collection of data with a beginning and end defined by iterators.
+
+7. What is an STL iterator? What operations does it support?
+	It is an object that points to an element in the sequence.
+	Basic operations:
+		==, != and *
+	Other operations depend on iterator type used.
+
+8. How do you move an iterator to the next element?
+	increment operator
+
+9. How do you move an iterator to the previous element?
+	decrement operator
+
+10. What happens if you try to move an iterator past the end of a
+sequence?
+	undefined behaviour!
+
+11. What kinds of iterators can you move to the previous element?
+	bidirectional or random access iterators
+
+12. Why is it useful to separate data from algorithms?
+	Several containers can use some algorithms by providing required iterators and operations.
+	Hence, algorithms are generalized and do not depend on the container type
+
+13. What is the STL?
+	Standard Libary provided by the implementation. It contains many useful containers, algorithms and utilities.
+
+14. What is a linked list? How does it fundamentally differ from a vector?
+	A linked list is a collection of nodes containing a value and storing the pointer to the node before and after them.
+	A linked list is different from a vector as it doesn't use contiguous memory allocation
+
+15. What is a link (in a linked list)?
+	A single node
+
+16. What does insert() do? What does erase() do?
+	insert element before pos
+	remove element at pos
+
+17. How do you know if a sequence is empty?
+	c.begin() == c.end() or
+	size() == 0, if a size method is provided
+
+18. What operations does an iterator for a list provide?
+	```cpp
+	iterator();
+	iterator(list_node* p): node{p} {}
+
+	iterator& operator++() { node = node->_next; return *this; }
+	iterator operator++(int) { iterator tmp {node}; node = node->_next; return tmp; }
+	iterator& operator--() { node = node->_prev; return *this; }
+	iterator operator--(int) { iterator tmp {node}; node = node->_prev; return tmp; }
+	// iterator prev() const { iterator p{node}; p--; return p; }
+	// iterator next() const { iterator p{node}; p++; return p; }
+
+	T& operator*() { return node->_val; }
+	T* operator->() { return &(node->_val); }
+
+	bool operator==(const iterator& b) const { return node==b.node; }
+	bool operator!=(const iterator& b) const { return node!=b.node; }
+	```
+	
+19. How do you iterate over a container using the STL?
+	for(auto p = c.begin(); p != c.end(); p++) { /* */ }
+
+20. When would you use a string rather than a vector?
+	To use string manipulation methods
+
+
+Notes: rvalues are destroyed immediately after use
+```cpp
+print("begin")
+f(X{});
+print("end")
+
+// begin X() ~X() end
+```
