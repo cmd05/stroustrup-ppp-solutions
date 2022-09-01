@@ -1,6 +1,13 @@
+#pragma once
+
 #include <memory>
+#include <algorithm>
 #include <iterator>
+#include <utility>
 #include <limits>
+#include <initializer_list>
+#include <cstddef>
+#include <functional>
 
 /**
  * A custom implementation of the standard library list
@@ -13,12 +20,10 @@
  *	- node: node refers to list_node
  *
  * NOTES:
- *	- An invalid list will be in the form {nullptr, nullptr, 0} 
- *	 (check before destroying or dereferencing)
  *	- An empty list will in the form {sent, sent, 0}
  *	- A non-empty list will be in the form {head, tail, n} 
  *
- *	- For an empty list list.begin() == list.end()
+ *	- For an empty list, list.begin() == list.end()
  *	- pre and sent are not stored explicitly by list, and they do not 
  *	  contain a valid value. They must be used only for checking the bounds
  *	  of the list.
@@ -36,7 +41,7 @@ public:
 	using size_type = std::size_t;
 	using value_type = T;
 	class iterator; // bidirectional iterator
-	class reverse_iterator;
+	using reverse_iterator = std::reverse_iterator<iterator>;
 	using node_allocator = typename A::template rebind<list_node>::other;
 
 	/// CTORs
@@ -72,6 +77,7 @@ public:
 	/// Modifiers
 	void clear();
 	iterator insert(iterator pos, const T& val);
+	iterator insert(iterator pos, std::initializer_list<T> il);
 	iterator erase(iterator pos);
 	void push_back(const T& val);
 	void pop_back();
@@ -90,12 +96,21 @@ public:
 private:
 	/// Private Modifiers
 	void alloc_empty_list();
+	void move(list&& other);
+	void destroy();
+	void reset();
+
 	void delete_node(iterator pos);
-	void invalidate_list(list& ls);
 	list_node* get_node();
 	list_node* get_node(list_node lnode);
 	iterator insert(iterator pos, list_node* node);
 	void push_back(list_node* node);
+
+	/// Iterators
+	iterator pre() const;
+
+	/// Operations
+	void concat_list(list& other);
 
 	/// Properties
 	list_node* _head;
@@ -115,7 +130,6 @@ struct list<T,A>::list_node {
 public:
 	list_node(): _prev{nullptr}, _next{nullptr}, _val{T()} {}
 	// list_node() {}
-
 	list_node(T v): _val{v} {}
 	list_node(T v, list_node* p, list_node* s): _val{v}, _prev{p}, _next{s} {}
 	list_node(list_node* p, list_node* s): _prev{p}, _next{s} {}
@@ -123,7 +137,7 @@ public:
 	// list_node(T v, list_node* s): _val{v}, _next{s} {}
 };
 
-/// List Iterators
+/// List Iterator
 template<typename T, typename A>
 class list<T,A>::iterator {
 	friend class list;
@@ -142,37 +156,14 @@ public:
 	iterator operator++(int) { iterator tmp {node}; node = node->_next; return tmp; }
 	iterator& operator--() { node = node->_prev; return *this; }
 	iterator operator--(int) { iterator tmp {node}; node = node->_prev; return tmp; }
+	iterator prev() const { iterator p{node}; p--; return p; }
+	iterator next() const { iterator p{node}; p++; return p; }
 
 	T& operator*() { return node->_val; }
 	T* operator->() { return &(node->_val); }
 
 	bool operator==(const iterator& b) const { return node==b.node; }
 	bool operator!=(const iterator& b) const { return node!=b.node; }
-};
-
-template<typename T, typename A>
-class list<T,A>::reverse_iterator {
-	list_node* node;
-public:
-	using value_type = T;
-	using pointer = T*;
-	using reference = T&;
-	using iterator_category = std::bidirectional_iterator_tag;
-	using difference_type = std::ptrdiff_t;
-
-	reverse_iterator();
-	reverse_iterator(list_node* p): node{p} {}
-
-	reverse_iterator& operator++() { node = node->prev; return *this; }
-	reverse_iterator operator++(int) { reverse_iterator tmp {node}; node = node->_prev; return tmp; }
-	reverse_iterator& operator--() { node = node->_next; return *this; }
-	reverse_iterator operator--(int) { reverse_iterator tmp {node}; node = node->_next; return tmp; }
-
-	T& operator*() { return node->_val; }
-	T* operator->() { return &(node->_val); }
-
-	bool operator==(const reverse_iterator& b) const { return node==b.node; }
-	bool operator!=(const reverse_iterator& b) const { return node!=b.node; }
 };
 
 /// CTORs
@@ -196,8 +187,7 @@ list<T,A>::list(iterator begin, iterator end) {
 template<typename T, typename A>
 list<T,A>::list(size_type sz) {
 	alloc_empty_list();
-	for(size_type i = 0; i < sz; i++)
-		push_back(T());
+	resize_uninitialized(sz);
 }
 
 template<typename T, typename A>
@@ -207,62 +197,57 @@ void list<T,A>::assign(iterator first, iterator last) {
 	for(; current_it != end() && first != last; current_it++, first++)
 		*current_it = *first;
 	if(current_it == end())
-		for(; first != last; first++)
-			push_back(*first);
+		std::copy(first, last, std::back_inserter(*this));
 	else
-		for(; current_it != end(); current_it++)
+		while(current_it != end()) {
+			iterator tmp = current_it.next();
 			erase(current_it);
+			current_it = tmp;
+		}
 }
 
 /// Copy and Move Semantics, DTOR
 template<typename T, typename A>
 list<T,A>::list(const list<T,A>& other) {
 	alloc_empty_list();
+	alloc = other.alloc;
 	std::copy(other.begin(), other.end(), std::back_inserter(*this));
 }
 
 template<typename T, typename A>
 list<T,A>& list<T,A>::operator=(const list<T,A>& other) {
-	alloc_empty_list();
-	if(this != &other)
+	// copy and swap? (traversal will be O(n))
+	if(this != &other) {
+		alloc = other.alloc;
 		assign(other.begin(), other.end());
-	
+	}
 	return *this;
 }
 
 template<typename T, typename A>
-list<T,A>::list(list<T,A>&& other):
-	_head{other._head}, _tail{other._tail}, _size{other._size} {	
-	invalidate_list(other);
+list<T,A>::list(list<T,A>&& other) {
+	move(std::move(other));
 }
 
 template<typename T, typename A>
 list<T,A>& list<T,A>::operator=(list<T,A>&& other) {
-	~list();
-
-	_head = other._head;
-	_tail = other._tail;
-	_size = other._size;
-
-	invalidate_list(other);
+	destroy();
+	move(std::move(other));
+	return *this;
 }
 
 template<typename T, typename A>
 list<T,A>::~list() {
-	// an invalid list will contain nullptr as head and tail
-	// do not attempt to destroy such a list
-	if(!_head || !_tail) return;
-
-	iterator pre = iterator{_head->_prev};
-	iterator sent = iterator{_tail->_next};
-
-	clear();
-
-	delete_node(pre);
-	delete_node(sent);
+	destroy();
 }
 
-/// Tterators
+/// Private Iterators
+template<typename T, typename A>
+typename list<T,A>::iterator list<T,A>::pre() const {
+	return iterator{_head->_prev};
+}
+
+/// Public Iterators
 template<typename T, typename A>
 typename list<T,A>::iterator list<T,A>::begin() const {
 	return iterator{_head};
@@ -280,12 +265,12 @@ typename list<T,A>::iterator list<T,A>::end() const {
 
 template<typename T, typename A>
 typename list<T,A>::reverse_iterator list<T,A>::rbegin() const {
-	return reverse_iterator{_tail};
+	return reverse_iterator{end()};
 }
 
 template<typename T, typename A>
 typename list<T,A>::reverse_iterator list<T,A>::rend() const {
-	return reverse_iterator{_head->_prev};
+	return reverse_iterator{begin()};
 }
 
 /// Element Access
@@ -323,7 +308,6 @@ void list<T,A>::alloc_empty_list() {
 
 	pre->_prev = pre;
 	pre->_next = sent;
-
 	sent->_prev = pre;
 	sent->_next = sent;
 
@@ -332,14 +316,29 @@ void list<T,A>::alloc_empty_list() {
 	_size = 0;
 }
 
-// Invalidate a list to prevent overwriting of elements
-// by destructor or manually.
-// Useful for shallow copying one list to another
 template<typename T, typename A>
-void list<T,A>::invalidate_list(list<T,A>& ls) {
-	ls._size = 0;
-	ls._head = nullptr;
-	ls._tail = nullptr;
+void list<T,A>::destroy() {
+	clear();
+
+	delete_node(pre());
+	delete_node(end());
+}
+
+template<typename T, typename A>
+void list<T,A>::move(list<T,A>&& other) {
+	_head = other._head;
+	_tail = other._tail;
+	_size = other._size;
+	alloc = std::move(other.alloc);
+	
+	// other will be immediately destroyed
+	// since it is an rvalue
+	other.reset();
+}
+
+template<typename T, typename A>
+void list<T,A>::reset() {
+	alloc_empty_list();
 }
 
 template<typename T, typename A>
@@ -349,7 +348,7 @@ typename list<T,A>::list_node* list<T,A>::get_node() {
 
 template<typename T, typename A>
 typename list<T,A>::list_node* list<T,A>::get_node(list_node lnode) {
-	list_node* tmp = alloc.allocate(1);
+	list_node* tmp = get_node();
 	alloc.construct(tmp, lnode);
 	return tmp;
 }
@@ -364,24 +363,18 @@ void list<T,A>::delete_node(iterator pos) {
 template<typename T, typename A>
 typename list<T,A>::iterator list<T,A>::insert(iterator pos, list_node* new_node) {
 	list_node* pos_node = pos.node;
-	// set new head and tail
+
 	if(pos == begin()) _head = new_node;
 	if(pos == end()) _tail = new_node;
 
-	// set next pointer of new node
 	new_node->_next = pos_node;
-	
-	// set prev pointer of new node
 	new_node->_prev = pos_node->_prev;
-
-	// set next pointer of insert_pos->_prev
 	pos_node->_prev->_next = new_node;
-
-	// set prev pointer of insert_pos
 	pos_node->_prev = new_node;
-	
+
 	++_size;
-	return new_node;
+
+	return iterator{new_node};
 }
 
 template<typename T, typename A>
@@ -396,9 +389,16 @@ typename list<T,A>::iterator list<T,A>::insert(iterator pos, const T& val) {
 }
 
 template<typename T, typename A>
+typename list<T,A>::iterator list<T,A>::insert(iterator pos, std::initializer_list<T> il) {
+	for(auto p = std::rbegin(il); p != std::rend(il); p++)
+		pos = insert(pos, *p);
+	return pos;
+}
+
+template<typename T, typename A>
 typename list<T,A>::iterator list<T,A>::erase(iterator pos) {
 	list_node* pos_node = pos.node;
-	iterator next_pos {pos_node->_next};
+	iterator next_pos = pos.next();
 
 	// reset node links
 	pos_node->_prev->_next = pos_node->_next;
@@ -418,13 +418,7 @@ typename list<T,A>::iterator list<T,A>::erase(iterator pos) {
 
 template<typename T, typename A>
 void list<T,A>::clear() {
-	while(begin() != end()) {
-		list_node* tmp = _head->_next;
-		erase(_head);
-		_head = tmp;
-	}
-
-	_size = 0;
+	assign(begin(), begin());
 }
 
 template<typename T, typename A>
@@ -471,7 +465,28 @@ void list<T,A>::swap(list<T,A>& other) {
 	std::swap(other.alloc, alloc);
 }
 
-/// Operations
+/// Private Operations
+
+// `other` will not be a valid list after calling concat_list()
+template<typename T, typename A>
+void list<T,A>::concat_list(list& other) {
+	other.delete_node(other.pre()); // free invalidated nodes
+	
+	// concatenate ends
+	_tail->_next = other._head;
+	other._head->_prev = _tail;
+
+	if(empty() || other.size()) _tail = other._tail;
+
+	if(empty()) {
+		delete_node(pre());
+		_head = other._head;
+	} else delete_node(end());
+
+	_size += other.size();
+}
+
+/// Public Operations
 template<typename T, typename A>
 template<class Compare>
 void list<T,A>::sort(Compare cmp) {
@@ -482,45 +497,21 @@ template<typename T, typename A>
 void list<T,A>::merge(list<T,A>& other) {
 	if(this == &other) return;
 
-	// concatenate other to current list
-	_tail->_next = other._head;
-	other._head->_prev = _tail;
-	_tail = other._tail;
-	_size += other._size;
-
-	// sort combined list
+	concat_list(other);
 	sort();
-
-	// reset other list.
-	// other will still be valid
-	other._head = nullptr;
-	other._tail = nullptr;
-	other._size = 0;
-
-	other.alloc_empty_list();
+	other.reset(); // other is set to a valid empty list
 }
 
 template<typename T, typename A>
 void list<T,A>::reverse() {
-	iterator p1 = begin();
-	iterator p2 = tail();
-	size_type mid = int(_size / 2) + 1;
-
-	for(size_type i = 0; i != mid; i++, p1++, p2--)
-		*p1 = *p2;
+	std::reverse(begin(), end());
 }
 
 /// Non Member Functions
 template<typename T, typename A>
 bool operator==(const list<T,A>& first, const list<T,A>& second) {
-	if(first.size() != second.size()) return false;
-
-	typename list<T,A>::iterator p1 = first.begin();
-	typename list<T,A>::iterator p2 = second.begin();
-	for(; p1 != first.end(); p1++, p2++)
-		if(*p1 != *p2) return false;
-	
-	return true;
+	return first.size() == second.size() &&
+			std::equal(first.begin(), first.end(), second.begin());
 }
 
 template<typename T, typename A>
