@@ -4,7 +4,7 @@
 
 template<typename Iter1, typename Iter2>
 // requires Input_iterator<Iter1>() && Output_iterator<Iter2>()
-Iter2 copy(Iter1 f1, Iter1 e1, Iter2 f2)
+Iter2 copy(Iter1 f1, Iter1 e1, Iter2 f2);
 
 int main() {
 	int arr[] = {0,1,2,3,4,5,6,7,8,9};
