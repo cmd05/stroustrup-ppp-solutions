@@ -1,0 +1,752 @@
+commit 292baf036e9bffeaaf6c7955c099a4eadc34089b
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Thu Sep 1 18:27:39 2022 +0000
+
+    ch20 review
+
+commit e9a80022ff869bc3ebbc0da88263b193137890bb
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Thu Sep 1 18:27:31 2022 +0000
+
+    list changes
+
+commit 6263c0a2cd534bf6352dfcd353876951b9a7b615
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Sun Aug 21 18:56:50 2022 +0000
+
+    add list implementation
+
+commit 6c4b99cc1edbb1b9fe64db32f5538ad511222ff7
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Sun Aug 21 18:56:25 2022 +0000
+
+    add middle insertion test
+
+commit d917baf9b529820da467fa9f29dd87dcc117c5cc
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Sun Aug 21 18:55:29 2022 +0000
+
+    check destructors called in a list
+
+commit 8fb55c3de427ff62a2422430e829936ee171701e
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Sun Aug 21 18:55:00 2022 +0000
+
+    add placeholder brackets to comment
+
+commit 081d93d80a4dce379339178a34f5f1711f373a22
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Sat Aug 20 18:19:13 2022 +0000
+
+    Create list definitions. TODO: add merge sort to lmerge()
+
+commit 8fb3e97c34db8ccf9af8216862dcfa0e1fec3a5b
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Fri Aug 19 08:35:14 2022 +0000
+
+    free and release all allocated space
+
+commit 24c077afb896c5077754537e5d1cea654e30e55e
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Tue Aug 16 16:58:55 2022 +0000
+
+    remove comment seperators
+
+commit a473749a43243d4f4363b0199eef52003cce17ca
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Tue Aug 16 16:58:37 2022 +0000
+
+    add back() and front() methods
+
+commit b32236177ee03f56ce18e102a8e29ca4ef6ffb6c
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Sat Aug 13 13:53:50 2022 +0000
+
+    Debug Text_Editor
+
+commit c7ca59380c87f4c8009662e71951ff31bea9f16a
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Sat Aug 13 13:27:50 2022 +0000
+
+    use CTAD with -std=c++2a flag
+
+commit 2c9808b5d96f0bcd42373619febd814c6fb73782
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Sat Aug 13 13:27:13 2022 +0000
+
+    remove excess space comment
+
+commit 03f4d4fe8dac9c5917dbd30c1e5ad74111f764ac
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Sat Aug 13 13:26:43 2022 +0000
+
+    ex07
+
+commit 62139d33c04a4e1663ce17536b6de06f34a7d0ef
+Author: Salil M <63466463+cmd05@users.noreply.github.com>
+Date:   Fri Aug 12 08:46:41 2022 +0000
+
+    refactor replace method
+
+commit 805eac77d066630d364881007b9bfe4f4f8f0eed
+Author: cmd05 <salil.m1311@gmail.com>
+Date:   Wed Aug 3 04:23:31 2022 +0530
+
+    Remove aliases comment
+
+commit e42dd751fd1f12e820187e549d4a799a8d589413
+Author: Salil Mittal <salil.m1311@gmail.com>
+Date:   Fri Jul 29 10:47:37 2022 +0530
+
+    edit text editor
+
+commit d604357ffe0a6f9b8d704f4523c73878c19df750
+Author: Salil Mittal <salil.m1311@gmail.com>
+Date:   Fri Jul 29 10:46:37 2022 +0530
+
+    edit vector
+
+commit 20a3bb07c95a9d08b1eee86d3f182091023f96ec
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jul 21 05:37:09 2022 +0530
+
+    chap20 work
+
+commit a52346949213461f6a08d84b155feec85568618c
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jul 21 05:35:40 2022 +0530
+
+    chap20 work
+
+commit 20513184d3afe938232e518e7c8f5cddb9e2b03a
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jul 21 05:34:24 2022 +0530
+
+    add: copy and move semantics
+
+commit a091d523ab3151f4f71ebde41a004a7511dee82d
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jul 21 05:33:56 2022 +0530
+
+    ex16
+
+commit 11200e2bb3e87b8a3bdae3cbd4a599c80a28045d
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jul 21 05:32:54 2022 +0530
+
+    Text Editor using iterators
+
+commit 237c79e3dd146a8a22774c076f6c9e36ef388066
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jul 21 05:32:09 2022 +0530
+
+    STL vector Implementation
+
+commit fab72c87f7bdb06db88479b538c69c0c1f008811
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jul 21 05:31:50 2022 +0530
+
+    STL List Implementation
+
+commit 040b7c75d32f4bd5ce53a242b64730adaf5d1556
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Sat Jul 16 01:11:11 2022 +0530
+
+    ignore test.c
+
+commit 4e8e0245df97f1e95985bc30d2bd9f5b59b3f90b
+Merge: af8b75f b3e49b0
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Mon Jul 11 02:35:20 2022 +0530
+
+    Merge branch 'master' of github.com:cmd05/Practice-and-Principles-CPP-Solutions
+
+commit af8b75f9c9c65e3b7d9354d088e3a41db90eb9cb
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Mon Jul 11 02:18:05 2022 +0530
+
+    Throw length_error on negative size
+
+commit c2584f9f7dc65a77a6bb6f6befadd8c6d592f235
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Mon Jul 11 02:17:21 2022 +0530
+
+    Fix Vector_Class
+
+commit b3e49b09c13aea0884c507ffce6a82f206cef1b3
+Author: cmd05 <salil.m1311@gmail.com>
+Date:   Thu Jun 16 13:58:56 2022 +0530
+
+    replace curly double quotations with quotation marks
+
+commit d72dc7d952facd33b1af7b6c2bea77d54237e7b6
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jun 9 20:22:32 2022 +0530
+
+    start chap20
+
+commit 051408a7afc43c6ca733169c4494dbd6ff40a712
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jun 9 20:19:38 2022 +0530
+
+    gitignore vscode folder
+
+commit 6cbc1639fcbdc7bd23fdbe3f4cab5b26369a5f69
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Thu Jun 9 20:17:14 2022 +0530
+
+    replace single quotation mark with apostrophe
+
+commit 2d000e78058b99e9a7de04c21775587ea76fc648
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:48:46 2022 +0530
+
+    fix typo
+
+commit 4cfc194c3874a1be7a2137616ff288d449f044d3
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:37:11 2022 +0530
+
+    add ex13
+
+commit 938cb4b6faa4bd2804a57c20c6c376cb983bfd04
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:36:52 2022 +0530
+
+    add ex12
+
+commit f638cfbaa58ad599685d9b7cd4f701eaf7be8973
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:36:30 2022 +0530
+
+    add ex11
+
+commit 3320acd7f1c8de985ed88106a68c6c55e65f34d3
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:36:06 2022 +0530
+
+    add ex10
+
+commit e41ecb72797aceff442cdbfa95b0c37e95a49585
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:35:38 2022 +0530
+
+    add ex09
+
+commit fd753bf077b5782c9cb959625ce97fba10da1d51
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:35:17 2022 +0530
+
+    add ex08
+
+commit f94e765fd9e6339359805a4883268b81a23139ff
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:34:12 2022 +0530
+
+    add ex06_07
+
+commit 8622616ad5187e2710b019a01345132a13abd78c
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:33:50 2022 +0530
+
+    add ex04
+
+commit 35bdd2d7045b382c954df46bafa9ab9fb526790c
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:33:20 2022 +0530
+
+    ex03_Pair
+
+commit 198eecebdecaf7a20e10305d2f62ad6b6cac8957
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:32:52 2022 +0530
+
+    add ex02
+
+commit 242bb688588de6238ab76282b5da68c3734a8ed6
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 15:32:37 2022 +0530
+
+    add ex01
+
+commit 30d2c535819894a200af70ef3f2cdd45cc93b71c
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 01:03:51 2022 +0530
+
+    Move review file to chapter root
+
+commit 43a065c941ff61b5b8208b723d299bff0f3e97d6
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri May 6 00:57:02 2022 +0530
+
+    Add chap19 review
+
+commit b2d1f5ad114bdc82b890b4e97f1cc863b3afdb10
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu May 5 23:43:47 2022 +0530
+
+    Add drill
+
+commit 2df83900eef3af327eded96a62899aae15510071
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu May 5 22:21:05 2022 +0530
+
+    Fix inconsistent indents
+
+commit b43b50074a1ec0e8545f2c6dfac48e83c6ac0c97
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu May 5 22:14:31 2022 +0530
+
+    Include book and dbg libs
+
+commit cbad7232740e041a631ecd4cab3201479c86597c
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu May 5 22:07:10 2022 +0530
+
+    Ignore .idea and build directories
+
+commit 94119c28e99f533582db26a0b08c9ef7dc952856
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu May 5 22:06:03 2022 +0530
+
+    Debug Template_Vector
+
+commit c3d0dd77563def244ec743fceb688ee64e7f2558
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Wed May 4 20:58:30 2022 +0530
+
+    Chap19 work
+
+commit d0c166b5e3bf499b12b90fdffae6e7478eae0b03
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Wed May 4 20:58:10 2022 +0530
+
+    Create vector<double>
+
+commit 415d4017beb20016b2a3abd5093dc4aa480d0637
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Wed May 4 20:56:29 2022 +0530
+
+    Create generic vector
+
+commit cdeb8e5622f91cea501bcb448a93375054a554d4
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Wed May 4 20:54:10 2022 +0530
+
+    Modify chap17/review: Add note
+
+commit afcf486231366a7e2431291387cc917092f17a40
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu Apr 28 18:53:44 2022 +0530
+
+    Chap19 add vector class and template
+
+commit cca98ff0ae7840fbf170d9bcdcbd4fd660ce0fef
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu Apr 28 18:52:58 2022 +0530
+
+    Edit complete-project/README.md
+
+commit 1d69bcfd9d232498ed9e091e5b52f4ab8301c45d
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu Apr 28 18:51:15 2022 +0530
+
+    Add PreLoad Config CMake
+
+commit 54d762b6b4e0a40ea9d0d95b4f8393960f1b7f65
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Sun Apr 10 22:04:27 2022 +0530
+
+    Change cmake projects
+
+commit 8944df3436181eec5e40a75d6cb96a198ef84ef4
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Sun Apr 10 17:33:28 2022 +0530
+
+    Add title to tutorial file
+
+commit 4338112f1f5e1ed0eec1131f39b7d0300b6bd656
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Sun Apr 10 17:21:10 2022 +0530
+
+    Add cmake-tutorial
+
+commit ee0c0a37186060f7a474014980bfce3f868d8221
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Apr 5 15:21:27 2022 +0530
+
+    untrack test.cpp
+
+commit 286c1fce46db1d4a3db9f4c3f41da6be677ec6c9
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu Mar 17 22:37:15 2022 +0530
+
+    Create Vector_Class
+
+commit b0828929b55bba48702b455acca1ea51a157eaa2
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Mar 15 23:06:12 2022 +0530
+
+    modify chap18/vector.cpp
+
+commit 2f94aaf5e3bee0a37906ee9692c8fcdf252d01b3
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Sat Mar 5 17:21:24 2022 +0530
+
+    ignore extensions config
+
+commit 1523b4eff58691b9dbeddd8b8e623c30232c5bc4
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Sat Mar 5 17:21:12 2022 +0530
+
+    Update insert method
+    * current level does not exceed level count
+
+commit f8cd6307ea9f8010352a098bd77652da7570cfb6
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Sun Jan 30 12:11:27 2022 +0530
+
+    Updated Skip List
+
+commit b7c9dc3a502d4b479bd9f9b2909efb48ed8167f9
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jan 28 12:04:13 2022 +0530
+
+    Include VS project files
+    
+    .vcxproj and .vcxproj.filters
+
+commit d4181ade819b55fd8c98b9d4896df549c9377be0
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jan 28 00:13:45 2022 +0530
+
+    include .sln files
+
+commit bc37b7b109bb5c2e77b810c971e37419451f00e1
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu Jan 27 21:11:15 2022 +0530
+
+    Add skip list
+
+commit 6580422288d220eded828318ea6b0b07738b5e3a
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon Jan 24 22:09:44 2022 +0530
+
+    ch18 work till ex 10
+
+commit 87afed6c82f7e113e0be2cbf4c9ad6e39d099d28
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon Jan 24 22:08:58 2022 +0530
+
+    gitignore clion
+
+commit c9be2975420932dd362bc1abf3e897c8b5c659c6
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu Jan 20 22:03:58 2022 +0530
+
+    add ch18 examples
+
+commit 68315b4ff0479966a4c8e9d36b080fdd7c590b3f
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu Jan 20 22:03:32 2022 +0530
+
+    modify projects
+
+commit def260502934141e7c530bdd25d5d18a433b0712
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu Jan 20 22:03:14 2022 +0530
+
+    ignore test.cpp
+
+commit b18adb9d4aab6bd3021ee9b54ffb072a04f6ab58
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon Dec 13 14:49:13 2021 +0530
+
+    Add chapter 17
+
+commit d67b598490c704fb9fdf5b8c78def73cc8f1f82d
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Wed Dec 8 14:34:32 2021 +0530
+
+    show output in debugger mode
+
+commit 79de4a1f0562062356327f2b1054b9d45bc70432
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Dec 7 14:05:25 2021 +0530
+
+    empty test file
+
+commit c69cb83b7a67dd38f87e910eb0eac9e08825e4ca
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Sat Nov 20 20:09:54 2021 +0530
+
+    add chap16 images
+
+commit 7c0323838c9a99d9898a311d6a7f7d197de58c68
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Sat Nov 20 20:08:13 2021 +0530
+
+    modified gui grapher
+    
+    * working plotter
+    * add to projects
+
+commit 80e40c16cec262acfbab0669bd179bcd68e64fba
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Sat Nov 20 14:21:09 2021 +0530
+
+    Add to projects
+    
+    * GUI based currency exchange
+
+commit d7bb1e8694b4cf9fd6699d0ba2b14f959d9d4d41
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Sat Nov 20 14:14:43 2021 +0530
+
+    change names
+
+commit a40243a60eba0b219bb347e428fd75fb4c3cad57
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Sat Nov 20 14:11:27 2021 +0530
+
+    Add chap16
+
+commit 6ea91f71a262802de787ef179cc4598f4cc2936e
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Nov 9 08:26:34 2021 +0530
+
+    Update README.md images
+
+commit b06c2246ba6178e8fc92504385a098e77a43e20b
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon Nov 8 17:20:03 2021 +0530
+
+    rename project_imgs
+
+commit 262447d32dbecf68e4fc37cba082f6e4f7c8d2d6
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon Nov 8 17:17:03 2021 +0530
+
+    Add images to README
+
+commit e68374771da495daea1d7fb8bd195a4e96ec4f39
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon Nov 8 17:16:47 2021 +0530
+
+    Add project images
+
+commit 3cb5c6cba08474b2dc10efbf6df5a5e10895eb43
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon Nov 8 16:48:59 2021 +0530
+
+    Chapter 15 work and projects
+
+commit 9d3109b0b9409108f3e493915fd3ebf00be7e48a
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Sep 7 20:48:42 2021 +0530
+
+    remove unnecessary IMG_DIR
+
+commit f07eccae6b88e5a955ed07d0c82ff4d60e00e1d2
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Sep 7 20:48:28 2021 +0530
+
+    Hide VS files
+
+commit 9349708f587761081cf5e928fcc4959164734457
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Sep 7 20:27:48 2021 +0530
+
+    Bug fixes in bin tree
+
+commit 004e1235da51a4ba73ec7dcf0cbbcb6adf4bfd5d
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Sep 7 13:31:05 2021 +0530
+
+    Add formating
+
+commit 8da45c6a623a25d736fe921ec4d6344188dca39c
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Sep 7 13:01:43 2021 +0530
+
+    Chapter 14 exercise and projects
+
+commit 5297b1456356e612496a8c33fb976a30f021b229
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Sep 7 13:01:13 2021 +0530
+
+    Remove New line from printing point
+
+commit 99fff7f0ca491d1064737111cf19d42fb741c986
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Sep 7 13:00:22 2021 +0530
+
+    remove IMG_DIR ex_12
+
+commit 45075e32570246bdeef41e1c741061a615474966
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Sep 3 20:02:21 2021 +0530
+
+    Empty test file
+
+commit 2e116ce817c733659dc1078cf185e86b94e28773
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Sep 3 20:02:07 2021 +0530
+
+    Graphics Ch13 main.cpp
+
+commit 6b5c85213c911b83c40f034d51fcdb0bdcb749b7
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Sep 3 20:01:04 2021 +0530
+
+    misc program - sin taylor series
+
+commit 7965b8d79d3b5770c4a1716b00915667a9d2ee8d
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jun 11 23:29:55 2021 +0530
+
+    Chapter 13 Work
+
+commit 8ef7dbb64b142024191b804aab262893e1413ac8
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jun 11 23:29:39 2021 +0530
+
+    Direction methods for rectangles
+
+commit 661b0a808abfb97ddf28521b389cc339c6b2cd53
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jun 11 23:29:16 2021 +0530
+
+    Basic Debugging for Graphics
+
+commit 07fcc83fe7b97473b4041256d7d1f71bbb221b2a
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jun 11 23:28:45 2021 +0530
+
+    typo in quadratic chapter 4
+
+commit 4351cd8eeda86bb1308d74d8d25a0570514173d6
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jun 11 23:27:37 2021 +0530
+
+    Added cout to point
+
+commit b3a0ea32e24ed3ab1373b4bf62ff6ec8e495bacf
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jun 11 23:27:03 2021 +0530
+
+    Image files
+
+commit 240a6da6265758e84ddd945e116fc6e0f458aa71
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jun 11 23:26:46 2021 +0530
+
+    Removed bugs file
+
+commit 1e0222ddbe684698963ec7171217a4feda4529e2
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon Jun 7 14:32:59 2021 +0530
+
+    Ignore bugs list
+
+commit ede653d195f163ad72dc3bd364a5a331f637b7e0
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon Jun 7 14:31:59 2021 +0530
+
+    Default fl_color() changed to black.
+
+commit b8346ca605a7fddeebce0c091a4a99d57ad16f5f
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Fri Jun 4 15:03:53 2021 +0530
+
+    Graphics Libraries and Chapter 12
+
+commit 3efa83b3407f617fbc1979cfc76b1f1cd1e0d9f2
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue Jun 1 22:49:30 2021 +0530
+
+    Moved std_lib_facilites
+
+commit d05be64feef71db5e205a24b4adfd3da56260498
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon May 31 14:33:03 2021 +0530
+
+    Rename README
+
+commit 106944d29da6b706cf6171d1541d2049f68ca7c3
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Mon May 31 14:30:32 2021 +0530
+
+    Added Chapter 11
+
+commit ae08c49193493406c24289d88ea93704cb34a0a0
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu May 27 20:37:43 2021 +0530
+
+    Renamed chapters to retain order
+
+commit 33407c597ee5e20a8394024a4c00296466735002
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Thu May 27 20:32:54 2021 +0530
+
+    Added Chapter 10. Modified README. Added Temperature Parser to projects
+
+commit f4a141f0ac7d1e2d6afedd3d33da163982718590
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue May 18 23:13:15 2021 +0530
+
+    Moved closest_diffs
+
+commit 8642ff540dadb33be8e18b07ff1867e0b7aef013
+Author: Salil <salil.mittal05@gmail.com>
+Date:   Tue May 18 23:12:52 2021 +0530
+
+    Chapter 9
+
+commit b18d5d1fc4afbf413e1beb87ece8dc04638e7b28
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Sat Apr 10 11:31:38 2021 +0530
+
+    Working on chapter 9
+
+commit 653794ac89e8e109d7d30c6eaeee5d65f96c4f03
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Wed Mar 31 23:13:48 2021 +0530
+
+    Added README
+
+commit 8c04d15ea7515644e7c42954f9fd9d64f2a359ba
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Wed Mar 31 23:10:39 2021 +0530
+
+    Chapter 8 files
+
+commit df8cb7473bc74cb309c417c4c5ec097c29c6632b
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Mon Mar 22 13:48:36 2021 +0530
+
+    Progress on chapter 8
+
+commit 3c135fa3e6d5c520aaedefbd28dd737bc6438ae6
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Mon Mar 22 13:48:02 2021 +0530
+
+    Modified chapter 5 exercise 14
+
+commit f5044a41ec463860981189c2085b82c7e86e67dc
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Tue Mar 16 13:19:52 2021 +0530
+
+    Added Chap 5. Modified chap 4
+
+commit 65fe88a2d88ecd37bf32e3bff1fe19c893e5a5dc
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Mon Mar 15 19:42:01 2021 +0530
+
+    Fixed Prime no. exercises 4) 13, 14, 15
+
+commit 26924a4c7bd12d938d910cbe54ee00063ac62d89
+Author: Salil Mittal <salil.mittal05@gmail.com>
+Date:   Mon Mar 15 14:54:08 2021 +0530
+
+    Initial Commit
