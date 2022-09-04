@@ -27,7 +27,8 @@ int main() {
 	}
 
 	std::sort(v_words.begin(), v_words.end(), [](pair_type a, pair_type b){ return a.second > b.second; });
-
+	
+	std::ofstream os {"words_output.txt"};
 	for(pair_type& p : v_words)
-		std::cout << p.second << ": " << p.first << '\n';
+		os << p.second << ": " << p.first << '\n';
 }
