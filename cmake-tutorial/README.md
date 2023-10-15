@@ -7,7 +7,7 @@
 ~/package/build $ make
 
 ## Single Line CMake build
-~/package/ $ cmake -S project -B build -G "MinGW Makefiles"
+~/package/ $ cmake -S . -B build -G "MinGW Makefiles" # From directory with CMakeLists.txt
 ~/package/ $ make -C build
 ~/package/ $ build\MyExample
 ```

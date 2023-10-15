@@ -1,0 +1,25 @@
+1. Who uses numerics?
+2. What is precision?
+3. What is overflow?
+4. What is a common size of a double? Of an int?
+5. How can you detect overflow?
+6. Where do you find numeric limits, such as the largest int?
+7. What is an array? A row? A column?
+8. What is a C-style multidimensional array?
+9. What are the desirable properties of language support (e.g., a library) for matrix computation?
+10. What is a dimension of a matrix?
+11. How many dimensions can a matrix have (in theory/math)?
+12. What is a slice?
+13. What is a broadcast operation? List a few.
+14. What is the difference between Fortran-style and C-style subscripting?
+15. How do you apply an operation to each element of a matrix? Give examples.
+16. What is a fused operation?
+17. Define dot product.
+18. What is linear algebra?
+19. What is Gaussian elimination?
+20. What is a pivot? (In linear algebra? In “real life”?)
+21. What makes a number random?
+22. What is a uniform distribution?
+23. Where do you find the standard mathematical functions? For which argument types are they defined?
+24. What is the imaginary part of a complex number?
+25. What is the square root of –1?

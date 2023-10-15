@@ -34,7 +34,7 @@ these operators, and not the others, require an lvalue?
 9. What is a symbolic constant and why do we use them?
   A named object who's value cannot be altered after initialization
   Used for values which shouldnt change during compile time. 
-  Eg: Value of PI must not change after initializing as 3.14159 or 3.14
+  Eg: Value of PI must not change after initializing as 3.14159
 
 10. What is a magic constant? Give examples.
   Non obvious literals used outside of symbolic constants.
