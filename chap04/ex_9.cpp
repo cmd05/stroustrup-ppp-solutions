@@ -16,13 +16,13 @@ double)?
 using namespace std;
 
 int main() {
-    double sum = 0;
+    int sum = 0;
     for(int i = 0; i < 1000; i++) {
         int grain_on_square = pow(2, i + 1);
         sum += grain_on_square;
         cout << sum << endl;
-        if(sum >= numeric_limits<double>::max()) {
-            cout << "After " << i + 1 << " iterations double value has been overflown";
+        if(sum <= 0) {
+            cout << "On " << i + 1 << "st iteration double value overflowed";
             break;
         }
     }

@@ -6,41 +6,46 @@ Output: 5 and 40
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <math.h>
-#include <limits.h>
+#include <limits>
 
-int main() {
-    /* Get Inputs */
-    std::vector<int> v;
-    v = {31,40,34,11,5,25, 39, 2};
-
-    // std::cout << "Enter Array of Elements: ";    
-    // for(int x; std::cin >> x;) v.push_back(abs(x));
-
-    int sum;    
-    std::cout << "Enter sum: ";
-    std::cin >> sum;
-    sum = abs(sum);
-    
-    /* Two Pointer Approach */
-    int x1 = v[0];
-    int x2 = v[1];
-    int least = std::numeric_limits<int>::max();
+std::vector<std::vector<int>> closest_diffs(std::vector<int> v, int req) {
+    int diff_last = std::numeric_limits<int>::max(); // Guarantees that first difference will always be true
+    std::vector<std::vector<int>> nums;
 
     for(int i = 0; i < v.size(); i++) {
-        for(int j = 0; j < v.size(); j++) {
-            if(i == j) continue;
-            int tmp_sum = v[i] + v[j];
-            int tmp_dif = abs(sum - tmp_sum); 
-            if(tmp_dif < least) {
-                least = tmp_dif;
-                x1 = v[i];
-                x2 = v[j]; 
+        for(int j = i+1; j < v.size(); j++) {
+            int s = v[i] + v[j];
+            int new_diff = abs(req - s);
+            
+            // Check if pair is unique (assuming option to erase duplicates in given vector is not available)
+            bool is_uniq = true;
+            for(std::vector<int> pair : nums) {
+
+                if((pair[0] == v[i] || pair[1] == v[i]) && 
+                    (pair[0] == v[j] || pair[1] == v[j])) {
+                    is_uniq = false;
+                    break;
+                }
+            }
+
+            if(new_diff <= diff_last && is_uniq) {
+                if(new_diff < diff_last) 
+                    nums = {};
+                
+                diff_last = new_diff;
+                nums.push_back({v[i], v[j]});
             }
         }
     }
-    
-    std::cout << "Closest Nums are: " << x1 << ", " << x2 << "\n";
-    std::cout << "Least Dif: " << least;
+
+    return nums;
+}
+
+int main() {
+    std::vector<std::vector<int>> v = closest_diffs({31,40,34,11,5,25,34}, 46);
+    for(std::vector<int> vv : v) {
+        for(int x : vv)
+            std::cout << x << " ";
+        std::cout << "\n";
+    }
 }

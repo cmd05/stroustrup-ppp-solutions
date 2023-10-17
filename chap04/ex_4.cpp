@@ -25,7 +25,7 @@ int main() {
     int start = 50;
     // Lower / correct / Higher
     cout << "** Number Guessing Game **\
-    \n Guess a number between 0-100 \
+    \n Choose a number between 0-100 \
     \n I will try to guess it within 7 tries\
     \n Respond with l for lower, c for correct and h for higher\
     \n\n";

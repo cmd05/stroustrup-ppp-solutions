@@ -15,12 +15,15 @@ with primes. Consider 2 the first prime.
 #include <math.h>
 using namespace std;
 
+vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+
 bool is_prime(int n) {
-    vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
-    bool is_prime = false;
+    if(n == 1) return false;
+    
+    bool is_prime = true;
     for(int i = 0; i < primes.size(); i++) {
-        if(n == primes[i]) {
-            is_prime = true;
+        if(n % primes[i] == 0 && n != primes[i]) {
+            is_prime = false;
             break;
         }
     }
@@ -32,5 +35,8 @@ int main() {
     for(int i = 0; i < 100; i++) {
         if(is_prime(i)) list.push_back(i);
     }
+
+    for(int x : primes) cout << x << " ";
+    std::cout << "\n\n";
     for(int x : list) cout << x << " ";
 }

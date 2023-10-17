@@ -29,10 +29,14 @@ int main() {
     int search;
     std::cin >> search;
 
-    if (std::find(scores.begin(), scores.end(), search)!=scores.end()) {
-        for(int i = 0; i < scores.size(); i++) 
-            if(scores[i] == search) std::cout << "Name: " << names[i] << "\n";
-    } else {
-        throw std::invalid_argument("Score not found");
+    bool found = false;
+    for(int i = 0; i < scores.size(); i++) {
+        if(scores[i] == search) {
+            if(!found) found = true;
+            std::cout << "Name: " << names[i] << "\n";
+        }
     }
+
+    if(!found)
+        throw std::invalid_argument("Score not found");
 }

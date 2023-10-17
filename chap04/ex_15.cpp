@@ -13,7 +13,7 @@ int main() {
     std::cin >> n;
     for(int i = 2; count < n; i++) {
         bool is_prime = true;
-        for(int j = 2; j < i; j++) {
+        for(int j = 2; j < (sqrt(i)+1); j++) {
             if(i % j == 0 && i != j) {
                 is_prime = false;
                 break;

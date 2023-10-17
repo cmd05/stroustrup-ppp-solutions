@@ -23,11 +23,11 @@ int main() {
     // 2 4 8 ... 1000
     const int min_grains = 1000000000;
     int sum = 0;
-    for(int i = 0; i < 64; i++) {
-        int grain_on_square = pow(2, i + 1);
+    for(int i = 1; i < 64; i++) {
+        int grain_on_square = pow(2, i);
         sum += grain_on_square;
-        if(sum > min_grains) {
-            cout << i + 1 << " number of squares";
+        if(sum >= min_grains) {
+            cout << i << " number of squares";
             break;
         }
     }

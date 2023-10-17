@@ -40,6 +40,7 @@
 #include <vector>
 #include <algorithm>
 #include <math.h>
+#include <limits>
 
 using namespace std;
 
@@ -64,7 +65,7 @@ int main() {
     } */
     
     // Step 6 onwards
-    double min = 2147483647, max = -2147483647, sum = 0;
+    double min = std::numeric_limits<int>::max(), max = std::numeric_limits<int>::min(), sum = 0;
     vector<double> values;
     string unit;
     cout << "Enter length followed by unit(cm, m. in, ft): ";

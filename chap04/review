@@ -68,22 +68,36 @@ numbers?
 
 16. What is the function of each part of the header line in a for-loop, and
 in what sequence are they executed?
-  for(int i = 0; i < 100; i++) {
-  i. initialize variable for iterating over loop
-  ii. Loop until condition remains true - Until i reaches 100
-  iii. Increment i at each iteration
-    Note to self:
+  for(int i = 0; i < 100; i++)
+  
+  First initialize int i (happens only once) 
+  
+  Steps are repeated until condition in loop is false:
+  1. Check condition (i < 100)
+  2. Execute body of loop
+  3. Increment i after each complete iteration
+
+  Note to self:
     (++pre - value is incremented then used
     post++ - value is used then incremented)
+
+    int i = 0;
+    cout << ++i; // 1
+    cout << i++; // 1
+    cout << i; // 2
 
 17. When should the for-loop be used and when should the while-loop
 be used?
   For loop: Use of initializer, condition and increment/decrement operation
   While: Independent of initializer and inc/dec operation
 
+  In general for loop is preferred for iteration over a range / collection and while loop is used to
+  loop till a given condition is true
+
 18. How do you print the numeric value of a char?
   Casting to type int;
-  int my_int = char_value; OR cout << int(char_value)
+  int my_int = char_value;
+  OR cout << int(char_value)
 
 19. Describe what the line char foo(int x) means in a function definition
   Define function named foo accepting one parameter x as integer and returning a char value
@@ -108,14 +122,21 @@ List reasons.
   for(type x : vec) cout << x;
 
 25. What does vector<char> alphabet(26); do?
-  Initializes vector with 26 empty char values
+  Initializes vector with 26 uninitialized char values
+
+Note: What is a garbage value (value of an uninitialized variable)
+> They're just whatever garbage happened to be in that memory location.
+> That bit of RAM has always existed; there is no way to know what was stored there before.
+  If it was just requested from the OS, it is likely to be 0 
+  (the OS will erase memory blocks before giving them out for security reasons).
+  If it was previously used by your program, who knows.
 
 26. Describe what push_back() does to a vector.
   Adds element to end of vector
 
 27. What do vector's member functions begin(), end(), and size() do?
-  begin(): Return pointer pointing to first el of vector
-  end(): Return pointer pointing to last el of vector
+  begin(): Return pointer pointing to first item of vector
+  end(): Return pointer pointing to element after last item of vector (pseudo element which is only used for checking bounds)
   size(): Return no. of elements in vector
 
 28. What makes vector so popular/useful?
@@ -123,3 +144,8 @@ List reasons.
 
 29. How do you sort the elements of a vector?
   sort(v.begin(), v.end())
+
+Note:
+  a / b // returns int by default if both a and b are ints
+  a / b // returns float if a or b or both are float/double
+  double(a / b) // returns double - use when a and b are both ints or for clarity

@@ -19,22 +19,22 @@ int main() {
     };
     int size = nums.size();
 
-    // cout << "Enter number: ";
     // for(int n; cin >> n;) {
+    //     cout << "Enter number: ";
+
     //     if(n >= 0 && n <= 9) {
     //         cout << nums[n] << "\n"; 
     //     }
-    //     cout << "Enter number: ";
     // }
 
-    cout << "Enter number in spelled form: ";
     for(string n; cin >> n;) {
+        cout << "Enter number in spelled form: ";
+
         for(int i = 0; i < size; i++) {
             if(nums[i] == n) {
                 cout << i << "\n";
                 break;
             }
         }        
-        cout << "Enter number in spelled form: ";
     }
 }

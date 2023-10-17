@@ -24,7 +24,10 @@ int get_number()
 	const int not_a_symbol = numbers.size();	// not_a_symbol is a value that does not correspond
 												// to a string in the numbers vector
 	int val = not_a_symbol;
-	if (cin>>val) return val; // try to read an integer composed of digits
+	if (cin>>val) {
+        if(abs(val) > 9) throw runtime_error("num must be single digit");
+        return val; // try to read an integer composed of digits
+    }
 
 	cin.clear();	// clear string after failed attempt to read an integer
 	string s;

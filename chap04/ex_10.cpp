@@ -26,38 +26,39 @@ int main() {
         char comp = computer[random];
 
         if(x == 'r' || x == 'p' || x == 's') {
-            string user_move = "";
             int j = 0;
             for(char a : computer) {
                 if(a == x) cout << "You chose " << full[j] << endl;
                 j++;
             }
-            cout << "Computer chose " << full[random] << "\n";
+        } else {
+            cout << "Invalid input";
+            cout << "\n\nRock Paper Scissors \n r - Rock \n p - Paper \n s- Scissors \n Enter Move:";
+
+            continue;
         }
+    
+        cout << "Computer chose " << full[random] << "\n";
 
         if(comp == x) {
             cout << "Its a tie";
-        } else if(x == 'r') {
-            if(comp == 'p') {
-                cout << "Computer Win";
-            } else {
-                cout << "You won";
-            }
-        } else if(x == 'p') {
-            if(comp == 's') {
-                cout << "Computer Win";
-            } else {
-                cout << "You won";
-            }
-        } else if(x == 's') {
-            if(comp == 'r') {
-                cout << "Computer Win";
-            } else {
-                cout << "You won";
-            }
         } else {
-            cout << "Invalid Input";
+            string winner;
+            switch (x) {
+                case 'r':
+                    winner = (comp == 'p') ? "comp" : "you"; 
+                    break;
+                case 'p':
+                    winner = (comp == 's') ? "comp" : "you";
+                    break;
+                case 's':
+                    winner = (comp == 'r') ? "comp" : "you"; 
+                    break;
+            }
+
+            cout << winner << " won";
         }
+        
         cout << "\n\n";
         cout << "Rock Paper Scissors \n r - Rock \n p - Paper \n s- Scissors \n Enter Move:";
     }

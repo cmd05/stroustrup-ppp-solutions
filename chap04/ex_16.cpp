@@ -7,6 +7,7 @@ finds the mode of a set of positive integers
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unordered_set>
 #include <algorithm>
 #include <math.h>
 
@@ -15,9 +16,9 @@ int main() {
     std::vector<int> v;
 
     std::cout << "Enter Numbers: ";
-    for(int x; std::cin >> x;) v.push_back(abs(x));
+    for(int x; std::cin >> x;) v.push_back(x);
 
-    int mode = v[0];
+    std::unordered_set<int> modes;
     int occurences = -1;
 
     // 1 1 2 2 1 3 4 2 
@@ -26,10 +27,15 @@ int main() {
         for(int y : v) if(y == x) new_occurrences++;
 
         if(new_occurrences >= occurences) {
-            mode = x;
+            if(new_occurrences > occurences)
+                modes.clear();
+            
+            modes.insert(x);
             occurences = new_occurrences;
         }
     }
 
-    std::cout << "The mode is: " << mode;
+    std::cout << "The mode(s) is/are ( ";
+    for(int mode : modes) std::cout << mode << " ";
+    std::cout << ") with " << occurences << " occurences";
 }
