@@ -24,7 +24,7 @@ int framed_area(int x, int y) // calculate area within frame
 void f(int x, int y, int z)
 {
     int area1 = area(x,y);
-    if (area1<=0) throw std::runtime_error("non-positive area");
+    if (area1 == -1) throw std::runtime_error("non-positive area");
     int area2 = framed_area(1,z);
     int area3 = framed_area(y,z);
     double ratio = double(area1)/area3;

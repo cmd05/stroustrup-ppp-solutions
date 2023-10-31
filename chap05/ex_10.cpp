@@ -5,6 +5,7 @@ between adjacent values and write out that vector of differences. */
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <limits>
 
 int main() {
     try {
@@ -22,12 +23,16 @@ int main() {
         std::vector<double> difs;
 
         for(int i = 0; i < v.size(); i++) {
-            sum += v[i];
+            int x = v[i];
+            
+            if(x > 0 && sum > std::numeric_limits<double>::max() - x) throw std::runtime_error("overflow: Sum cannot be represented as an int");
+            if(x < 0 && sum < std::numeric_limits<double>::min() - x) throw std::runtime_error("underflow: Sum cannot be represented as an int");
+
+            sum += x;
+
             if(i == 0) continue;
             difs.push_back(v[i] - v[i-1]);
         }
-
-        if(sum > std::numeric_limits<double>::max()) throw std::runtime_error("Sum cannot be  represented as DOUBLE");
 
         std::cout << "Sum of the " << n << " numbers is " << sum << "\n";
         std::cout << "Difs: ";

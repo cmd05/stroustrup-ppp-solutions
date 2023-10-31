@@ -20,7 +20,7 @@ int main() {
         std::cin >> n;
         if(!std::cin) throw std::runtime_error("Invalid Input");
         std::vector<int> v;
-        std::cout << "Enter values (end with'|')";
+        std::cout << "Enter values (last input should '|', when all values have been entered)";
         for(int x; std::cin >> x;) v.push_back(x);
 
         if(v.size() != n) throw std::runtime_error("You entered wrong number of inputs");

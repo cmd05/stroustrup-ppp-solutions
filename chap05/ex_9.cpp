@@ -19,7 +19,13 @@ int main() {
 
         int sum = 0;
         for(int x : v) sum += x;
-        if(sum > std::numeric_limits<int>::max()) throw std::runtime_error("Sum cannot be  represented as INT");
+
+        for(int x : v) {
+            if(x > 0 && sum > INT_MAX - x) throw std::runtime_error("overflow: Sum cannot be represented as an int");
+            if(x < 0 && sum < INT_MIN - x) throw std::runtime_error("underflow: Sum cannot be represented as an int");
+
+            sum += x;
+        }
 
         std::cout << "Sum of the " << n << " numbers is " << sum;
     } catch(std::exception& e) {

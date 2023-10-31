@@ -4,3 +4,6 @@ max_temp (the "maximum temperature") constants for our
 program. Those values will determine the limits of usefulness
 of our program.
  */
+
+// int min_tmp = std::numeric_limits<int>::max();
+// int max_tmp = std::numeric_limits<int>::min();
