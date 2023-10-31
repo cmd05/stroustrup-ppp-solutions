@@ -3,6 +3,9 @@
 My solutions to Programming Principles and Practice by Bjarne Stroustrup.
 The repository includes ``Snippets``, ``Drills``, ``Exercises``, ``Try-it's``, ``Review`` and ``Projects``
 
+### Shortcut to Test
+`gpx() { g++ "$1"; ./a.exe; }`
+
 ## Projects
 <img src="https://user-images.githubusercontent.com/63466463/140851293-522cfd05-6ffc-4100-8228-717feada37f4.jpg" width="30%" title="binary_tree"  alt="binary_tree"></img>
 <img src="https://user-images.githubusercontent.com/63466463/140851292-8db82f1b-c39b-46cd-89c5-7ea341ad9a33.png" width="30%" title="bell_curve"  alt="bell_curve"></img>
