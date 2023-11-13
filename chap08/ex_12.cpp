@@ -5,11 +5,13 @@ using namespace std;
 
 void print_until_ss(const vector<string>& v, const string& quit)
 {
-    int count = 0;
+    bool occured = false;
 
     for(string s : v) {
-        if(s == quit) count++;
-        if(count > 1) return;
+        if(s == quit) {
+            if(occured) return;
+            occured = true;
+        }
 
         cout << s << "\n";
     }
