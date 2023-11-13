@@ -14,6 +14,7 @@ Book.pdf
 # Test file
 test.cpp
 test.c
+test.h
 
 #FLTK Library
 /includes/graphics/FLTK/*
