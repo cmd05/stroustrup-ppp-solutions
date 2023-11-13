@@ -20,17 +20,18 @@ void fibonacci(const int& x, const int& y, vector<int>& v, const int& n) {
     int a = x;
     int b = y;
 
-    for (int i = b; i <= n; i++) {
+    for (int i = 0; i < n-2; i++) {
+        if(a > INT_MAX - b) break;
+
         int sum = a + b;
         a = b;
         b = sum;
-        if(sum < 0) break;
         v.push_back(sum);
     }
 }
 
 int main() {
     vector<int> v;
-    fibonacci(1, 2, v, INT_MAX);
+    fibonacci(3, 4, v, 50);
     for(int x : v) cout << x << " ";
 }
