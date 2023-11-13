@@ -63,8 +63,15 @@ vector<int> descend_val(vector<int> v) {
     return v;
 }
 
+void rev(vector<int>& v) {
+    int n = v.size();
+
+    for(int i = 0; i < (n / 2); i++)
+        swap(v[i], v[n-1-i]);
+}
+
 int main() {
     vector<int> v = {3, 1, 2, 9, 7, 10, -1, 32, -321};
-    descend_ref(v);
+    rev(v);
     for(int x : v) cout << x << " ";
 }
