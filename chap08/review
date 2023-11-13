@@ -115,13 +115,32 @@ classes within functions?
 
 24. How does a namespace differ from a class?
     Classes are a data structure.
-    Namespaces declare a scope and group similar classes, functions etc.
+    Namespaces *declare a scope* and *group* similar classes, functions etc.
 
 25. What is a using declaration?
     Referring to classes, functions and variables in a namespace without fully qualified name
 
 26. Why should you avoid using directives in a header?
-    Leads to clashes
+    Leads to clashes. *Leaks symbols to source files, which includes the header*
+
+Eg:
+> header.cpp:
+
+#include <iostream>
+using namespace std;
+
+> main.cpp:
+
+#include "header.h"
+
+int main() {
+    cout << "Hello"; // does not require 'std::'
+}
+
+> Output:
+Hello
+
+Hence, the using directive leaks symbols to the source file from iostream library since 'using' directive is used.
 
 27. What is namespace std?
-    Using directive for standard library namespace
+    Using directive for *standard library namespace*
