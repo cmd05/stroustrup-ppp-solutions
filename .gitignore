@@ -1,3 +1,7 @@
+# Temporarily ignore
+scientific_calculator/
+super_revision.cpp
+
 # Ignore large test files
 *.igtest
 
