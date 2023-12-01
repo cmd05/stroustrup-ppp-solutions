@@ -16,7 +16,7 @@ enum class Month {
 };
 
 // Increment op
-Month operator++(Month& m) {
+Month operator++(Month& m) { /// take month arg by ref
     m = m==Month::Dec ? Month::Jan : Month(int(m)+1);
     return m;
 }
@@ -36,12 +36,12 @@ class Date {
         int y;
         int d;
         Month m;
-        bool is_valid();
+        bool is_valid(); /// private method - concerned with only implementation details
 };
 
 
 Date::Date(int yy, Month mm, int dd): y{yy}, m{mm}, d{dd} {
-    if(!is_valid()) throw Invalid{"Invalid Date"};
+    if(!is_valid()) throw Invalid{"Invalid Date"}; /// throw Invalid exception if date is invalid
 }
 
 Date& default_date() {
@@ -50,7 +50,7 @@ Date& default_date() {
     static constexpr Month EPOCH_MONTH = Month::Jan;
     static constexpr int EPOCH_DAY = 1;
 
-    static Date dd {1990, Month::Mar, 1};
+    static Date dd {1990, Month::Mar, 1}; /// not created for each call seperately
     return dd;
 }
 
@@ -64,7 +64,7 @@ bool Date::is_valid() {
 
 void Date::add_day(int n) {d++;}
 
-ostream& operator<<(ostream& os, Month m) {
+ostream& operator<<(ostream& os, const Month& m) { /// operator<<(ostream& os, const T& obj)
     const vector<string> month_tbl = {
         "January", "February", "March", "April",
         "May", "June", "July", "August", "September"

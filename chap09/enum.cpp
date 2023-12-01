@@ -19,12 +19,11 @@ ostream& operator<<(ostream& os, Month m) {
         "October", "November", "December"
     };
     
-    return os << month_tbl[int(m)];
+    return os << month_tbl[int(m) - 1];
 }
-
 
 int main() {
     Month m{Month::Feb};
     ++m;
-
+    std::cout << m;
 }

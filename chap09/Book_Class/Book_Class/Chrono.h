@@ -26,6 +26,9 @@ namespace Chrono {
 
 	bool is_leap_year(int y);
 
+	/// operator overloads for a class inside namespace are preferably defined inside the same namespace
+	/// The compiler finds them through `argument dependant lookup` 
+
 	bool operator==(const Date& a, const Date& b);
 	bool operator!=(const Date& a, const Date& b);
 

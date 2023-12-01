@@ -23,7 +23,7 @@ function?
 
 6. When should functions be put in the class definition, and when
 should they be defined outside the class? Why?
-    Inside: Simple logic and less no. of lines
+    Inside: Simple logic and less no. of lines (inline functions are optimized)
     Outside: Not straightforward and long implementation
 
 7. When should operator overloading be used in a program? Give a list
@@ -43,3 +43,86 @@ of operators that you might want to overload (each with a reason)
 
 10. Why are "helper functions" best placed outside the class definition?
     They are design concepts - different from programming logic
+
+Notes:
+
+=> List initialization (using {}) is generally preferred as it prevents narrowing. 
+Ex: int to char is allowed but not char to int
+    float to double is allowed but not vice versa
+
+=> Defining member function within class makes it inline. The compiler will generate code for the function at each point
+of the call rather than using function-call instructions to use common code.
+- This can improve performance for functions which are frequently use and perform very less actions. 
+Example: returning private data through public interface
+- Defining function body outside class declarations avoids us from recompiling class when the fn. is changed.
+Class is recompiled only when class body changes. This is advantageous in large programs.
+=> Defining member function outside reduces length of class definition. This improves readability
+
+=> Class object is an implicit argument passed for member functions, so that correct class object can be used.
+
+=> plain `enums` are less strict, have larger scope and should be avoided. Use `enum class` instead.
+=> An enumerator is a symbolic constant
+
+/// operator overloads for a class inside namespace are preferably defined inside the same namespace
+/// The compiler finds them through `argument dependant lookup` 
+
+constexpr indicates a value that's constant and known during compilation. (increases performance)
+const indicates a value that's only constant; it's not compulsory to know during compilation.
+
+static consts are used in class so that there is one copy of variable for all class objects of the specific class instead
+of a copy for each individual class object
+
+class Year {
+private:
+    static constexpr min = 1800;
+    static constexpr max = 2200;
+}
+
+Date& default_date() {
+    static Date d 
+}
+
+Base obj1(5); //calls Base class constructor
+Base obj2; //calls Base class default constructor
+obj2 = obj1; //calls assignment operator
+
+Base obj1(5);
+Base obj2 = obj1; //calls copy constructor
+
+/* Difference between list-initialization and initializer_list */
+
+1. List Initialization:
+
+list-initialization is a syntax in c++ to call ctor of an object or initialize a POD (plain old data) (like a struct),
+using curly braces around the arguments.
+
+Ex: Date{1999, Month::jan, 5} // calls ctor of date and constructs a date object
+    Car_Data{Color::red, 1990, "Ford"} // initializes struct with no ctor but vars: Color c, int year, string brand
+
+2. Member initializer lists
+
+It is a syntax used to initialize members in a constructor.
+
+Ex:
+    Date(int year, Month month, int day): y{year}, m{month}, d{day}
+    {}
+
+3. std::initializer_list (or initializer_list if std namespace is in scope):
+
+It is a data type (like vector) that can store objects of type T.
+
+Ex: 
+std::initializer_list<int> my_list {1, 2, 3};
+
+4. Auto construction of std::initializer_list when parameter is std::initializer_list and single braced list is used
+
+template<typename T>
+class vector {
+    vector(std::initializer_list<T> il);
+    vector(int size);
+};
+
+vector<int> v1 {1,2,3} // it is same as vector { std::initializer_list{1,2,3} } as compiler allows using single brace when
+               // the only argument is an std::initializer_list
+vector<int> v2 {10} // vector containing one element which is 10
+vector<int> v3 (10) // vector containing 10 uninitialized integers

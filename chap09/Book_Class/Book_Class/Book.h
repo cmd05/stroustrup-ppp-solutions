@@ -2,7 +2,9 @@
 //#include <iostream>
 #include <string>
 #include <vector>
-#include "Chrono.h"
+#include "Chrono.h" /// includes chrono.h as Date class is used (part of chrono namespace)
+
+/// date must be prequalified with Chrono since no using directive is used
 
 namespace Library {
 	enum class Genre {
@@ -79,7 +81,7 @@ namespace Library {
 		std::vector<Patron> patrons;
 		std::vector<Chrono::Date> dates;
 
-		struct Transaction {
+		struct Transaction { /// define a new struct inside class 
 			int bookId;
 			std::string patronId;
 			Chrono::Date date;

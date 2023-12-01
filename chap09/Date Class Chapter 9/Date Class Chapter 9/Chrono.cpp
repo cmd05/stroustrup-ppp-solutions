@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 
+/// all methods are defined inside chrono namespace 
+
 namespace Chrono {
     // Invalid Class
     Invalid::Invalid(std::string err) : msg{ err } {}
@@ -120,7 +122,6 @@ namespace Chrono {
     }
 
     bool Date::is_leap_year(const int n) {
-        if ((n % 4 == 0) && (n % 100 != 0) && (n % 400 == 0)) return true;
-        return false;
+        return ((n % 4 == 0) && (n % 100 != 0) && (n % 400 == 0));  /// should be divisible by 4 and 400 but not 100
     }
 };

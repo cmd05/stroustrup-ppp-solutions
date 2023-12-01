@@ -3,6 +3,8 @@
 #include <string>
 
 namespace Chrono {
+	/// classes, enums, functions and vars are declared inside chrono namespace
+
 	class Invalid {
 	public:
 		Invalid(std::string err);
@@ -48,6 +50,8 @@ namespace Chrono {
 	bool is_date(int y, Month m, int d);
 
 	bool is_leap_year(int y);
+
+	/// generally operator overloads are not member functions of a class (except ex: copy assignment)
 
 	bool operator==(const Date& a, const Date& b);
 	bool operator!=(const Date& a, const Date& b);

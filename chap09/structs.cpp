@@ -7,7 +7,7 @@ struct Date {
     void add_day(int n); //Increase Date By n days
 };
 
-Date::Date(int yy, int mm, int dd) :y{yy}, m{mm}, d{dd} {}
+Date::Date(int yy, int mm, int dd) :y{yy}, m{mm}, d{dd} {} /// constructor is similar to class
 
 struct Str {};
 
