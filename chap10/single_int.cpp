@@ -5,17 +5,21 @@
 #include <cctype>
 #include <string>
 
+int get_int();
+
 void skip_to_int() {
     // not of type int
     if(std::cin.fail()) {
-        std::cin.clear(); // clear errors
-        for(char ch; std::cin >> ch;) { // throw away non digits
+        std::cin.clear(); // clear errors so that we can read again
+
+        for(char ch; std::cin >> ch;) { // skip past non digits
             if(isdigit(ch) || ch=='-') { // valid input
-                std::cin.unget(); // puts a value back into input stream - not empty
+                std::cin.unget(); // puts character back into input stream - not empty
                 return;
             }
         }
     }
+
     throw std::runtime_error("No input");
 }
 
@@ -38,11 +42,18 @@ int get_int(int low, int high) {
 }
 
 int main() {
-    std::cout << "Enter a number: ";
-    int m = get_int();
-    std::cout << "m: " << m << "\n";
-    std::cout << "Enter a number 1-10 inclusive: ";
-    int n = get_int(0, 10);
-    std::cout << "n: " << n << "\n";
+    std::cin.exceptions(std::cin.exceptions() | std::ios_base::badbit); // throws ios_base::failure
+
+    try {
+        std::cout << "Enter a number: ";
+        int m = get_int();
+        std::cout << "m: " << m << "\n";
+    } catch(std::runtime_error& e) {
+        std::cerr << "Error: " << e.what();
+    }
+
+    // std::cout << "Enter a number 1-10 inclusive: ";
+    // int n = get_int(0, 10);
+    // std::cout << "n: " << n << "\n";
     // correct input
 }

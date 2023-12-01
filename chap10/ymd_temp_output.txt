@@ -1,0 +1,31 @@
+NYC 110011, USA
+Year 1990
+
+Year 1991
+	June: 
+
+Year 1992
+	January: 
+		Day 1: 
+			Hour: 0 Reading: 61.500000
+	February: 
+		Day 1: 
+			Hour: 1 Reading: 64.000000
+		Day 2: 
+			Hour: 2 Reading: 65.200000
+
+Year 2000
+	February: 
+		Day 1: 
+			Hour: 0 Reading: 67.200000
+			Hour: 1 Reading: 68.000000
+		Day 2: 
+			Hour: 3 Reading: 66.660000
+	December: 
+		Day 12: 
+			Hour: 15 Reading: -9.200000
+		Day 14: 
+			Hour: 0 Reading: -2.000000
+		Day 16: 
+			Hour: 14 Reading: -8.800000
+

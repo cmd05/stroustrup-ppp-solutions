@@ -6,11 +6,11 @@
 #include <map>
 #include <math.h>
 
-// celsius, ymd
-constexpr int INVALID_READING = -2000;  // below abs 0
+// fahreneit, ymd
+constexpr int INVALID_READING = -460;  // below abs 0 (fan)
 constexpr int NOT_MONTH = -1;
-constexpr int implausible_min = -200;  // impossible value
-constexpr int implausible_max = 200;
+constexpr int implausible_min = -300;  // impossible value
+constexpr int implausible_max = 500;
 constexpr int min_year = 1900;
 constexpr int max_year = 2021;
 
@@ -44,12 +44,13 @@ struct Reading {
 };
 
 struct Day {
-    std::vector<double> hour {std::vector<double>(24, INVALID_READING)};
+    std::vector<double> hour = std::vector<double>(24, INVALID_READING);
+    // vector<double> hour(24, -1) can be also be used however the above verbose syntax will not cause confusion
 };
 
 struct Month {
     int month = NOT_MONTH;  // 0-11 jan=0
-    std::vector<Day> day {32};   // 1-31 one per day
+    std::vector<Day> day {32};   // 1-31 one per day (day[0] is not used)
 };
 
 struct Year {
@@ -76,7 +77,8 @@ std::istream& operator>>(std::istream& ist, Reading& r) {
     double temp;
     ist >> d >> h >> temp >> ch_2;
     
-    if(!ist || ch_2 != ')') throw_err("bad reading", d);
+
+    if(!ist || ch_2 != ')') throw_err("bad format of reading", d);
     r.day = d;
     r.hour = h;
     r.temperature = temp;
@@ -98,7 +100,7 @@ const std::vector<std::string> month_input_tbl = {
 
 const std::vector<std::string> month_output_tbl = {
     "January", "February", "March", "April",
-    "May", "June", "July", "August", "September"
+    "May", "June", "July", "August", "September",
     "October", "November", "December"
 };
 
@@ -135,8 +137,8 @@ std::istream& operator>>(std::istream& ist, Month& m) {
     /* 
         month has day vector containing days as:
         {
-            Day 1: {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1} // 24 times
-            Day 2: {-1, 67.6, -1, -1, -1, -1, -1, -1, -1, -1} // 24 times
+            Day 1: {-460, -460, -460, -460, -460, -460, -460, -460, -460, -460} // 24 times
+            Day 2: {-460, 67.6, -460, -460, -460, -460, -460, -460, -460, -460} // 24 times
         }
     
      */
@@ -161,14 +163,14 @@ std::istream& operator>>(std::istream& ist, Year& y) {
     ist >> ch;
     if(ch != '{') {
         ist.unget();
-        ist.clear(std::ios_base::failbit);
+        ist.clear(std::ios_base::failbit); // return as stream as fail
         return ist;
     }
 
     std::string year_marker;
     int yy;
     ist >> year_marker >> yy;
-    if(!ist || year_marker != "year") throw std::runtime_error("Invalid Year start ");
+    if(!ist || year_marker != "year") throw std::runtime_error("Invalid format (year marker not found)");
     if(yy < min_year || yy > max_year) throw std::runtime_error("Year outside range");
         
     y.year = yy;
@@ -178,14 +180,14 @@ std::istream& operator>>(std::istream& ist, Year& y) {
         {
             Jan
             {
-                Day 1: {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1} // 24 times
-                Day 2: {-1, 67.6, -1, -1, -1, -1, -1, -1, -1, -1} // 24 times
+                Day 1: {-460, -460, -460, -460, -460, -460, -460, -460, -460, -460} // 24 times
+                Day 2: {-460, 67.6, -460, -460, -460, -460, -460, -460, -460, -460} // 24 times
             }
         
             Feb
             {
-                Day 1: {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1} // 24 times
-                Day 2: {-1, 61, -1, -1, -1, -1, -1, -1, -1, -1} // 24 times
+                Day 1: {-460, -460, -460, -460, -460, -460, -460, -460, -460, -460} // 24 times
+                Day 2: {-460, 61, -460, -460, -460, -460, -460, -460, -460, -460} // 24 times
             }
         }
      */
@@ -207,27 +209,29 @@ std::istream& operator>>(std::istream& ist, Collection& collection) {
     // mentioned location
     std::string city, country;
     char ch_1, ch_2;
-    int zipcode;
-    ist >> ch_1 >> city >> country >> zipcode >> ch_2;
+    std::string zipcode;
 
-    std::string location = city + + " " +std::to_string(zipcode) + ", " + country;
-    const int zipsize = (zipcode <= 1) ? 1 : (log10(zipcode) + 1);
+    ist >> ch_1 >> city >> country >> zipcode >> ch_2;
 
     if(ch_1 != '[' || ch_2 != ']' || !ist) {
         throw std::runtime_error("Invalid location format.");
-    } else if(zipsize != 6) {
+    }
+
+    if(!std::all_of(zipcode.begin(), zipcode.end(), isdigit) || zipcode.length() != 6) {
         throw std::runtime_error("Invalid zipcode");
-    } else if(location.size() > 100) {
+    }
+    
+    std::string location = city + + " " + zipcode + ", " + country;
+    if(location.size() > 100) {
         throw std::runtime_error("Location name exceeds 100 characters");
     }
     
-    std::cout << location;
     collection.location = location;
 
     while(true) {
         Year y;
         if(!(ist >> y)) break;
-        for(Year yy : collection.years) if(yy.year == y.year) throw std::runtime_error("Year repeated ");
+        for(Year yy : collection.years) if(yy.year == y.year) throw std::runtime_error("Year repeated");
         collection.years.push_back(y);
     }
     
@@ -240,13 +244,14 @@ std::istream& operator>>(std::istream& ist, Collection& collection) {
     return ist;
 }
 
-void print_years(std::ofstream& os, Collection& collection) {
-    std::cout << collection.location << "\n";
+std::ostream& operator<<(std::ostream& os, Collection& collection) {
+    os << collection.location << "\n\n";
+    
     for(Year y : collection.years) {
-        std::cout << "Year " << y.year << "\n";
+        os << "Year " << y.year << "\n";
         for(Month m : y.month) {
             if(m.month != NOT_MONTH) {
-                std::cout << "\t" << int_to_month(m.month) << ": \n";
+                os << "\t" << int_to_month(m.month) << ": \n";
                 for(int h = 0; h < m.day.size(); h++) {
                     const Day d = m.day[h];
                     std::string message;
@@ -254,23 +259,29 @@ void print_years(std::ofstream& os, Collection& collection) {
                         const double reading = d.hour[i];
                         if(reading != INVALID_READING) message += "\t\t\tHour: " + std::to_string(i) + " Reading: " + std::to_string(reading) + "\n"; 
                     }
-                    if(message != "") std::cout << "\t\tDay " << h << ": \n" << message;
+                    if(message != "") os << "\t\tDay " << h << ": \n" << message;
                 }
             }
         }
-        std::cout << "\n";
+        os << "\n";
     }
+
+    return os;
 }
 
 int main() {
-    std::ifstream ifs {"ymd_temp_readings.txt"};
-    if(!ifs) throw std::runtime_error("Could not open file");
-    Collection readings{};
+
     try {
+        std::ifstream ifs {"ymd_temp_readings.txt"};
+        if(!ifs) throw std::runtime_error("Could not open file");
+
+        // ifs.exceptions(ifs.exceptions() | std::ios_base::badbit); // throws ios_base::failure on badbit
+    
+        Collection readings{};
         ifs >> readings;
-        ifs.close();
+
         std::ofstream ofs {"ymd_temp_output.txt"};
-        print_years(ofs, readings);
+        ofs << readings;
     } catch(std::runtime_error& e) {
         std::cerr << e.what();
     }
