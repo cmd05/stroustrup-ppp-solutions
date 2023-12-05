@@ -35,22 +35,21 @@ std::vector<QuoteCoords> Punct_parser::get_quote_coords(std::string line) {
     int index = 0;  // set index for iterating over line
     for(char ch; quote_coords.get(ch);) {
         if(ch == '"') { // encountered opening ``"``
-            int terminator_index = 1;  // must be one more than position of element just read
-            for(char ch; quote_coords >> ch;) { // read again from ``"`` onwards
+            int steps = 0;  // must be one more than position of element just read
+            for(char ch; quote_coords.get(ch);) { // read again from ``"`` onwards
+                steps++;
+
                 if(ch == '"') { // we found the terminating ``"``
-                    quote_coords_v.push_back(QuoteCoords {index, (index + terminator_index)}); // push to coords
+                    quote_coords_v.push_back(QuoteCoords {index, (index + steps)}); // push to coords
                     // statement is inside if only, because if the quote_coords didnt find a terminator till the 
                     // end, outer loop will automatically end
-                    index += terminator_index;  
+                    index += steps;  
                     break;
                 }
-                terminator_index++;
             }
         }
         index++;
     }
-
-    // for(QuoteCoords cd : quote_coords_v) std::cout << cd.start << ", " << cd.final << "\n";
 
     return quote_coords_v;
 }
@@ -60,8 +59,10 @@ void Punct_parser::parse_line(std::string& line) {
     std::vector<QuoteCoords> points = get_quote_coords(line);
     for(char& ch : line) {
         bool in_coords = false;
-        for(QuoteCoords cd : points) if(cd.start <= i && cd.final >= i) in_coords = true;
-        // std::cout << in_coords;
+
+        for(QuoteCoords cd : points)
+            if(cd.start <= i && cd.final >= i) in_coords = true;
+
         if(is_whitespace(ch) && !in_coords)
             ch = ' ';
         else if(!sensitive)
@@ -71,11 +72,12 @@ void Punct_parser::parse_line(std::string& line) {
 }
 
 int main() {
-    std::cout << "Enter a string of words [Ctrl+Z to quit]: ";
+    // std::cout << "Enter a string of words [Ctrl+Z to quit]: ";
     const std::string punctuation = ";:,.?!(){}\"<>/&$@#%^*|~-";
-    for(std::string line; std::getline(std::cin, line);) {
+    std::string line = "A-B \"c-d e.f\" g:h \"i/j\"";
+    // for(std::string line; std::getline(std::cin, line);) {
         Punct_parser output {punctuation};
         output.parse_line(line);
         std::cout << "Modified Line: " << line << "\nTry Again [Ctrl+Z to quit]: ";
-    }
+    // }
 }
