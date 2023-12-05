@@ -17,3 +17,4 @@ The repository includes ``Snippets``, ``Drills``, ``Exercises``, ``Try-it's``, `
 <img src="https://user-images.githubusercontent.com/63466463/140851296-829f7a32-6aed-4537-8710-287e8c743521.gif" width="30%" title="checkers"  alt="checkers"></img>
 <img src="https://user-images.githubusercontent.com/63466463/140851290-2d27cc3a-7252-4eab-ac9f-2e359feb5a11.png" width="30%" title="arrow_shape"  alt="arrow_shape"></img>
 
+**Note:** The repository uses C++17 (C++17: 201703). (Ex: `<span>` does not work)
