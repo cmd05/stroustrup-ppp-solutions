@@ -41,12 +41,12 @@ int main() {
               << std::setw(8) << x << '|'
               << x << '|'; */
     std::cout << std::setw(10) << "cmd" << "|"
-              << std::setw(10) << "3BOT" << "|"
+              << std::setw(8) << "3BOT" << "|"
               << std::setw(10) << "1231231230" << "|"
-              << std::setw(30) << "cmd05@mail.in" << "|\n";
+              << std::setw(15) << "cmd05@mail.in" << "|\n";
               
     std::cout << std::setw(10) << "mohammed" << "|"
-            << std::setw(10) << "iftaar" << "|"
+            << std::setw(8) << "iftaar" << "|"
             << std::setw(10) << "1231231230" << "|"
-            << std::setw(30) << "mmmd@snl.in" << "|\n";
+            << std::setw(15) << "mmmd@snl.in" << "|\n";
 }
