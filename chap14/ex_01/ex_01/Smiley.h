@@ -5,7 +5,7 @@
 #include <math.h>
 
 namespace Graph_lib {
-	class Smiley: public Circle {
+	class Smiley : public Circle {
 	public: 
 		Smiley(Point center, int rr);
 		void draw_lines() const override;

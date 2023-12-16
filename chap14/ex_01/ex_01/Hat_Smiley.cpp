@@ -4,7 +4,7 @@ namespace Graph_lib {
 	Hat_Smiley::Hat_Smiley(Point center, int radius): Smiley(center, radius) {}
 
 	void Hat_Smiley::draw_lines() const {
-		Smiley::draw_lines();
+		Smiley::draw_lines(); // draw smiley first
 
 		// right end
 		int x_displace = Circle::radius() * cos(hat_angle);

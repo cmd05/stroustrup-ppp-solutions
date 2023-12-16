@@ -55,3 +55,7 @@ that layout in your code?
     - Use a scale object for the same
     - Label axis
     - Use colors and labels
+
+Lambda expressions:
+[](double x) { return cos(x) + slope(x); }
+[](double x) -> double { return cos(x) + sin(x); } // specifying return type is optional as it is automatically deduced

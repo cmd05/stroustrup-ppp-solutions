@@ -60,23 +60,23 @@ function?
         int main() {
             Base b;
             Child c;
+            c.fn(); // always C::fn()
             call(c);
         }
 
 10. What is a base class?
-    Represents a concept applicable to classes derived from it 
-    Allows instantiation
+        Class from which a derived class is derived from
+        It may be instantiable if it is concrete, not if it is abstract
 
 11. What makes a class derived?
-    If it extends a base class.
-    It must override all pure virtual functions
+    If it extends a base class
 
 12. What do we mean by object layout?
     Structure / Format of objects in memory
 
 13. What can you do to make a class easier to test?
     Keep it simple
-    Using OOP objects
+    Using OOP principles
 
 14. What is an inheritance diagram?
     Diagrams to visualize class relations
@@ -89,10 +89,7 @@ one?
 
 16. What members of a class can be accessed from a class derived from
 it?
-    Visibility of members of base class:
-        public: all functions and derived classes can use its public members
-        protected: only derived classes can use public/protected members of base class
-        private: public and protected members are only visible to base class itself
+    Only public and protected members
 
 17. How does a pure virtual function differ from other virtual functions?
     It is necessary to override a pure virtual function
@@ -112,8 +109,10 @@ it?
 
 21. How does interface inheritance differ from implementation
 inheritance?
-    Interface inheritance: A function expecting a Base Class {Shape} can accept a derived class {Circle}
-    Implementation inheritance: The derived class gets the data and data members from the Base
+    Interface inheritance: A function expecting a Base Class {Shape} can accept a derived class {Circle}, and use the interface
+    of the base class
+    Implementation inheritance: The derived class gets the data and data members from the Base. Derived classes can use functionality from
+    the base class
 
 22. What is object-oriented programming?
     Using objects and classes in code and applying OOP principles such as inheritance, polymorphism, encapsulation
