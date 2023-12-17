@@ -30,7 +30,7 @@ operating system from C++?
     Fast Light Toolkit - A GUI library
 
 10. How do you pronounce FLTK?
-    fulltick :D
+    fulltick :D :D
 
 11. What other GUI toolkits have you heard of?
     Qt, GTK
@@ -72,3 +72,4 @@ operating system from C++?
 "ordinary program using streams for I/O"?
     multi-threading - many programs interact with the screen
     exceptions thrown may not reach the handler
+    control inversion
