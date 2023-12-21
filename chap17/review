@@ -50,15 +50,16 @@ What operators support it?
 useful information does it lack?
     The object's address
     The data of the object
+    int* p = new int[5]; // p points to p[0], it does not know size of array 
 
 7. What can a pointer point to?
-    Any location in memory
+    Any location in memory, nullptr
 
 8. What is a leak?
     Not de-allocating memory which is not of use anymore
 
 9. What is a resource?
-    something that is acquired and must later be released
+    something that is acquired and must later be released after it is used
     eg: file, a lock, objects, memory
 
 10. How can we initialize a pointer?
@@ -93,8 +94,10 @@ object)?
     see v_destructor.cpp
 
 15. How are destructors for members called?
-    They maybe implicitly called from derived class destructor or be user-defined (delete)
-    However, dynamically allocated members must have their own destructors or should be manually deallocated
+    - If there is no destructor for a class, an implicit destructor destroys class members
+    - Resources such as memory allocated by new is not freed by implicit destructor
+    - Base class destructor must be virtual so that derived class destructor is called. The derived class destructor
+    implicitly calls the virtual base class destructor after it is complete
 
 16. What is a cast? When do we need to use one?
     operation to convert between different data-types
@@ -110,12 +113,13 @@ object)?
         // . . .
     }
 
+    static_cast, const_cast, reinterpret_cast etc.
+
 17. How do we access a member of a class through a pointer?
     ptr->member or (*ptr).member
 
 18. What is a doubly-linked list?
-    Each item specifies its predecessor and successor
+    Each item knows its predecessor and successor
 
-19. What is this and when do we need to use it?
+19. What is `this` and when do we need to use it?
     Identifier which points to object for which the member function was called
-
