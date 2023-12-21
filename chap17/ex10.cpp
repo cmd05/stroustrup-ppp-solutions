@@ -5,6 +5,7 @@ anything reasonable happen if you try to enter more characters than
 you allocated? */
 
 // Well i had allocated space according to the size of the input :p
+// array was not preallocated, but each time allocated of old_size+1
 
 #include <iostream>
 
