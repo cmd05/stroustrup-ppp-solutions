@@ -1,0 +1,63 @@
+0x7ff7ae278030->X(int): 0 (2) // glob_x created
+0xa1a99ffe14->X(int): 161 (4) // construct loc
+0xa1a99ffe10->X(X&) : -1449132480 (4) // copy construction of loc2
+0xa1a99ffe18->X(int): 534460440 (5) // temporary object created
+0xa1a99ffe14->X::operator=(): 4 (5) // copy assignment of temp object to loc
+0xa1a99ffe18->~X(): 5 (0) // temporary object destroyed
+***
+0xa1a99ffe20->X(X&) : -1373168864 (5) // construct copy(X) arg by copy constructor
+{0xa1a99ffe20} // arg of copy(X)
+0xa1a99ffe1c->X(X&) : 530 (5) // create a temporary object by copy constructor, with value of arg of copy(X) (see code)
+0xa1a99ffe10->X::operator=(): 4 (5) // copy assignment called for loc2. copy temp object to loc2
+0xa1a99ffe1c->~X(): 5 (0) // destroy the temporary object
+0xa1a99ffe20->~X(): 5 (0) // destroy the arg of copy(X)
+***
+0xa1a99ffe28->X(X&) : -1373164211 (5) // construct copy2(X) arg by copy constructor (i.e X a = loc)
+0xa1a99ffe24->X(X&) : 32759 (5) // construct `aa` by copy constructor
+0xa1a99ffe10->X::operator=(): 5 (5) // assign `aa` to loc2 by copy assignment
+0xa1a99ffe24->~X(): 5 (0) // destroy `aa`
+0xa1a99ffe28->~X(): 5 (0) // destroy arg of copy2(X)
+0xa1a99ffe0c->X(int): 161 (6) // construct loc3
+^^^^^ // r is a reference to loc. no output generated for these operations
+^^^^^
+0xa1a99ffd8c->X(int): 0 (7) // construct local var `a` (inside make(int))
+0x2121fdac0e0->X(X&) : 534418848 (7) // construct object on free store via copy constructor
+0xa1a99ffd8c->~X(): 7 (0) // destroy local var `a` (inside make(int))
+0x2121fdac0e0->~X(): 7 (0) // destroy the free store object via `delete`
+!!!!!
+0xa1a99ffd8c->X(int): 32764 (8) // construct local var `a` (inside make(int))
+0x2121fdac0e0->X(X&) : 534418848 (8) // construct object on free store via copy constructor
+0xa1a99ffd8c->~X(): 8 (0) // destroy local var `a` (inside make(int))
+0x2121fdac0e0->~X(): 8 (0) // destroy the free store object via `delete`
+!!!!!
+0x2121fdb3850->X(): 6357100 (0) // std::vector creates 4 default constructed X objects
+0x2121fdb3854->X(): 4259932 (0)
+0x2121fdb3858->X(): 7340144 (0)
+0x2121fdb385c->X(): 6357060 (0)
+0xa1a99ffde8->X(): 0 (111) // create `a` inside loc4
+0xa1a99ffdec->X(): 0 (222) // create `b` inside loc4
+!!!!!
+0x2121fdac0e0->X(int): 534418848 (9) // create an `X` on the free store with value `9`. p points to that memory
+0x2121fdac0e0->~X(): 9 (0) // `delete p` calls ~X() and then frees that memory
+!!!!!
+0x2121fdb6b38->X(): 0 (0) // create 5 `X` objects (default constructed) on the free store. pp points to the first element of that array
+0x2121fdb6b3c->X(): 0 (0)
+0x2121fdb6b40->X(): 0 (0)
+0x2121fdb6b44->X(): 0 (0)
+0x2121fdb6b48->X(): 0 (0)
+0x2121fdb6b48->~X(): 0 (0) // delete[] pp; destroys all elements of the array of `X` objects. Then that memory is freed
+0x2121fdb6b44->~X(): 0 (0)
+0x2121fdb6b40->~X(): 0 (0)
+0x2121fdb6b3c->~X(): 0 (0)
+0x2121fdb6b38->~X(): 0 (0)
+!!!!!
+0xa1a99ffdec->~X(): 222 (0) // destroy `b` of loc4
+0xa1a99ffde8->~X(): 111 (0) // destroy `a` of loc4
+0x2121fdb3850->~X(): 0 (0) // destroy `X` objects of `vector v`
+0x2121fdb3854->~X(): 0 (0)
+0x2121fdb3858->~X(): 0 (0)
+0x2121fdb385c->~X(): 0 (0)
+0xa1a99ffe0c->~X(): 6 (0) // destroy loc3
+0xa1a99ffe10->~X(): 5 (0) // destroy loc2
+0xa1a99ffe14->~X(): 5 (0) // destroy loc
+0x7ff7ae278030->~X(): 2 (0) // destroy glob_x

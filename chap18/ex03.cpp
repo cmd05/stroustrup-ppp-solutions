@@ -10,10 +10,10 @@
 #include <iostream>
 
 int strcmp(const char* s1, const char* s2) {
-    for(; *s1 && (*s1 == *s2); s1++, s2++);
-    return *s1 - *s2; 
+    for(; *s1 && *s2 && (*s1 == *s2); s1++, s2++); // const char* can be incremented to the next character, but the characters are immutable themselves
+    return *s1 - *s2;
 }
 
 int main() {
-    std::cout << strcmp("boy", "boi");
+    std::cout << strcmp("blow", "blown");
 }

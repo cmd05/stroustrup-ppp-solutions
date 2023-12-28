@@ -22,12 +22,14 @@ void f(X arg) {
 }
 
 int main() {
-	X x1 = bycopy(); // mc (-fno-elide-constructors to disable RVO)
+	X x1 = bycopy(); // copy-elison by default (mc when -fno-elide-constructors is passed)
 
-	f(std::move(x1)); // mc
+
+	f(x1); // cc (always)
+	f(std::move(x1)); // mc (always)
 
 	X x2{1};
-	x2 = bycopy(); // ma
+	x2 = bycopy(); // ma (always)
 	x2 = x1; // ca
 	X x3 = x1; // cc
 }

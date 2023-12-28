@@ -7,4 +7,4 @@ public:
 
 	T& operator[](int n) { return p[n]; }
 	const T& operator[](int n) const { return p[n]; }
-}
+};

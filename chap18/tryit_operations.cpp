@@ -16,13 +16,13 @@ struct X { // simple test class
     } // default constructor
 
     X(int v) {
-        val = v;
         out("X(int)", v);
+        val = v;
     }
 
     X(const X& x) {
-        val = x.val;
         out("X(X&) ", x.val);
+        val = x.val;
     } // copy constructor
 
     X& operator=(const X& a) // copy assignment
@@ -37,9 +37,9 @@ struct X { // simple test class
     } // destructor
 };
 
-X glob(2); // a global variable
+X glob_x(2); // a global variable
 
-X copy(X a) {std::cout << "{" << &a << "}";  return a; }
+X copy(X a) {std::cout << "{" << &a << "}\n";  return a; }
 
 X copy2(X a) { X aa = a; return aa; }
 
@@ -47,11 +47,11 @@ X& ref_to(X& a) { return a; }
 
 X* make(int i) { X a(i); return new X(a); }
 
-struct XX { X a; X b; };
+struct XX { X a {111}; X b {222}; };
 
 int main() {
     X loc {4}; // local variable
-    X loc2 {loc}; // copy construction
+    X loc2 = loc; // copy construction
     loc = X {5}; // copy assignment
 
     /**
@@ -72,13 +72,18 @@ int main() {
     X& r = ref_to(loc); // call by reference and return
     std::cout << "^^^^^\n";
     
-    
     delete make(7);
+    std::cout << "!!!!!\n";
     delete make(8);
+    std::cout << "!!!!!\n";
+
     vector <X> v(4); // default values
     XX loc4;
+    std::cout << "!!!!!\n";
     X* p = new X {9}; // an X on the free store
     delete p;
+    std::cout << "!!!!!\n";
     X* pp = new X[5]; // an array of Xs on the free store
     delete[] pp;
+    std::cout << "!!!!!\n";
 }

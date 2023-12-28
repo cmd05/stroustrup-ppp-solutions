@@ -58,6 +58,7 @@ the (default) alternative?
         fn(10) // call vector with 10 doubles
 
 11. What operations may be invoked implicitly for a class object?
+    Default constructor when creating class object without argument
     
 12. What is an array?
     An array is a homogenous sequence of objects allocated in contiguous memory
