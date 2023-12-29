@@ -13,9 +13,7 @@ public:
 
 	// copy constructor - deep copy
 	vector(const vector& arg): sz{arg.sz}, elem{new double[sz]} {
-            std::cout << "CC";
-
-		for(int i = 0; i < sz; i++) elem[i] = arg.elem[i];
+		std::copy(arg.elem, arg.elem + sz, elem);
 	}
 
 	//copy assignment 
@@ -24,7 +22,7 @@ public:
 
 		// we create a copy of a before deleting to account for self-assignment
 		double* p = new double[arg.sz];
-		for(int i = 0; i < arg.sz; i++) p[i] = arg.elem[i];
+		std::copy(arg.elem, arg.elem + arg.sz, p);
 		delete[] elem;
 		elem = p;
 		sz = arg.sz;
