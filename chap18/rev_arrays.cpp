@@ -33,7 +33,8 @@ int main() {
     *p = 1; // changes p[8]
     p -= 5; // changes p[3]
 
-    double a3[10] = {1,2,3,4,5,6,7,8,9,10};
+    int len_a3 = 10;
+    double a3[len_a3] = {1,2,3,4,5,6,7,8,9,10};
     // double* a3 = new double[10] {1,2,3,4,5,6,7,8,9,10};
 
     /* for(double* pt = &a3[0]; pt < &a3[10]; pt++) */
@@ -50,6 +51,13 @@ int main() {
     // for(double* pt = &a3[9]; pt >= &a3[0]; pt--) // ok
     //     std::cout << *pt << '\n';
 
+    // by comparing pointers
+    // for(double* pt = a3; pt != a3+len_a3; pt++) // or pt < a3+len_a3
+    //     std::cout << *pt << '\n';
+    
+    // for(double* pt = a3+len_a3-1; pt != a3-1; pt--) // or pt > a3-1
+    //     std::cout << *pt << '\n';
+    
     char ch[100];
     char* p2 = ch; // points to ch[0]. eqv to: char* p = &ch[0]
 
@@ -90,8 +98,8 @@ int main() {
 
     // int* pi; // always initialize pointers!
 
-    constexpr int max = 5;
-    for(char s[max]; read_word(std::cin, s, max);) {
-        std::cout << s << ' ' << strlen(s) << '\n';
-    }
+    // constexpr int max = 5;
+    // for(char s[max]; read_word(std::cin, s, max);) {
+    //     std::cout << s << ' ' << strlen(s) << '\n';
+    // }
 }
