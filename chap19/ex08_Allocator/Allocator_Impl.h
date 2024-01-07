@@ -4,14 +4,15 @@
 
 template<typename T>
 T* Allocator<T>::allocate(int n) const {
-	return (T*) malloc(n * sizeof(T));
+	return (T*) malloc(n * sizeof(T)); // convert void* to T*
 }
 
 template<typename T>
 void Allocator<T>::construct(T* p, const T& val) const {
 	// placement new
 	// new (<address>) <type>(<initializer>)
-	new(p) T(val);
+	// (https://en.cppreference.com/w/cpp/language/new#Placement_new)
+	new(p) T{val};
 }
 
 template<typename T>
