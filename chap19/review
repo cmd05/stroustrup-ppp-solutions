@@ -17,7 +17,7 @@ all eventualities?
 
 5. When must we copy vector elements to a new location?
 	- If we are making copy of a vector
-	- using reserve()
+	- using reserve() (i.e space increases)
 
 6. Which vector operations can change the size of a vector after
 construction?
@@ -31,23 +31,23 @@ construction?
 	operator=(vector<T,A>&& v) // move assignment
 
 9. What is the default meaning of copy for class objects?
-	shallow copying: copies only properties
-					 pointers copy only addresses
+	shallow copying: resources such as allocated memory are not copied, 
+					 but referenced-to by the new data members holding such resources
 
 10. What is a template?
-	It is a feature/blueprint to create a class or function for generic types
+	It is a feature/blueprint to create a class or function using generic types / compile time parameters
 
 11. What are the two most useful types of template arguments?
 	element-type and size of container
 
 12. What is generic programming?
 	Writing code that works with a variety of types
-	presented as arguments, as long as those argument types meet specific
+	presented as (compile-time) arguments, as long as those argument types meet specific
 	syntactic and semantic requirements
 
 13. How does generic programming differ from object-oriented
 programming?
-	Generic programming uses blueprints for classes and functions for argument types
+	Generic programming uses blueprints for classes and functions using generic types 
 	OOP uses class hierarchies and virtual functions
 
 	Functions to be invocated are determined at compile time for templates,
@@ -55,23 +55,23 @@ programming?
 
 14. How does array differ from vector?
 	arrays are built-in
-	vectors are a template class
+	vectors are a template class provided by stl
 
 	array is fixed size
 	vector has mutable size
 
 15. How does array differ from the built-in array?
 	It is a template class
-	Allows pass by value
+	Allows pass by value (instead of array to pointer decay)
 	Use iterator-based algorithms
+	Allows copying of arrays
 
 16. How does resize() differ from reserve()?
-	Sets default value to uninitialized elements
-	Free extra elements if new_size < sz
+	Sets default/passed value to uninitialized elements if `new size`' > `old size`, from `old size` till `new size`.
 
 17. What is a resource? Define and give examples.
 	Anything which is acquired and must be released.
-	Eg: File Handles, memory, sockets, thread handles, input streams
+	Eg: File Handles, memory, sockets, thread handles, input streams, locks
 
 18. What is a resource leak?
 	When an acquired resource not in use is not released.
@@ -80,7 +80,12 @@ programming?
 	RAII stands for "Resource Acquisition is Initialization". The resource
 	is acquired in the constructor and released in corresponding destructor
 
+	It addresses the problem of using new in a scope, but the corresponding delete is not called. It can be due to:
+	- Exception thrown before delete
+	- programmer forgot to call delete
+	- function returns before delete
+
 20. What is unique_ptr good for?
 	A unique_ptr is an object that holds a pointer. It can be used in the same
-	way as a pointer and releases the memory automatically (RAII), so we do
-	not have to explicitly delete.
+	way as a pointer and releases the memory automatically (when it goes out of scope - destructor is called) (RAII),
+	so we do not have to explicitly delete the pointer.
