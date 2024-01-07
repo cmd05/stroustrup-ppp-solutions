@@ -55,8 +55,8 @@ int main() {
     /* Output:
         When call(const B& obj): (no object copying occurs)
             B::f() B::g() 
-            D::f() 10 B::g()
-            D::f() 10 B::g()
+            D::f() B::g()
+            DD::f() B::g()
         When call(const B obj): (Object slicing occurs)
             B::f() B::g()
             B::f() B::g()
