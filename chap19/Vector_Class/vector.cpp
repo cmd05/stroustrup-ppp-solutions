@@ -75,7 +75,7 @@ vector::~vector() { delete[] elem; }
 void vector::reserve(int new_alloc) {
 	if(new_alloc <= space) return;
 	double* p = new double[new_alloc];
-	for(int i = 0; i < sz; i++) p[i] = elem[i];
+	for(int i = 0; i < sz; i++) p[i] = elem[i]; // copy assignment may throw. p is not freed then
 	delete[] elem;
 	elem = p;
 	space = new_alloc;
