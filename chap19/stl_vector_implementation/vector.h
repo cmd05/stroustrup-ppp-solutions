@@ -1,12 +1,11 @@
 #pragma once
 
 #include "vector_base.h"
+#include "allocator.h"
 
 #include <memory>
 #include <initializer_list>
 #include <algorithm>
-
-#include <iostream>
 
 /**
  * NOTES:
@@ -21,7 +20,7 @@
  * All vector operations must provide atleast basic guarantee
 */  
 
-template<typename T, typename A = std::allocator<T>>
+template<typename T, typename A = allocator<T>>
 class vector : private vector_base<T,A> {
 private:
     void swap_vb_elems(vector_base<T,A>& vb); // idiomatically, elements of vector are changed
