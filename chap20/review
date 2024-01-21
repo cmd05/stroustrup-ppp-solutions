@@ -16,6 +16,7 @@ examples.
 	- sort
 	- find min, max
 	- find most common occurence
+	- insert, erase for specific containers
 
 5. What are some ideals for the way we store our data?
 	- Uniform access to data
@@ -51,21 +52,23 @@ sequence?
 	undefined behaviour!
 
 11. What kinds of iterators can you move to the previous element?
-	bidirectional or random access iterators
+	bidirectional or random access iterators, reverse input iterator
 
 12. Why is it useful to separate data from algorithms?
-	Several containers can use some algorithms by providing required iterators and operations.
+	Several containers can use same algorithms by providing required iterators and operations.
 	Hence, algorithms are generalized and do not depend on the container type
 
 13. What is the STL?
+	STL: Standard Template Library
 	Standard Libary provided by the implementation. It contains many useful containers, algorithms and utilities.
+	C++ Standard Library is a superset of STL
 
 14. What is a linked list? How does it fundamentally differ from a vector?
 	A linked list is a collection of nodes containing a value and storing the pointer to the node before and after them.
 	A linked list is different from a vector as it doesn't use contiguous memory allocation
 
 15. What is a link (in a linked list)?
-	A single node
+	A single node, containing a value and a previous and successor pointer
 
 16. What does insert() do? What does erase() do?
 	insert element before pos
@@ -73,7 +76,7 @@ sequence?
 
 17. How do you know if a sequence is empty?
 	c.begin() == c.end() or
-	size() == 0, if a size method is provided
+	c.size() == 0, if a size method is provided
 
 18. What operations does an iterator for a list provide?
 	```cpp
@@ -90,16 +93,19 @@ sequence?
 	T& operator*() { return node->_val; }
 	T* operator->() { return &(node->_val); }
 
-	bool operator==(const iterator& b) const { return node==b.node; }
+	bool operator==(const iterator& b) const { return node==b.node; } // check if this->node == b.node (where `node` is a list_node*)
+																	  // i.e compare if both iterators contain pointers to same node
 	bool operator!=(const iterator& b) const { return node!=b.node; }
 	```
-	
+
 19. How do you iterate over a container using the STL?
-	for(auto p = c.begin(); p != c.end(); p++) { /* */ }
+	for(auto p = c.begin(); p != c.end(); ++p) { /* */ }
+
+	// synctatic sugar (when begin() and end() are defined, and ++p is defined)
+	for(auto val : c)
 
 20. When would you use a string rather than a vector?
 	To use string manipulation methods
-
 
 Notes: rvalues are destroyed immediately after use
 ```cpp
