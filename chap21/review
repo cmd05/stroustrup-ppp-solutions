@@ -17,20 +17,22 @@
 	std::less<>
 
 5. How does an STL algorithm take a container as an input argument?
-	By passing iterators to its beginning, and optionally its end
+	By passing iterators to its beginning and its end
 
 6. How does an STL algorithm take a container as an output argument?
-	By passing iterators to its beginning, and optionally its end
+	By passing iterators only to its beginning
 
 7. How does an STL algorithm usually indicate “not found” or “failure”?
 	Returns the end iterator passed to the algorithm
 
 8. What is a function object?
-	A class object which represents a function and has a state
+	A class object which represents a function. It may have a state
 
 9. In which ways does a function object differ from a function?
 	It has a state. Hence it can be constructed with a value and set to a different state
 	later
+
+	It can be inlined
 
 10. What is a predicate?
 	A function that returns a boolean value
@@ -53,7 +55,7 @@
 	node.left->first < node.first && node.right->first > node.first
 
 16. What (roughly) does it mean for a tree to be balanced?
-	Number of nodes in all subtrees at an equal distance from a given subtree are equal
+	Number of nodes in all subtrees at an equal distance from the root are equal
 
 17. How much space per element does a map take up?
 	node* left
@@ -70,12 +72,14 @@ is available?
 	When we want to frequently lookup in a large map
 	When order of elements does not matter
 
+	Sorting and adding elements consumes time
+
 20. How does a set differ from a map?
 	Set only stores a key not a value
 	Keys in a set are immutable
 
 21. How does a multimap differ from a map?
-	Keys in a multimap are not unique unlike a map
+	Keys in a multimap can have the same value unlike a map
 
 22. Why use a copy() algorithm when we could “just write a simple
 loop”?
@@ -84,4 +88,9 @@ loop”?
 	Make code the self documenting
 
 23. What is a binary search?
-	It is a method of searching a value in a sorted container.
+	It is a method of searching a value in a sorted sequence (generally arrays and vectors)
+
+Notes:
+	Big-O notation does not take into account:
+		- cost of traversal (chasing pointers is much slower than random access)
+		- cost of comparison (comparing values maybe expensive)

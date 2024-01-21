@@ -22,7 +22,7 @@ bool operator==(Fruit a, Fruit b) {
 class Fruit_comparison {
 public:
 	bool operator()(Fruit* a, Fruit* b) const {
-		return (*a).name < (*b).name;
+		return a->name < b->name;
 	}
 };
 
@@ -58,5 +58,5 @@ int main() {
 	fill_pset(s_pft);
 
 	for(auto v : s_pft)
-		std::cout << (*v).name << "\n";
+		std::cout << v->name << "\n";
 }
