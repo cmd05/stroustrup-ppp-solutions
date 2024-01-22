@@ -34,12 +34,8 @@ int main() {
             int y = std::stoi(matches[3]);
 
             if((1 <= m && m <= 12) && (1 <= d && d <= days_tbl[m-1]) && (min_year <= y && y <= max_year)) {
-                auto begin = matches[0].first;
-                auto end = matches[0].second;
-                
                 std::string l2 = line;
-
-                std::string::size_type ind = begin - line.cbegin();
+                std::string::size_type ind = matches[0].first - line.cbegin();
 
                 l2.replace(ind, 4, matches[3]); // year
                 ind += 4;
