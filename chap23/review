@@ -1,0 +1,106 @@
+1.  Where do we find “text”?
+  Everywhere
+    Digitally: text files, web pages, GUI applications, programs, pdf etc.
+    IRL: books, notes, signs, chalk board etc.
+
+2. What  are  the  standard  library  facilities  most  frequently  useful  for  text  
+analysis?
+    strings, string methods, istreams and ostreams, regex
+
+3. Does insert() add before or after its position (or iterator)?
+    before
+
+4. What is Unicode?
+    Unicode is a universal character encoding standard, extended from ASCII. This standard includes roughly 100000 characters to represent characters of different languages. While ASCII uses only 1 byte the Unicode uses 4 bytes to represent characters. Hence, it provides a very wide variety of encoding.
+
+5. How  do  you  convert  to  and  from  a  string  representation  (to  and  from  
+some other type)?
+    istringstream (to type T) and ostringstreams (to string)
+
+6. What is the difference between cin>>s and getline(cin,s) assuming s is a 
+string?
+    operator>> considers any whitespace as a seperator, while getline() considers only newline as a seperator
+
+7. List the standard streams
+    out ( cout ), in ( cin ), and err ( cerr )
+
+8. What is the key of a map? Give examples of useful key types
+    It identifies a value in a map. In a std::map, all elements are ordered by their keys
+
+9. How do you iterate over the elements of a map?
+    for(auto elem_pair : m)
+
+    for(auto p = m.begin(); p != m.end(); p++)
+
+10. What  is  the  difference  between  a  map  and  a  multimap?  Which  useful  
+map operation is missing for multimap, and why?
+    multimap may have repeated keys while map cannot
+    due to possibility of repeated keys, multimap does not have subscript operator
+
+11. What operations are required for a forward iterator?
+    ++ (pre and post both)
+    == and !=
+    read and write using *
+    p->m can be used as a shorthand for (*p).m
+
+    https://en.cppreference.com/w/cpp/named_req/ForwardIterator
+
+12. What is the difference between an empty field and a nonexistent field? 
+Give two examples.
+    empty field: no value is provided
+    nonexistent field: field does not exist
+
+    ex:
+    field `coupon_used` maybe empty for some rows in a table of orders
+    field `mode_of_delivery` may not exist if the company only ships via vans
+
+13. Why do we need an escape character to express regular expressions?
+    When we want to use special meaning characters (in regex language) as regular characters in a regex pattern.
+
+14. How do you get a regular expression into a regex variable?
+    std::regex r {R"(<pattern>)"}
+
+15. What  does  \w+\s\d{4}  match?  Give  three  examples.  What  string  literal  
+would you use to initialize a regex variable with that pattern?
+    one or more word characters followed by a whitespace followed by four digits
+
+    s\n1234
+    _S_9 2412
+    99\t1234
+
+16. How (in a program) do you find out if a string is a valid regular expression?
+    try-catch by assigning it to an std::regex object
+
+17. What does regex_search() do?
+    search for regex pattern as a substring in a given string
+
+18. What does regex_match() do?
+    check if entire string matches regex pattern
+
+19. How do you represent the character dot (.) in a regular expression?
+    [.] or \.
+
+20. How do you represent the notion of “at least three” in a regular expression?
+    {3,}
+
+21. Is  7 a \w character? Is _ (underscore)?
+    yes and yes
+
+22. What is the notation for an uppercase character?
+    \u
+
+23. How do you specify your own character set?
+    using []
+
+24. How do you extract the value of an integer field?
+    stoi or from_string<int> on the captured group
+
+25. How do you represent a floating-point number as a regular expression?
+    -?\d+\.\d+
+
+26. How do you extract a floating-point value from a match?
+    from_string<double>
+
+27. What is a sub-match? How do you access one?
+    capture of a group in a regular expression
+    access by subscripting std::smatch after performing std::regex_search
