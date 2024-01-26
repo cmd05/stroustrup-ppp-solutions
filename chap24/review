@@ -1,11 +1,33 @@
 1. Who uses numerics?
+    everyone scientists, programmers, engineers, mathematicians, or even general users
+
 2. What is precision?
+    the number of decimal digits upto which the number is correct numerically
+
 3. What is overflow?
+    when a number exceeds the bound of its maximum/minimum value it "overflows/underflows" onto its minimum/maximum value
+
 4. What is a common size of a double? Of an int?
+    8, 4
+
 5. How can you detect overflow?
+    for a + b: if(a > INT_MAX - b) // overflow
+
 6. Where do you find numeric limits, such as the largest int?
+    In <limits>, <climits>, <limits.h>, and <float.h>
+
 7. What is an array? A row? A column?
+    sequence of elements contiguous in memory, where an element can be accessed by its index (position)
+
+    row: all elements with the same y-coordinate
+    column: all elements with the same x-coordinate
+
 8. What is a C-style multidimensional array?
+    arrays in which the elements are arrays themselves
+    elements are contiguous in memory row wise
+
+    int arr[dim1][dim2][dim3]
+
 9. What are the desirable properties of language support (e.g., a library) for matrix computation?
 10. What is a dimension of a matrix?
 11. How many dimensions can a matrix have (in theory/math)?
@@ -18,8 +40,34 @@
 18. What is linear algebra?
 19. What is Gaussian elimination?
 20. What is a pivot? (In linear algebra? In “real life”?)
+
 21. What makes a number random?
+    What we often need, and what we often refer to as random num-
+    bers, is a sequence of numbers that conform to some distribution and where you 
+    cannot easily predict the next number in the sequence given the previous ones.    
+
 22. What is a uniform distribution?
+    The uniform distribution is a continuous probability distribution and is concerned with events that are equally likely to occur
+
 23. Where do you find the standard mathematical functions? For which argument types are they defined?
+    cmath
+    int, float, double, long double, complex
+
 24. What is the imaginary part of a complex number?
-25. What is the square root of –1?
+    a + ib:
+    a: real component
+    b: imaginary component
+
+    where i (iota) is defined as sqrt(-1)
+
+    the need of complex numbers arises from the fact that not all polynomials have
+    all real roots (remaining roots are complex roots with non zero imaginary components), such that the fundamental theorem
+    of algebra holds true
+
+    fundamental theorem of algebra:
+    every non-zero, single-variable, degree n polynomial with complex coefficients has,
+    counted with multiplicity, exactly n complex roots
+
+25. What is the square root of -1?
+    iota in complex number system
+    nan (i.e undefined) in real number system
