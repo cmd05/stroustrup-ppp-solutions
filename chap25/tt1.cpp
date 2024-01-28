@@ -19,15 +19,15 @@ int main() {
 
 	while(i < 10) {
 		Message* p = new Message{randint(100), randint(100), randint(100)};
-		std::cout << p << '\n';
+		std::cout << reinterpret_cast<uintptr_t>(p) << '\n';
 
 		Node* n1 = new Node{randint(50), randint(50)};
-		std::cout << n1 << '\n';
+		std::cout << reinterpret_cast<uintptr_t>(n1) << '\n';
 
 		delete p;
 
 		Node* n2 = new Node{randint(50), randint(50)};
-		std::cout << n2 << '\n';
+		std::cout << reinterpret_cast<uintptr_t>(n2) << '\n';
 		
 		std::cout << '\n';
 
