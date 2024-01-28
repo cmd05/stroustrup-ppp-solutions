@@ -1,0 +1,413 @@
+1. What is an embedded system? Give ten examples, out of which at least 
+three should not be among those mentioned in this chapter.
+    any system that satisfies one or more of these:
+    - having low amount of resources and compute
+    - requiring real time response
+    - critical system upon which human life or expensive missions are carried
+    - requires low level programming
+    - must run uninterrupted for long periods of time
+    - is prone to environmental hazards
+
+laptop firmware, car computer, space probe computers, smartwatch computer,
+airplane computers, speaker device computer, underwater exploration devices,
+military weapons with computers
+
+2. What  is  special  about  embedded  systems?  Give  five  concerns  that  are  
+common
+    mentioned in q1
+
+    correctness, fault tolerance, no downtime, real time constraints, predictability,
+    concurrency
+
+3. Define predictability in the context of embedded systems
+    an operation/code sequence is predictable if it takes the same amount of time
+    to execute on a given computer, and the same sequence takes approximately the same time
+    for different set of operands
+
+4. Why can it be hard to maintain and repair an embedded system?
+    - no downtime
+    - special environments: satellites, underwater etc.
+    - loss for producer to repair a cheap system like mp3 player
+    - it is not feasible to expect debugging a system in case of an emergency like a ship
+    computer, while in the middle of a storm in the ocean
+
+5. Why can it be a poor idea to optimize a system for performance?
+    low level optimizations may get in the way of higher level significant optimizations
+    leads to bad, clever and less readable code
+    sometimes we need optimal performance not best performance, so payoff for readability is not worth it
+
+6. Why do we prefer higher levels of abstraction to low-level code?
+    not to fiddle with low level facilities
+    directly represent ideas in code at higher levels
+
+7. What are transient errors? Why do we particularly fear them?
+    errors that manifest only in certain conditions which were unaccounted for
+    ex: computer running at high temperatures, will cause the processor to malfunction
+    
+    hard to detect early on while testing
+    hard to debug the cause
+    manifest only in special conditions
+    a condition maybe invariant for all are testing but not during
+    those special cases/conditions
+
+8. How can we design a system to survive failure?
+    prevent resource leaks
+    replicate - backup system, triplication etc.
+    self check - check hardware and data integrity 
+    quick way to exit misbehaving code - modular systems
+    monitor subsystems - higher levels monitor lower levels in a multilevel system
+
+9. Why can’t we prevent every failure?
+    we have finite time and resources to test
+    not all factors can be replicated during testing
+    human error and not accounting for some factors
+
+    "theory will only take you so far"
+
+10. What is domain knowledge? Give examples of application domains
+    knowledge about system, environment and langauage facilties
+
+    financial system
+    embedded system
+        - aerospace
+        - underwater
+        - hard real time systems
+        - soft real time systems
+    backend server
+    cryptography
+    general user desktop system
+
+11. Why do we need domain knowledge to program embedded systems?
+    to know constraints, hazards, best practices etc.
+
+12. What is a subsystem? Give examples
+    A unit or device that is part of a larger system. For example, a disk subsystem is a part of a computer system. 
+
+13. From a C++ language point of view, what are the three kinds of storage?
+    static
+    stack
+    free store
+
+14. When would you like to use the free store?
+    dynamic memory allocation: allocate memory during runtime
+    size of allocation is not limited like stack
+    allocation does not die on exiting scope (is a disadvantage also - memory leaks)
+    
+15. Why is it often infeasible to use the free store in an embedded system?
+    memory leaks
+    fragmentation
+    predictability of allocation/deallocation
+
+16. When can you safely use new in an embedded system?
+    for doing memory allocation during startup
+
+17. What is the potential problem with std::vector in the context of embed-
+ded systems?
+    uses new and delete - predictability and fragmentation 
+
+18. What is the potential problem with exceptions in the context of embed-
+ded systems?
+    uncaught exceptions cause memory leaks
+    for large sections of code, we may not know how long it takes
+    for the corresponding catch for the throw, making the system non predictable 
+
+19. What is a recursive function call? Why do some embedded systems pro-
+grammers avoid them? What do they use instead?
+    calling a function within itself
+
+    - it is not apparent always whether a recursive function call will terminate
+    - the stack memory is limited
+
+    loops
+
+20. What is memory fragmentation?
+    formation of holes in memory which cannot hold a type larger than the hole
+    it makes memory allocation non-predictable (free store has to search for suitable location for allocation)
+
+21. What is a garbage collector (in the context of programming)?
+    In computer science, garbage collection (GC) is a form of automatic memory management. The garbage collector attempts to reclaim memory which was allocated by the program, but is no longer referenced; such memory is called garbage. Garbage collection was invented by American computer scientist John McCarthy around 1959 to simplify manual memory management in Lisp
+
+    Garbage collection relieves the programmer from doing manual memory management, where the programmer specifies what objects to de-allocate and return to the memory system 
+
+    compacting garbage collection - solve problem of memory fragmentation
+
+22. What is a memory leak? Why can it be a problem?
+    not freeing memory earlier allocated, which is not being used anymore
+
+    crashes programs, causes security issues, slows programs and system due to excessive memory usage
+    crashes programs in embedded systems running for long periods "unexpectedly" (manifest later when all resources are used up)
+
+23. What is a resource? Give examples
+    anything that a program acquires from the system and must return it back
+    ex: memory, sockets, locks, byte streams
+
+24. What is a resource leak and how can we systematically prevent it?
+    not returning a resource to the system once we are not using it anymore
+
+    RAII principle, reducing use of free store, not using exceptions etc.
+
+25. Why can’t we easily move objects from one place in memory to another?
+    it makes all the pointers and references to such objects invalid
+    moving frequently requires approximately twice the amount of memory used by the program
+
+26. What is a stack?
+    data structure that grows and shrinks only from the top
+
+27. What is a pool?
+    collection of objects of same size (or more strictly same type)
+
+28. Why doesn’t the use of stacks and pools lead to memory fragmentation?
+    stack - allocation and deallocation happens only at the top. there is no gap during
+    allocations and deallocations formed in the process of using the free store (free store manager
+    tries to fill all gaps where an object may fit, causing formation of holes)
+
+    pool - all allocations are of the same size. there is no formation of holes
+
+29. Why is reinterpret_cast necessary? Why is it nasty?
+    convert hardware address to a pointer of a type
+    
+    - trust the programmer to write the correct address
+    - we have to be careful to read the specification for the constraints on the hardware address
+    to not do something stupid
+    - compiler does not check the conversion (it is not a language issue)
+
+30. Why are pointers dangerous as function arguments? Give examples
+    - size of array is not passed
+    - subscripting Derived[] through a Base*
+
+31. What problems can arise from using pointers and arrays? Give examples.
+    checking for nullptr
+    array-pointer decay
+    dereferencing out of range pointer
+    arrays are fixed size
+    arrays cannot be copied conventionally using `=`
+    
+32. What are alternatives to using pointers (to arrays) in interfaces?
+    array_ref, vector, pass array by reference (pass array size by template parameter)
+
+33. What is “the first law of computer science”?
+    Every problem is solved by yet another indirection
+
+34. What is a bit?
+    Smallest unit of computer memory and storage, it can be either 0 or 1 [corresponding to LOW and HIGH]
+
+35. What is a byte?
+    it is a unit of data that is 8 bits long
+
+    it is the smallest addressable unit of memory in a computer
+
+Note: "word size" refers to the number of bits processed by a computer's CPU in one go 
+(these days, typically 32 bits or 64 bits).
+
+36. What is the usual number of bits in a byte?
+    8
+
+37. What operations do we have on sets of bits?
+    bitwise operations: ~, ^, &, |, <<, >>, arithmetic operator 
+
+38. What is an “exclusive or” and why is it useful?
+    tests if the bits are not equal
+    
+    useful in graphics and encryption code
+
+39. How can we represent a set (sequence, whatever) of bits?
+    bitset, bitfields, unsigned ints
+
+40. How do we conventionally number bits in a word?
+    right to left (2^0 to 2^(n-1)) [lsb to msb]
+    (just like base10 decimal 10^0 to 10^(n-1))
+
+    however memory is read byte-by-byte (see big and little endian q41)
+
+41. How do we conventionally number bytes in a word?
+    Endianness is represented two ways Big-endian (BE) and Little-endian (LE).
+
+    BE stores the big-end first. When reading multiple bytes the first byte (or the lowest memory address) is the biggest - so it makes the most sense to people who read left to right.
+
+    LE stores the little-end first. When reading multiple bytes the first byte (or the lowest memory address) is the littlest -  so it makes most sense to people who read right to left
+
+    Big endian stores data MSbyte first
+    Little endian stores data MSbyte last
+
+    most modern computers use little endian representation
+
+    ex: BIG ENDIAN:
+
+        Decimal: 9,499,938 (0x0090f522)
+        
+        Bytes:       0x00     0x90    0xf5      0x22
+        Address:      0x100    0x101   0x102     0x103
+
+        1st byte has most weight
+        4th byte has least weight
+
+        Hence, it is big endian (bytes numbered from MSByte to LSbyte)
+
+        LITTLE ENDIAN:
+
+        Decimal: 9,499,938 (0x0090f522)
+        
+        Bytes:       0x22     0xf5    0x90      0x00
+        Address:      0x100    0x101   0x102     0x103
+
+        1st byte has least weight
+        4th byte has most weight
+
+        Hence, it is little endian (bytes numbered from LSByte to MSbyte)
+
+42. What is a word?
+    word refers to the natural unit of data (typically 4 bytes) processed by a computer's CPU in one go
+
+    note: word is typically 4 (or 8) bytes as defined by the manufacturer, 
+    but the smallest addressable unit of memory is one byte not one word
+
+43. What is the usual number of bits in a word?
+    4 bytes = 32 bits
+    8 bytes = 64 bits
+
+
+44. What is the decimal value of 0xf7?
+    = 247
+
+45. What sequence of bits is 0xab?
+    1010 1011
+
+46. What is a bitset and when would you need one?
+    fixed-size sequence of N bits
+    for bit manipulation and bit representation of objects
+
+47. How does an unsigned int differ from a signed int?
+    can hold ints in range [0, 2^(n-1)]
+    uses all bits for representation (no sign bit), higher upper bound
+
+
+48. When would you prefer an unsigned int to a signed int?
+    useful for bit manipulation
+    dealing with code that uses unsigned int
+    iterating over containers that define size_type as unsigned int
+
+    not so good reasons:
+    to get the extra bit of range ("If you need one extra bit, you’ll soon need another.")
+    using it for only positive ranges (can lead to lots of bugs when mixing signed and unsigned)
+
+49. How would you write a loop if the number of elements to be looped over 
+was very high?
+    use default size type of the container
+    iterators
+    for range (syntactic sugar for iterator loops)
+
+50. What is the value of an unsigned int after you assign -3  to it?
+    2: 0000 0000  0000 0000  0000 0000  0000 0010
+   -3: 1111 1111  1111 1111  1111 1111  1111 1101
+
+51. Why  would  we  want  to  manipulate  bits  and  bytes  (rather  than  higher-
+level types)?
+    low level hardware interface, advantage of bit manipulation, encryption algorithms etc.
+
+52. What is a bitfield?
+    collection of contiguous bits which can be used to represent different data types
+
+    ex:
+    struct PPN {                     // R6000 Physical Page Number
+        unsigned int PFN : 22 ;      // Page Frame Number (22 bits unsigned int)
+        int : 3 ;                    // unused
+        unsigned int CCA : 3 ;       // Cache Coherency Algorithm
+        bool nonreachable : 1 ;
+        bool dirty : 1 ;
+        bool valid : 1 ;
+        bool global : 1 ;
+    };
+
+53. For what are bitfields used?
+    device registers
+
+54. What is encryption (enciphering)? Why do we use it?
+    way to transform a message (sequence of bytes - image, text etc.) into
+    representation such that the original message cannot be read unless the
+    user has the key for deciphering (retrieving the original message from the transformed representation) the message.
+
+    it is implemented by the use of mathematical models
+
+    to transmit communications over a public channel such that it can only be read by the user
+    to whom we provided the key
+
+55. Can you encrypt a photo?
+    yes
+
+56. What does TEA stand for?
+    tiny encryption algorithm
+    
+57. How do you write a number to output in hexadecimal notation?
+    std::hex output-manipulator
+
+58. What is the purpose of coding standards? List reasons for having them.
+    list of rules and recommended practices for programmers in a particular domain / corporation / project
+
+    consistency of code for maintainability
+    use of good practices, reduction of harmful practices
+    avoid bugs and memory leaks
+
+    Common aims of most coding standards are to improve
+        • Reliability
+        • Portability
+        • Maintainability
+        • Testability
+        • Reusability
+        • Extensibility
+        • Readability
+
+59. Why can’t we have a universal coding standard?
+    different domains, different languages, different idealogies of teams
+
+60. List some properties of a good coding standard
+    A good coding standard is designed for a specific application domain and
+    a specific group of programmers.
+        • A good coding standard is prescriptive as well as restrictive.
+        • Recommending some “foundation” library facilities is often the most
+          effective use of prescriptive rules.
+
+    Common aims of most coding standards are to improve
+    • Reliability
+    • Portability
+    • Maintainability
+    • Testability
+    • Reusability
+    • Extensibility
+    • Readability
+
+61. How can a coding standard do harm?
+    A poor coding standard can be worse than no standard. For example, C++
+    coding standards that restrict programming to something like the C sub-
+    set do harm. Unfortunately, poor coding standards are not uncommon.
+
+    Maybe too restrictive and not allow high level optimizations or better
+    design decisions in code
+
+62. Make a list of at least ten coding rules that you like (have found useful). 
+Why are they useful?
+    name_like_this
+    
+    don't use new and delete in embedded systems
+    
+    avoid recursive calls in embedded systems
+    
+    don't use exceptions in embedded systems
+    
+    Any one function or class shall contain no more than 200 logical source
+    lines of code (non-comments).
+
+    No macros shall be used except for source control using #ifdef and
+    #ifndef
+
+    #include shall be used only to include header (*.h) files.
+
+    Indentations shall be used and be consistent within the same source file.
+
+    Each new statement starts on a new line.
+    
+    Identifiers in an inner scope should not be identical to identifiers in an
+    outer scope.
+
+63. Why do we avoid ALL_CAPITAL identifiers?
+    All capital letters are widely used for macros that may be used in #in-
+    clude files for approved libraries.
