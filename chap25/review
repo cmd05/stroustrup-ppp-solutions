@@ -214,10 +214,17 @@ Note: "word size" refers to the number of bits processed by a computer's CPU in 
     bitset, bitfields, unsigned ints
 
 40. How do we conventionally number bits in a word?
-    right to left (2^0 to 2^(n-1)) [lsb to msb]
-    (just like base10 decimal 10^0 to 10^(n-1))
+    we write bits as right to left on paper/diagrams
+    
+    from 2^0 to 2^(n-1) [from LSB to MSB]
 
-    however memory is read byte-by-byte (see big and little endian q41)
+    just like base-10 decimal: 10^0 to 10^(n-1)
+    
+    Ex: 123 = 3*(10^0) + 2*(10^1) + 1*(10^2)
+    and similarily from base-2 binary representation
+
+    however, smallest addressable unit by memory is byte. (individual bits cannot be read)
+    the memory is read byte-by-byte (based on order: big or little endian q41)
 
 41. How do we conventionally number bytes in a word?
     Endianness is represented two ways Big-endian (BE) and Little-endian (LE).
