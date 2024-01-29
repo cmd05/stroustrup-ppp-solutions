@@ -13,6 +13,9 @@ struct NoCase {
 // user should not pass an empty sequence (dereferencing of empty array will occur)
 template<typename In, typename T>
 std::pair<In, bool> bin(In begin, In end, T val) {
+	// if(begin >= end)
+	//     return nullptr; // exit empty sequence
+
     In middle = begin + (end - begin) / 2;
 
     if(*middle == val)
