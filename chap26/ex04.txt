@@ -1,0 +1,18 @@
+Devise a format for test data so that you can define a sequence once and 
+run several tests against it
+
+// <seq_type> <seq name> {<seq>}
+    // seq_type mappied via string->typename std::unordered_map
+
+// { contains_test <test label> {<val>} <seq name> {<bool expected>} }
+
+// { sorted_test <test label> <seq name> <comparison_name> <bool expected> }
+    // comparison_name can be: comp_less, comp_greater or any user-specied operations
+    // mapped via string->typename std::unordered_map
+
+char s1 { a b c d e f g h }
+int s2 { 1 2 3 4 5 6 7 }
+string s3 { hello world this is text }
+
+{ contains_test middle_point_find {e} s1 1 }
+{ sorted_test is_sorted_1 s2 1 }
