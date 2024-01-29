@@ -1,0 +1,123 @@
+1. Make  a  list  of  applications,  each  with  a  brief  explanation  of  the  worst  
+thing that can happen if there is a bug; e.g., airplane control — crash: 231 
+people dead; $500M equipment loss
+
+    medical equipment - human injury / death
+    critical electricity grid - critical services impacted, huge financial losses to government and corps, mayhem
+    airplane control - crash: 231, people dead; $500M equipment loss
+    financial system malfunctions - legal problems, financial losses of company and individuals
+    submarine implosion / ship crash - people die, financial loss
+    military equipment - soldiers, civillians at risk / death, national security risks
+    nuclear power plant - uncontrolled chain reactions (explosions) / long lasting radioactive contamination, 
+                            injuries / fatalities, financial loss
+    automotive vehicle - mainly human loss / injury
+    government classified application / database bugs - security exploits: national security risks, government agents at risk,      financial losses, leak of civilian/government agents' data
+    
+    corporate application / database bugs - security exploits: financial loss, legal problems, leak of user data,
+    leak of intellectual property
+    
+    operating system / critical software bugs - security exploits: users at risk, corporations and institutions at risk,
+        data leaks, malware
+
+2. Why don’t we just prove our programs correct?
+    not possible for large systems
+    generally difficult task for computer programs
+    proofs may contain errors themselves
+    some errors may be dependent on false assumptions on the system (eg: embedded system resources are prone to radiation, but that was not considered)
+
+3. What’s the difference between unit testing and system testing?
+    unit testing - test individual units such as class, functions etc, starting from the smallest units and going upto the larger units
+    system testing - test the entire system, or a large collection of units together, that maybe regarded as a sub-system of the entire system
+
+4. What is regression testing and why is it important?
+    testing new code, with tests written for old code / old bugs
+
+    it is to make sure that the new code did not introduce any new bugs
+
+5. What is the purpose of testing?
+    errors, gotta find em all
+    test correct functioning of our programs
+
+6. Why doesn’t  binary_search just check its requirements?
+    costly to check if sequence is ordered - more costly than binary_search itself
+    there is no good way to check last < first (ex: forward iterator - costly to check linearly) 
+
+7. If we can’t check for all possible errors, what kinds of errors do we pri-
+marily look for?
+    frequent and potentially serious errors
+    correct functioning of program
+    security aspects
+    resource leaks
+
+8. Where are bugs most likely to occur in code manipulating a sequence of 
+elements?
+    begin, last, end (one after last), middle of sequence, odd/even elements
+    inefficient algorithms / code sequences
+
+9. Why is it a good idea to test for large values?
+    underflow / overflow, performance, resource exhaustion etc.
+
+10.  Why do we often represent tests as data rather than as code?
+    to make the code for testing clear and not messy
+    often test cases are generated as data files
+
+11. Why and when would we use lots of tests based on random values?
+    performance tests
+    maybe uncover some special cases we haven't found
+
+    testing cumulative effects of many operations where where result of an operation depends on how earlier operations were handled, i.e when a system has state
+
+12. Why is it hard to test a program using a GUI?
+    many abstractions and class hierarchies in a gui program
+    program maybe using gui library which has its own guarantees and special cases
+    slow runtime compared to console programs
+
+13. What is needed to test a “unit” in isolation?
+    it is not modified by any other unit at the same time
+    it should be a single class / function
+
+14. What is the connection between testability and portability?
+    portable code must be tested on all platforms it is supposed to be used on
+
+15. What makes testing a class harder than testing a function?
+    class has state
+    classes may have hierarchial structure
+    classes are generally much longer than a single function
+
+16. Why is it important that tests be repeatable?
+    regression testing
+    repeating tests with random / large data may manifest errors after repeated testing
+    performance or correctness benchmarking
+    tests such as performance tests are affected by the number of active processes
+
+17. What can a tester do when finding that a “unit” relies on unchecked as-
+sumptions (pre-conditions)?
+    read the documentation and check if that is ok
+
+    test the preconditions if it is not costly and it is possible that preconditions may not be satisfied (maybe throw an exception then)
+
+    report it to the software team
+
+18. What can a designer/implementer do to improve testing?
+    build interfaces that can be tested - ex: writing programs as units that can be easily tested
+    test driven development
+    test early on
+
+19. How does testing differ from debugging?
+    debugging - fixing immediate errors so that program functions as expected
+              - typically done when implementing new features / refactoring code
+    testing - finding (realistically) all errors (starting with major / serious errors first)
+
+20. When does performance matter?
+    constrained hardware
+    a program should be efficient enough - no one likes slow/lagging programs
+    real time systems
+    application domains - graphics, encryption
+    processing large amounts of data
+
+21. Give two (or more) examples of how to (easily) create bad performance 
+problems.
+    inefficient algorithms / code sequences
+    bad high level decisions for program/data structuring
+    premature optimizing such that high level optimization (which is more significant) gets harder
+    using outdated libraries
