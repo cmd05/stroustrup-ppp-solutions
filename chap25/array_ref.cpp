@@ -62,9 +62,9 @@ void interface_fn(const Array_ref<Shape*const> a) {
 
 int main() {
     Array_ref<Circle*> c;
-    Shape* p1 = new Shape{};
     interface_fn(c);
-    interface_fn(make_ref(p1, 1)); // make_ref(T* pp, int s) is called, which creates an Array_ref<T>, not an Array_ref<T*>
+    // Shape* p1 = new Shape{}; 
+    // interface_fn(make_ref(p1, 1)); // error: make_ref(T* pp, int s) is called, which creates an Array_ref<T>, not an Array_ref<T*>
 
     // the solution for Array_ref<Circle*> to behave like an **immutable** Array_ref<Shape*>, was
     // solved by the method of indirection
