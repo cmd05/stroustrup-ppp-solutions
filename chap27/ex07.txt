@@ -1,0 +1,60 @@
+What are the advantages and disadvantages of intrusive containers com-
+pared  to  C++  standard  (non-intrusive)  containers?  Make  lists  of  pros  
+and cons.
+
+    non-intrusive containers store copies of data passed by the users (ex: on free store memory)
+    
+    On the other hand, an intrusive container does not store copies of passed objects, but it stores the objects themselves (references or pointers to it).
+    The additional data needed to insert the object in the container must be provided by the object itself.
+
+    Non intrusive:
+
+    #include <list>
+    #include <assert.h>
+
+    int main()
+    {
+        std::list<MyClass> myclass_list;
+
+        MyClass myclass(...);
+        myclass_list.push_back(myclass); // myclass is copied and held by a list_node on the free store
+
+        //The stored object is different from the original object
+        assert(&myclass != &myclass_list.front());
+        return 0;
+    }
+
+    // A possible implementation of a std::list<MyClass> node
+    // list_node is stored on the free store
+    struct list_node
+    {
+        list_node *next;
+        list_node *previous;
+        MyClass    value; 
+    };
+
+    Intrusive:
+    struct MyClass // MyClass defines its state as well as interface and implementation such that it maybe used as a list node
+    {
+        MyClass *next;
+        MyClass *previous;
+        
+        // Other members (data) ...
+        int x,y,z;
+    };
+
+    int main()
+    {
+        acme_intrusive_list<MyClass> list;
+
+        MyClass myclass;
+        list.push_back(myclass); // the list stores a pointer to myclass
+
+        //"myclass" object is stored in the list
+        assert(&myclass == &list.front());
+        return 0;
+    }
+
+    A succint list of advantages and disadvantages:
+        https://www.boost.org/doc/libs/1_43_0/doc/html/intrusive/intrusive_vs_nontrusive.html#intrusive.intrusive_vs_nontrusive.properties_of_intrusive
+    
