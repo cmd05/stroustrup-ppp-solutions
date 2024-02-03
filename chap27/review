@@ -1,0 +1,260 @@
+1.  Is C++ a subset of C?
+    No. It is mostly a superset of C. It inherits most (but not all) properties / facilities provided in C
+    . And adds additional facilities usable in C++ including language facilities and C++STL
+
+2. Who invented C?
+    Dennis Ritchie and Ken Thompson
+
+3. Name a highly regarded C textbook.
+    The C Programming Language (colloquially known as “K&R”)
+
+4. In what organization were C and C++ invented?
+    Bell Labs
+
+5. Why is C++ (almost) compatible with C?
+    It has rules / features not compatible in C
+    Most incompatibilities relate to C++’s stricter type checking.
+
+    Ex: stricter type checking
+
+    Quote 27.1.2:
+    27.1.2 C++ features missing from C
+        From a C++ perspective, C (i.e., C89) lacks a lot of features, such as
+        • Classes and member functions
+            • Use struct and global functions.
+        • Derived classes and virtual functions
+            • Use structs, global functions, and pointers to functions (§27.2.3).
+        • Templates and inline functions
+            • Use macros (§27.8).
+        • Exceptions
+            • Use error codes, error return values, etc.
+        • Function overloading
+            • Give each function a distinct name.
+        • new/delete
+            • Use malloc()/free() and separate initialization/cleanup code.
+        • References
+            • Use pointers.
+        • const, constexpr, or functions in constant expressions
+            • Use macros.
+        • bool
+            • Use int.
+        • static_cast, reinterpret_cast, and const_cast
+            • Use C-style casts, e.g., (int)a rather than static_cast<int>(a).
+
+6. Why is C++ only almost compatible with C?
+    Most incompatibilities relate to C++’s stricter type checking.
+
+7. List a dozen C++ features not present in C
+    class, templates, (compile time) const, bool, new / delete, C++ casts (static_cast etc.)
+    , references, exceptions, function overloading, c++stl, user-defined namespaces, 
+    lambda expressions (not supported by C-standard)
+
+8. What organization “owns” C and C++?
+    C and C++ are defined/controlled by ISO standards committees
+
+9. List six C++ standard library components that cannot be used in C
+    vector, map, cout, std::array, fstream, std::sort and std::find etc. (<algorithm>)
+
+10. Which C standard library components can be used in C++?
+    printf / scanf etc, strlen / strcat etc. (in <cstring>), malloc (implicitly included by <cstdlib>),
+    std::FILE (in <cstdio>), std::time (<ctime>)
+
+11. How do you achieve function argument type checking in C?
+    linting, compiler flags
+
+12. What  C++  features  related  to  functions  are  missing  in  C?  List  at  least  
+three. Give examples.
+    argument type checking
+    no multiple definitions (for same arguments)
+    declaration before usage (does not find definition of function in another translation unit like C)
+
+13. How do you call a C function from C++?
+    
+    // cpp: calling C function from C++:
+    extern "C" double sqrt(double);    // link as a C function
+    void my_c_plus_plus_fct()
+    {
+            double sr = sqrt(2);
+    }
+
+14. How do you call a C++ function from C?
+
+    // c: call C++ function from C:
+    extern "C" int call_f(S* p, int i)
+    {
+            return p->f(i);
+    }
+
+    // c: call C++ function from C:
+    int call_f(S* p, int i);
+    struct S* make_S(int,const char*); 
+    void my_c_fct(int i)
+    {
+            struct S* p = make_S(x, "foo");
+            int x = call_f(p,i);
+            // ...
+    }
+
+15. Which  types  are  layout  compatible  between  C  and  C++?  (Just)  give  
+examples
+    int
+    char
+    c style strings
+    array of int / char
+
+16. What is a structure tag?
+    all c structs are defined in structure "namespace"
+    all struct arguments / variables / pointers to a struct must be prepended with "struct"
+
+    struct Shape {
+        // ...
+    };
+    
+    void draw(struct Shape s);
+    void draw(struct Shape* p);
+
+17. List 20 C++ keywords that are not keywords in C.
+    C++ keywords that are not C keywords:
+
+        alignas class inline private true false
+        alignof compl mutable protected try
+        and concept namespace public typeid
+        and_eq const_cast new reinterpret_cast typename
+        asm constexpr noexcept requires using
+        bitand delete not static_assert virtual
+
+18.  Is int x; a definition in C++? In C?
+    In C++, an uninitialized declaration is a definition (variable (with same name) cannot be redefined (uninitialized or not)); in C, it is just a declaration so that there can be two of them:
+
+    int x;
+    int x; /* defines or declares a single integer called x in C; error in C++ */
+
+19. What is a C-style cast and why is it dangerous?
+    c style casts:
+    (T2) <object of type T1>
+    ex: (int*) ptr_sqrt(50); // ptr_sqrt() returns ptr to a double
+
+    - obscure syntax (compared to C++ casts) (hard to spot)
+    - unchecked conversion
+
+    implicit casts (perform exactly like C style casts):
+    ex: int* x = ptr_sqrt(50);
+
+    - even harder to spot
+    - also unchecked conversion
+
+20. What is  void* and how does it differ in C and C++?
+    void* is a pointer to a memory address such that the pointer may point to any
+    valid memory address (irrespective of the object type held by the memory)
+
+    In C, for any type T, void* to T* conversion is implicit (C++ requires explicit casting)
+    
+    T* to void* is valid (and implicit) in both C and C++
+
+21. How do enumerations differ in C and C++?
+    int to enum is implicit in C but not in C++ (requires explicit cast)
+    int operations cannot be implicitly performed on enum objects
+
+    enum color { red, blue, green };
+
+    enum color col = 7; // ok in C, not C++
+    enum color col = static_cast<color>(7); // casting in C++
+
+    enum color x = blue;
+    ++x;    // x becomes green; error in C++
+
+    color c2 = blue;                       
+        // error in C: color not in scope (enum namespace scope must be specified in C); OK in C++ 
+    enum color c3 = red;             // OK  in both C and C++
+
+22. What do you do in C to avoid linkage problems from popular names?
+    using prefixed and suffixed names
+
+    ex:
+    /* in bs.h: */
+    typedef struct bs_string { /* ... */ } bs_string; /* Bjarne's string */
+    typedef int bs_bool ; /* Bjarne’s Boolean type */
+
+23. What are the three most common C functions from free-store use?
+    malloc
+    free
+    realloc
+
+24. What is the definition of a C-style string?
+    characters followed by null-terminator (0)
+
+    ex: "Hello" => ['H', 'e', 'l', 'l', 'o', 0]
+
+25. How do  == and strcmp() differ for C-style strings?
+    `==` compares if pointers (char*) are equal (i.e pointing to the same address)
+    strcmp(s1, s2) does a three way comparison:
+        s1 < s2: -ve value
+        s1 and s2 are equal: zero
+        s1 > s2: +ve value
+    
+26. How do you copy C-style strings?
+    strcpy
+
+27. How do you find the length of a C-style string?
+    strlen
+
+28. How would you copy a large array of ints?
+    memcpy
+
+29. What’s nice about printf()? What are its problems/limitations?
+    multiple arguments
+    output format specifiers
+    
+    printf is not extensible to user defined types
+
+30. Why should you never use gets()? What can you use instead?
+    buffer overflow vulnerabilities
+
+    // vulnerable to BUFFER OVERFLOW attack
+    char a[12];
+    gets(a);           /* read into char array pointed to by a until a ’\n’ is input */
+                       // `a` overflows if more than 11 characters are entered
+
+    In C++ use std::cin with std::string
+
+31. How do you open a file for reading in C?
+    FILE* fi = fopen(file_name, "r");              /* open fn for reading */ 
+    FILE* fo = fopen(file_name, "w");             /* open fn2 for writing */
+
+32. What is the difference between const in C and const in C++? 
+
+    In C, a const is not a compile-time constant. 
+
+    const int max = 30;
+    const int x;      /* const not initialized: OK in C (error in C++) */
+    void f(int v)
+    {
+            int a1[max];   /* error: array bound not a constant (OK in C++) */
+                                    /* (max is not allowed in a constant expression!) */
+            int a2[x];       /* error: array bound not a constant */
+            switch (v) {
+            case 1:
+                        /* . . . */
+                        break;
+            case max:     /* error: case label not a constant (OK in C++) */
+                        /* . . . */
+                        break;
+            }
+    }
+
+33. Why don’t we like macros?
+
+    ugly for obscuring source code / syntax
+    not type checked
+    they may cause obscure substitutions, causing obscure errors
+    someone may declare a macro with a commonly used phrase such as `min`, `max` etc.
+    
+34. What are common uses of macros?
+    
+    defining constants. ex: #define MAX_ITEMS 55
+    conditional compilation
+    function like substitution. ex: #define MAX(x, y) ((x)>=(y)?(x):(y))
+    syntax substitution (common but very bad practice)
+
+35. What is an include guard?
+    an include guard, is commonly used to prevent a header file from being #included twice
