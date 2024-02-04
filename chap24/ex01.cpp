@@ -7,8 +7,8 @@
 // Do exercise 1 again, but with function objects, rather than functions.
 // Hint: Matrix.h contains examples
 
-#include "../includes/Matrix.h"
-#include "../includes/MatrixIO.h"
+#include "../includes/matrix/Matrix.h"
+#include "../includes/matrix/MatrixIO.h"
 using namespace Numeric_lib;
 
 int triple(int x) { return x*3; }

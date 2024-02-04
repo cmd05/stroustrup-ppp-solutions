@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "utility": "cpp",
-        "xstring": "cpp",
-        "initializer_list": "cpp",
-        "vector": "cpp"
-    }
-}

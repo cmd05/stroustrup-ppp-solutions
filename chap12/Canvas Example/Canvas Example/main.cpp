@@ -87,8 +87,8 @@ int main() {
 	Text sizes{ Point{100, 20}, oss.str() };
 	sizes.set_color(Color::black);
 
-	std::string thonk_path = IMG_DIR + "sans.jpg";
-	Image masked{ Point{225, 225}, thonk_path };
+	std::string rita_path = IMG_DIR + "rita.jpg";
+	Image masked{ Point{225, 225}, rita_path };
 	masked.set_mask(Point{ 50, 0 }, 150, 120);
 
 	win.attach(c);

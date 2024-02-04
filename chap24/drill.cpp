@@ -1,8 +1,8 @@
 #include <iostream>
 #include <math.h>
 #include <complex>
-#include "../includes/Matrix.h"
-#include "../includes/MatrixIO.h"
+#include "../includes/matrix/Matrix.h"
+#include "../includes/matrix/MatrixIO.h"
 
 using namespace Numeric_lib;
 

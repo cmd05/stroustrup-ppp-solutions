@@ -1,6 +1,6 @@
 #include <iostream>
 #include <complex>
-#include "../includes/graphics/Matrix.h"
+#include "../includes/matrix/Matrix.h"
 using namespace Numeric_lib;
 
 int main() {
