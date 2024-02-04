@@ -1,0 +1,206 @@
+1. What are some uses of history?
+    - know which ideas worked and which failed
+    "He who does not know (relevant portions of) history is condemned to repeat it"
+    - evolution of ideas
+    - understand human behaviour and thinking
+
+2. What are some uses of a programming language? List examples.
+    Programming is the art of creating / engineering programs (sequences of computer instructions) which perform certain task(s).
+    
+    A programming language is a system of notation for writing computer programs. It is described by its syntax and semantics
+
+    - to develop software usable on ordinary / capable systems. ex: browser, text editor; weather calculations on super computer
+    - to develop software that runs an embedded system (resource constrained)
+    - to develop software that solve nontrivial everyday tasks. ex: find largest value in a dataset, number of occurences of a word in text
+    - specialized domains such as 
+        - artificial intelligence
+        - data science
+        - scientific calculations
+    - program secure systems such as servers / power grids / weapons facilities
+
+3. List some fundamental properties of programming languages that are objectively good.
+    support for different programming styles
+    ability to make efficient programs
+    large support community
+    easy to learn and understand
+    backwards compatibility
+
+4. What do we mean by abstraction? By higher level of abstraction?
+    "covering" basic facilities and design components by incorporating and combining them with components
+    which represent a more generalized / conceptual view of the problem.
+
+5. What are our four high-level ideals for code?
+    correctness
+    maintainability
+    performance
+    on time delivery
+
+6. List some potential advantages of high-level programming.
+    direct representation of ideas in code
+    data abstraction
+    generalized solution to problems (ex: use of iterators)
+    object oriented structure (inheritance) (if available)
+    generic programming (if available)
+    away from low level programming which is error prone and complex
+    syntax and structure is easy to understand
+    
+7. What is reuse and what good might it do?
+    Reuse is the building of systems out of previously tested components (functions, classes, class hierarchies, libraries, etc) that have been used elsewhere — and the design and use of such components.
+
+    Using tested components, or components created by someone else which are well-tested, reduces programmers efforts
+    , occurence of bugs, and generally gives better results (in terms of performance, program structure and adherance to ideals)
+
+8. What is procedural programming? Give a concrete example.
+    the idea of composing a program out of functions operating on arguments
+
+    ex: math library providing functions such sin(), cos(), sqrt() etc.
+
+9. What is data abstraction? Give a concrete example.
+    the idea of first providing a set of types suitable for an application area and then writing the program using those
+    ex: matrices (`Matrix` type)
+
+    Explicit data hiding (e.g., the use of private data members of a class) is heavily used
+
+    ex: vector and string use private members and provide an interface for those members
+
+10. What is object-oriented programming? Give a concrete example.
+    the idea of organizing types into hierarchies (inheritance) to express their relationships directly in code
+    Use of inheritance, polymorphism, encapsulation etc. (OOP principles)
+
+    Ex: Circle is derived from shape
+
+11. What is generic programming? Give a concrete example.
+    the idea of taking concrete algorithms and data structures and “lifting” them to a higher level of abstraction by adding parameters to express what can be varied without changing the essence of an algorithm.
+
+    Ex: generic types for algorithm / container, passing container size as template parameters, use of iterators
+
+12. What is multi-paradigm programming? Give a concrete example.
+    Use of multiple different paradigms in a program
+
+    Most programs (especially large programs) use multiple paradigms together
+
+    Ex:
+        std::vector uses:
+        -  data-abstraction to hide its elements and provides interface
+        for them through subscripting and at()
+        - it is derived from Vector_Base which holds the resources (OOP, data abstraction)
+        - Any element type which can be copied can be used. (generic programming)
+        - provides iterators (generic programming)
+        - can be used with algorithms such as sort, find, for_each etc. (procedural programming)
+
+13. When was the first program run on a stored-program computer?
+    David Wheeler wrote "table of squares" program in 1949, which was executed on the EDSAC computer
+
+14. What work made David Wheeler noteworthy?
+    one of the first persons to create a compiler
+    He wrote a brilliant paper on how to design libraries in 1951; that paper was at least 20 years ahead of its time!
+    arguably the first book on programming
+
+    major contributions to hardware (cache architectures and early local-area networks) and algorithms (e.g., the TEA encryption
+    algorithm [§25.5.6] and the “Burrows-Wheeler transform” [the compression algorithm used in bzip2])
+
+15. What was the primary contribution of John Backus’s first language?
+    scientific computing
+    along the way they developed or discovered the basic structure of compilers: lexical analysis, syntax analysis, semantic analysis, and optimization
+
+    notation for specifying grammars: the Backus-Naur Form (BNF). 
+
+16. What was the first language designed by Grace Murray Hopper?
+    FLOWMATIC
+
+17. In which field of computer science did John McCarthy primarily work?
+    Math and AI
+
+18. What were Peter Naur’s contributions to Algol60?
+    BNF grammar
+    proponent of formal reasoning and invariants
+    
+19. What work made Edsger Dijkstra noteworthy?
+    Algol60 implemented
+    THE operating system
+    famous paper “Go-To Statement Considered Harmful,”
+    djikstra algorithm
+    pioneer and strong proponent of the use of mathematical logic in programming, algorithms
+
+20. What languages did Niklaus Wirth design and implement?
+    • Algol W
+    • PL/360
+    • Euler
+    • Pascal
+    • Modula
+    • Modula-2
+    • Oberon
+    • Oberon-2
+    • Lola (a hardware description language)
+
+21. What languages did Anders Hejlsberg design?
+    Turbo Pascal
+    Delphi
+    C#
+
+22. What was Jean Ichbiah’s role in the Ada project?
+    leader of the group that designed Ada
+
+23. What style of programming did Simula pioneer?
+    Object Oriented Programming
+
+24. Where (outside Oslo) did Kristen Nygaard teach?
+    University of Aarhus, Denmark
+
+25. What work made Ole-Johan Dahl noteworthy?
+    simula
+    specification languages and formal methods
+    
+    Commander of the Order of Saint Olav by the King of Norway
+
+26. Ken Thompson was the main designer of which operating system?
+    Unix
+
+27. What work made Doug McIlroy noteworthy?
+    McIlroy is best known for having originally proposed Unix pipelines and developed several Unix tools, such as spell, diff, sort, join, graph, speak, and tr. He was also one of the pioneering researchers of macro processors and programming language extensibility. He participated in the design of multiple influential programming languages, particularly PL/I, SNOBOL, ALTRAN, TMG, C and C++.
+
+28. What is Brian Kernighan’s most famous book?
+    The C Programming Language (K&R)
+
+29. Where did Dennis Ritchie work?
+    Bell Labs' Computer Science Research Center, in Murray Hill
+
+30. What work made Bjarne Stroustrup noteworthy?
+    Design and implementation of C++
+    Key member of ISO C++ committee
+
+31. What languages did Alex Stepanov use trying to design the STL?
+    Ada, Scheme, and C++
+
+32. List ten languages not described in §22.2.
+    Rust, ruby, R, scala, SQL, swift, kotlin, objective C, Go, Lua
+
+33. Scheme is a dialect of which language?
+    Lisp
+
+34. What are C++’s two most prominent ancestors?
+    Simula and C
+
+35. What does the “C” in C++ stand for?
+    C as in the C programming language
+
+36. Is Fortran an acronym? If so, what for?
+    Formula Translation
+
+37. Is COBOL an acronym? If so, what for? 
+    Common Business-Oriented Language
+
+38. Is Lisp an acronym? If so, what for? 
+    LISt Processing
+
+39. Is Pascal an acronym? If so, what for?
+    No :D
+
+40. Is Ada an acronym? If so, what for?
+    It was named after Lady Augusta Ada Lovelace (a daughter of Lord Byron, the poet).
+    
+    Lady Lovelace could be claimed to have been the first programmer of modern times (for some definition of “modern”)
+    because she had worked with Charles Babbage on a revolutionary mechanical computer in the 1840s
+
+41. Which is the best programming language?
+    blimey!
